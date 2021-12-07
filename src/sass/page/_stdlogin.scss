@@ -1,8 +1,5 @@
 @import './base/rwd';
 @import './base/var';
-body{
-    margin: 30px;
-}
 .tabs{
     display: flex;
     flex-wrap: wrap;
@@ -121,16 +118,23 @@ body{
                     width: 100%;
                     input{
                         width: 100%;
+                        @include m(){
+                            width: 80%;
+                        }
                         margin-bottom: 10px;
                         border: none;
-                        border-radius: 8px;
+                        border-radius: 20px;
                         background-color: #D3E0EA;
+                        padding: 8px;
                     }
                     textarea{
                         width: 100%;
+                        @include m(){
+                            width: 80%;
+                        }
                         height: 100px;
                         border: none;
-                        border-radius: 8px;
+                        border-radius: 20px;
                         background-color: #D3E0EA;
                         resize: none;
                     }
@@ -167,11 +171,15 @@ body{
                     color: #F3BBBB;
                 }
             }
+            // @include btn(reserve,50px,$m-size-5,#276678){
+            //     margin-left: auto;
+            //     padding: 5px;
+            // }
             button{
                 margin-left: auto;
                 background-color: #276678;
                 color: white;
-                border-radius: 10px;
+                border-radius: 20px;
             }
         }
         .condition::after{
@@ -277,10 +285,16 @@ body{
                 @include m(){
                     font-size: 14px;
                 }
+                @include t(){
+                    font-size: 16px;
+                }
                 h1{
                     font-size: 14px;
                     @include m(){
                         font-size: 16px;
+                    }
+                    @include t(){
+                        font-size: 24px;
                     }
                 }
                 h2{
@@ -288,6 +302,9 @@ body{
                     font-weight: 300;
                     @include m(){
                         font-size: 14px;
+                    }
+                    @include t(){
+                        font-size: 17px;
                     }
                 }
                 .content_detail{

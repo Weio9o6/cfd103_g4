@@ -1,10 +1,8 @@
 @import './base/rwd';
 @import './base/var';
-body{
-    margin: 30px;
-}
 .about_us{
-    width: 100%;
+    width: 90%;
+    margin: 0 auto;
     h1{
         font-size: 30px;
         width: 90%;
@@ -12,7 +10,7 @@ body{
         color: #276678;
         font-weight: 700;
         @include m(){
-            margin: 70px auto;
+            margin: 30px auto 70px;
         }
     }
     .float_card{
@@ -65,12 +63,12 @@ body{
     }
 }
 .contact_us{
-    width: 100%;
+    width: 80%;
     border: 2px solid #D3E0EA;
     padding: 30px;
     box-sizing: border-box;
     box-shadow: 1px 1px 10px rgb(206, 206, 206);
-    margin-bottom: 80px;
+    margin: 0 auto 80px;
     .post_card{
         width: 85%;
         margin: 0 auto;
@@ -92,14 +90,21 @@ body{
                 }
                 .input_group{
                     input{
-                        width: 100%;
+                        width: 95%;
+                        @include m(){
+                            width: 80%;
+                        }
                         margin-bottom: 10px;
                         border: none;
-                        border-radius: 8px;
+                        border-radius: 20px;
                         background-color: #D3E0EA;
+                        padding: 8px;
                     }
                     textarea{
-                        width: 100%;
+                        width: 95%;
+                        @include m(){
+                            width: 80%;
+                        }
                         height: 100px;
                         border: none;
                         border-radius: 8px;

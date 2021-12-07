@@ -10,7 +10,7 @@
     }
 }
 @mixin dt(){
-    @media all and (min-width: $destop){
+    @media all and (min-width: $desktop){
       @content;
     }
 }

@@ -11,6 +11,7 @@
     </style>
 </head>
 <body>
+@@include('./layout/header.html')
 <section class="content">
     <div class="tabs">
         <input type="radio" class="tabs__radio" name="tabs-example" id="tab1" checked>
@@ -184,7 +185,7 @@
                         <a href="#">
                             <div class="content_detail">
                                 <p>
-                                    <img src=".images/time.svg" alt="">
+                                    <img src="./images/time.svg" alt="">
                                     10hr
                                 </p>
                                 <p class="complete">60%完成</p>
@@ -346,7 +347,7 @@
             </div>
         </div>
         <input type="radio" class="tabs__radio" name="tabs-example" id="tab5">
-        <label for="tab5" class="tabs__label"><h3>我的優惠</h3><img src="../assets/images/icons/discount.svg" alt=""></label>
+        <label for="tab5" class="tabs__label"><h3>我的優惠</h3><img src="./images/discount.svg" alt=""></label>
         <div class="tabs__content">
             <div class="coupon">
                 <table>
@@ -389,5 +390,6 @@
         </div>
     </div>
 </section>
+@@include('./layout/footer.html')
 </body>
 </html>

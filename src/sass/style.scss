@@ -1,5 +1,7 @@
 @import './base/reset';
 @import './mixin/mixin';
+@import './layout/header';
+@import './layout/footer';
 @import './page/stdlogin';
 @import './page/aboutus';
 body{

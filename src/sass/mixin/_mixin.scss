@@ -26,12 +26,12 @@
     width: $w;
     padding: 10px;
     background-color: $bgc;
-    color: invert($bgc);
+    color: white;
     font-size: $fz;
     text-align: center;
     border: 1px solid darken($bgc, 10);
     cursor: pointer;
-    @include borderR(5px);
+    @include borderR(20px);
     margin-top: 10px;
     @content;
   }
