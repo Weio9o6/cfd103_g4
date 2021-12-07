@@ -1,0 +1,38 @@
+//圓角設定
+
+//整個圓角
+@mixin borderR($val: 10px) {
+  border-radius: $val;
+}
+
+//部分圓角
+@mixin br($v, $h, $num) {
+  @if $v == null and $h == null {
+    border-radius: $num;
+  } @else {
+    border-#{$v}-#{$h}-radius: $num;
+  }
+}
+
+//邊框線
+@mixin border($val, $line: solid, $color: red) {
+  border: $val $line $color;
+  @content;
+}
+
+//按鈕
+@mixin btn($c, $w, $fz, $bgc) {
+  .btn-#{$c} {
+    width: $w;
+    padding: 10px;
+    background-color: $bgc;
+    color: invert($bgc);
+    font-size: $fz;
+    text-align: center;
+    border: 1px solid darken($bgc, 10);
+    cursor: pointer;
+    @include borderR(5px);
+    margin-top: 10px;
+    @content;
+  }
+}

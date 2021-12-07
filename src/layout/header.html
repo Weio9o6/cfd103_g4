@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>header</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="main-header">
+        <div class="logo">
+            <a href=""><img src="assets/images/icons/CM_logo.svg" alt="code_monster"></a>
+        </div>
+        <img src="assets/images/icons/hbg.svg" alt="漢堡" id="hbg_btn">
+        <nav id="menu">
+            <button id="sort_btn">
+                <img src= "assets/images/icons/sort.svg">
+                <h4>類別</h4>
+            </button>
+            <a href="">
+                <button id="sort_btn_c">
+                    <img src= "assets/images/icons/sort.svg">
+                    <h4>課程</h4>
+                </button>
+            </a>
+            <a href="signUp.html">
+                <button>
+                    <h4>登入/註冊</h4>
+                </button>
+            </a>
+            <a href="">
+                <img src="assets/images/icons/shopcart.svg" alt="購物車">
+            </a>
+        </nav>
+    </div>
+    <div id="sortMenu">
+        <a href=""><h4>HTML</h4></a>
+        <a href=""><h4>JavaScript</h4></a>
+        <a href=""><h4>Python</h4></a>
+        <a href=""><h4>C/C++</h4></a>
+    </div>
+
+    <!-- ------------漢堡選單---------------->
+    <script>
+        function openCloseMenu(){
+            if(document.getElementById("menu").className == ""){
+                document.getElementById("menu").className = "show";
+                document.getElementById("hbg_btn").src = "assets/images/icons/hbg_2.svg";
+            }else{
+                document.getElementById("menu").className = "";
+                document.getElementById("hbg_btn").src = "assets/images/icons/hbg.svg";
+            }
+        }
+        function init(){
+            document.getElementById("hbg_btn").onclick = openCloseMenu;
+        }
+        window.addEventListener("load", init, false);
+    </script>
+
+    <!-- ------------分類選單---------------->
+    <script>
+        function openCloseSort(){
+            if(document.getElementById("sortMenu").className == ""){
+                document.getElementById("sortMenu").className = "show";
+            }else{
+                document.getElementById("sortMenu").className = "";
+            }
+        }
+        function init(){
+            document.getElementById("sort_btn").onclick = openCloseSort;
+        }
+        window.addEventListener("load", init, false);
+    </script>
+</body>
+</html>

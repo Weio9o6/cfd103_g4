@@ -1,0 +1,105 @@
+.main-header{
+    background-color: #D3E0EA;
+    position: relative;
+    #sort_btn{display: none;}
+    
+    @include dt(){
+        height: 60px;
+        display: flex;
+        #hbg_btn {display: none;}
+        #menu{
+            width: 80%;
+            height: auto;
+            position: absolute;
+            background-color: #00000000;
+            padding: 0;
+            right: 20px;
+            top: 0px;
+            display: flex;
+        }
+        #sort_btn{display: flex;}
+        #sort_btn_c{display: none;}
+    }
+}
+
+.logo img{
+    height: 50px;
+    margin: 5px 20px;
+}
+
+#hbg_btn{
+    width: 40px;
+    margin-right: 20px;
+    position: absolute;
+    right: 5px;
+    top: 15px;
+    cursor:pointer;
+}
+
+#menu{
+    width: 150px;
+    height: 180px;
+    background-color: $blue;
+    position: absolute;
+    padding: 15px 0 0 15px;
+    right: 0;
+    top: -600px;
+    
+    img{
+        height: 30px;
+        margin: 10px 5px 10px 20px;
+    }
+    a{text-decoration: none;}
+    a:nth-child(2){
+        margin-left: auto;
+    }
+    button{
+        height: 50px;
+        width: 130px;
+        border: none;
+        border-radius: 25px;
+        display: flex;
+        background-color: $darkgreen;
+        margin: 5px 0;
+        cursor:pointer;
+        h4{
+            line-height: 50px;
+            margin: 0 auto;
+            color: $white;
+            font-weight: bold;
+        }
+        
+    }
+        
+    img:last-child{height: 40px;}
+}
+
+#menu.show{
+    top: 60px;
+    z-index: 1;
+}
+
+#sortMenu{
+    display: none;
+    @include dt(){
+        height: 40px;
+        background-color: $blue;
+        position: absolute;
+        padding-top: 10px;
+        left: 18%;
+        top: -600px;
+        display: flex;
+
+        a{
+            text-decoration: none;
+            margin: 0 10px;
+            color: $darkgreen;
+        }
+    }
+}
+
+#sortMenu.show{
+    top: 60px;
+    z-index: 1;
+}
+

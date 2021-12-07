@@ -1,0 +1,16 @@
+@mixin m(){
+    @media all and (min-width: $cell) {
+      @content;
+    }
+}
+
+@mixin t(){
+    @media all and (min-width: $tablet){
+      @content;
+    }
+}
+@mixin dt(){
+    @media all and (min-width: $destop){
+      @content;
+    }
+}

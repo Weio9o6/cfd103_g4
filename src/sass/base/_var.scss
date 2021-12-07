@@ -1,0 +1,57 @@
+//變數
+/*css註解*/
+//網頁主色
+$gray: #f6f5f5;
+$blue: #d3e0ea;
+$darkblue: #1687a7;
+$darkgreen: #276678;
+//網頁輔助色
+$black: #333333;
+$darkgray: #777777;
+$white: #ffffff;
+//連結顏色
+$link: rgb(0, 56, 177);
+
+$null: null;
+$color: (
+  primary: blue,
+  info: yellow,
+); //map
+
+//預設
+$d-size-1: 36px;
+$d-size-2: 30px;
+$d-size-3: 26px;
+$d-size-4: 22px;
+$d-size-5: 18px;
+$d-size-6: 14px;
+
+$m-size-1: 32px;
+$m-size-2: 28px;
+$m-size-3: 24px;
+$m-size-4: 18px;
+$m-size-5: 14px;
+$m-size-6: 10px;
+
+//字體大小
+$fontSize_Title: 20px; //彈窗標題  h1
+$fontSize_SubTitle: 18px; //彈窗小標  h2
+$fontSize: 16px; //預設值
+$fontSizeLink: 14px; //a連結、header, footer 字體大小
+$fontSizeSmall: 12px; //tooltip
+
+//顏色
+$textcolor: yellow;
+
+//版型
+$layoutwidth: 1200px;
+
+//按鈕(預設小按鈕)
+$btn: small;
+
+//斷點
+
+$cell: 576px;
+$tablet: 996px;
+$desktop: 1024px;
+$XL-desktop: 1366px;

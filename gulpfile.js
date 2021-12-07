@@ -38,7 +38,7 @@ const autoprefixer = require('gulp-autoprefixer');
 
 //任務函示
 function sassstyle(){
-    return src('./src/sass/style.scss') //來源檔案
+    return src('./src/sass/*.scss') //來源檔案
     .pipe(sourcemaps.init())
     .pipe(sass.sync().on('error', sass.logError)) //sass編譯
     .pipe(autoprefixer())// 跨瀏覽器使用
