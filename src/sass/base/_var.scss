@@ -52,6 +52,7 @@ $btn: small;
 //斷點
 
 $cell: 576px;
+$s-tablet: 768px;
 $tablet: 996px;
 $desktop: 1024px;
 $XL-desktop: 1366px;
@@ -71,17 +72,17 @@ $XL-desktop: 1366px;
 }
 @mixin container-md() {
   @include container();
-  max-width: 768px;
+  max-width: 720px;
 }
 
 @mixin container-lg() {
   @include container();
-  max-width: 992px;
+  max-width: 960px;
 }
 
 @mixin container-xl() {
   @include container();
-  max-width: 1200px;
+  max-width: 1140px;
 }
 
 @mixin container-xxl() {
