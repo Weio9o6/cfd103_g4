@@ -55,3 +55,36 @@ $cell: 576px;
 $tablet: 996px;
 $desktop: 1024px;
 $XL-desktop: 1366px;
+
+//container 設定
+
+@mixin container() {
+  width: 100%;
+  padding-right: 12px;
+  padding-left: 12px;
+  margin: 0 auto;
+}
+
+@mixin container-sm() {
+  @include container();
+  max-width: 540px;
+}
+@mixin container-md() {
+  @include container();
+  max-width: 768px;
+}
+
+@mixin container-lg() {
+  @include container();
+  max-width: 992px;
+}
+
+@mixin container-xl() {
+  @include container();
+  max-width: 1200px;
+}
+
+@mixin container-xxl() {
+  @include container();
+  max-width: 1320px;
+}

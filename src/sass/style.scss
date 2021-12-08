@@ -1,5 +1,9 @@
 @import "./base/reset";
+@import "./base/var";
+@import "./base/rwd";
+@import "./base/card";
 @import "./mixin/mixin";
+
 @import "./layout/header";
 @import "./layout/footer";
 @import "./page/stdlogin";
@@ -11,7 +15,11 @@
 @import "./page/page3";
 @import "./page/pay";
 @import "./page/Pay-Finish";
+@import "./page/course";
 
 body {
   background-color: #f6f5f5;
+}
+* {
+  box-sizing: border-box;
 }
