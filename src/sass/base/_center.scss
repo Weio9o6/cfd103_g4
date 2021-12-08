@@ -1,12 +1,17 @@
 //水平置中
-@mixin center($val){
-    margin: $val auto 0;
-    //$val 上方margin
+@mixin center($val) {
+  margin: $val auto 0;
+  //$val 上方margin
 }
 //水平垂直置中
-@mixin centerAll(){
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    @content;
+@mixin centerAll() {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @content;
+}
+
+@mixin flex-ac() {
+  display: flex;
+  align-items: center;
 }
