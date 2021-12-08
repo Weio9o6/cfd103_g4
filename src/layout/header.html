@@ -1,28 +1,24 @@
 <div class="main-header">
-        <div class="logo">
-            <a href=""><img src="../images/CM_logo.svg" alt="code_monster"></a>
-        </div>
-        <img src="../images/hbg.svg" alt="漢堡" id="hbg_btn">
-        <nav id="menu">
-            <button id="sort_btn">
-                <img src= "../images/sort.svg">
-                <h4>類別</h4>
+    <div class="logo">
+        <a href="../home.html"><img src="../images/CM_logo.svg" alt="code_monster"></a>
+    </div>
+    <img src="../images/hbg.svg" alt="漢堡" id="hbg_btn">
+    
+    <nav id="menu">
+        <button id="sort_btn">
+            <img src= "../images/sort.svg" id="sort_1">
+            <img src= "../images/sort_2.svg" id="sort_2">
+            <h4>類別</h4>
+        </button>
+        <a href="signUp.html">
+            <button>
+                <h4>登入/註冊</h4>
             </button>
-            <a href="">
-                <button id="sort_btn_c">
-                    <img src= "../images/sort.svg">
-                    <h4>課程</h4>
-                </button>
-            </a>
-            <a href="signUp.html">
-                <button>
-                    <h4>登入/註冊</h4>
-                </button>
-            </a>
-            <a href="">
-                <img src="../images/shopcart.svg" alt="購物車">
-            </a>
-        </nav>
+        </a>
+    </nav>
+    <a href="../Pay.html" class="shopcart">
+        <img src="../images/shopcart.svg" alt="購物車">
+    </a>
 </div>
 <div id="sortMenu">
     <a href=""><h4>HTML</h4></a>
@@ -42,23 +38,24 @@
             document.getElementById("hbg_btn").src = "../images/hbg.svg";
         }
     }
-    function init(){
-        document.getElementById("hbg_btn").onclick = openCloseMenu;
-    }
-    window.addEventListener("load", init, false);
+
+function init(){
+    document.getElementById("hbg_btn").onclick = openCloseMenu;
+}
+window.addEventListener("load", init, false);
 </script>
 
 <!-- ------------分類選單---------------->
 <script>
-    function openCloseSort(){
-        if(document.getElementById("sortMenu").className == ""){
-            document.getElementById("sortMenu").className = "show";
-        }else{
-            document.getElementById("sortMenu").className = "";
-        }
+function openCloseSort(){
+    if(document.getElementById("sortMenu").className == ""){
+        document.getElementById("sortMenu").className = "show";
+    }else{
+        document.getElementById("sortMenu").className = "";
     }
-    function init(){
-        document.getElementById("sort_btn").onclick = openCloseSort;
-    }
-    window.addEventListener("load", init, false);
+}
+function init(){
+    document.getElementById("sort_btn").onclick = openCloseSort;
+}
+window.addEventListener("load", init, false);
 </script>

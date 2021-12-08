@@ -3,7 +3,13 @@
 .main-header{
     background-color: #D3E0EA;
     position: relative;
-    #sort_btn{display: none;}
+
+    .shopcart{
+        position: absolute;
+        right: 90px;
+        top: 5px;
+        img{height: 50px;}
+    }
     
     @include dt(){
         height: 60px;
@@ -19,8 +25,10 @@
             top: 0px;
             display: flex;
         }
-        #sort_btn{display: flex;}
-        #sort_btn_c{display: none;}
+        .shopcart{
+            position: absolute;
+            right: 170px;
+        }
     }
 }
 
@@ -39,8 +47,8 @@
 }
 
 #menu{
-    width: 150px;
-    height: 180px;
+    width: 100%;
+    height: 300px;
     background-color: $blue;
     position: absolute;
     padding: 15px 0 0 15px;
@@ -49,7 +57,7 @@
     
     img{
         height: 30px;
-        margin: 10px 5px 10px 20px;
+        margin: 10px 0 10px 20px;
     }
     a{text-decoration: none;}
     a:nth-child(2){
@@ -61,19 +69,27 @@
         border: none;
         border-radius: 25px;
         display: flex;
-        background-color: $darkgreen;
+        background-color: #00000000;
         margin: 5px 0;
         cursor:pointer;
         h4{
             line-height: 50px;
             margin: 0 auto;
-            color: $white;
+            color: $darkgreen;
             font-weight: bold;
         }
-        
     }
-        
     img:last-child{height: 40px;}
+    #sort_1{display: none;}
+    @include dt(){
+        button{
+            background-color: $darkgreen;
+            h4{color: $white;}
+        }
+        #sort_1{display: inline;}
+        #sort_2{display: none;}
+    }
+
 }
 
 #menu.show{
@@ -82,26 +98,39 @@
 }
 
 #sortMenu{
-    display: none;
+    background-color: $darkgreen;
+    position: absolute;
+    left: 0px;
+    top: -600px;
+    width: 100%;
+    height: 300px;
+    a{
+        text-decoration: none;
+        h4{
+            color: $white;
+            margin: 20px;
+        }
+    }
+    
     @include dt(){
+        width: 100%;
         height: 40px;
-        background-color: $blue;
-        position: absolute;
         padding-top: 10px;
-        left: 18%;
-        top: -600px;
         display: flex;
-
+        background-color: $blue;
         a{
-            text-decoration: none;
-            margin: 0 10px;
-            color: $darkgreen;
+            margin: 0 20px;
+            h4{ 
+                margin: 0;
+                color: $darkgreen;
+            }
         }
     }
 }
 
 #sortMenu.show{
+    left: 200px;
     top: 60px;
     z-index: 1;
+    @include dt(){left: 0;}
 }
-
