@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>購物車</title>
+</head>
+
+<body>
+    <div class="main-header">
+        <div class="logo">
+            <a href=""><img src="../images/CM_logo.svg" alt="code_monster"></a>
+        </div>
+        <img src="../images/hbg.svg" alt="漢堡" id="hbg_btn">
+        <nav id="menu">
+            <button id="sort_btn">
+                <img src= "../images/sort.svg">
+                <h4>類別</h4>
+            </button>
+            <a href="">
+                <button id="sort_btn_c">
+                    <img src= "../images/sort.svg">
+                    <h4>課程</h4>
+                </button>
+            </a>
+            <a href="signUp.html">
+                <button>
+                    <h4>登入/註冊</h4>
+                </button>
+            </a>
+            <a href="">
+                <img src="../images/shopcart.svg" alt="購物車">
+            </a>
+        </nav>
+</div>
+<div id="sortMenu">
+    <a href=""><h4>HTML</h4></a>
+    <a href=""><h4>JavaScript</h4></a>
+    <a href=""><h4>Python</h4></a>
+    <a href=""><h4>C/C++</h4></a>
+</div>
+
+<!-- ------------漢堡選單---------------->
+<script>
+    function openCloseMenu(){
+        if(document.getElementById("menu").className == ""){
+            document.getElementById("menu").className = "show";
+            document.getElementById("hbg_btn").src = "../images/hbg_2.svg";
+        }else{
+            document.getElementById("menu").className = "";
+            document.getElementById("hbg_btn").src = "../images/hbg.svg";
+        }
+    }
+    function init(){
+        document.getElementById("hbg_btn").onclick = openCloseMenu;
+    }
+    window.addEventListener("load", init, false);
+</script>
+
+<!-- ------------分類選單---------------->
+<script>
+    function openCloseSort(){
+        if(document.getElementById("sortMenu").className == ""){
+            document.getElementById("sortMenu").className = "show";
+        }else{
+            document.getElementById("sortMenu").className = "";
+        }
+    }
+    function init(){
+        document.getElementById("sort_btn").onclick = openCloseSort;
+    }
+    window.addEventListener("load", init, false);
+</script>
+    <div class="pay-container">
+        <div class="left">
+            <h1>購物車</h1>
+            <div class="course-group">
+                <h2>購物車有<span>3</span>門課程</h2>
+                <div class="course-item">
+                    <div class="course-img">
+                        <img src="images/class_2.png" alt="">
+                    </div>
+                    <div class="course-info">
+                        <h3>C#:從零開始前進</h3>
+                        <p class="price">NT$<span>2400</span></p>
+                    </div>
+                    <div class="des">
+                        <img src="images/x.svg" alt="">
+                        <img src="images/heart.svg" alt="">
+                    </div>
+                </div>
+                <div class="course-item">
+                    <div class="course-img">
+                        <img src="images/class_2.png" alt="">
+                    </div>
+                    <div class="course-info">
+                        <h3>C#:從零開始前進</h3>
+                        <p class="price">NT$<span>2400</span></p>
+                    </div>
+                    <div class="des">
+                        <img src="images/x.svg" alt="">
+                        <img src="images/heart.svg" alt="">
+                    </div>
+                </div>
+                <div class="course-item">
+                    <div class="course-img">
+                        <img src="images/class_2.png" alt="">
+                    </div>
+                    <div class="course-info">
+                        <h3>C#:從零開始前進</h3>
+                        <p class="price">NT$<span>2400</span></p>
+                    </div>
+                    <div class="des">
+                        <img src="images/x.svg" alt="">
+                        <img src="images/heart.svg" alt="">
+                    </div>
+                </div>
+                <div class="course-item">
+                    <div class="course-img">
+                        <img src="images/class_2.png" alt="">
+                    </div>
+                    <div class="course-info">
+                        <h3>C#:從零開始前進</h3>
+                        <p class="price">NT$<span>2400</span></p>
+                    </div>
+                    <div class="des">
+                        <img src="images/x.svg" alt="">
+                        <img src="images/heart.svg" alt="">
+                    </div>
+                </div>
+                <div class="course-item">
+                    <div class="course-img">
+                        <img src="images/class_2.png" alt="">
+                    </div>
+                    <div class="course-info">
+                        <h3>C#:從零開始前進</h3>
+                        <p class="price">NT$<span>2400</span></p>
+                    </div>
+                    <div class="des">
+                        <img src="images/x.svg" alt="">
+                        <img src="images/heart.svg" alt="">
+                    </div>
+                </div>
+                <div class="course-item">
+                    <div class="course-img">
+                        <img src="images/class_2.png" alt="">
+                    </div>
+                    <div class="course-info">
+                        <h3>C#:從零開始前進</h3>
+                        <p class="price">NT$<span>2400</span></p>
+                    </div>
+                    <div class="des">
+                        <img src="images/x.svg" alt="">
+                        <img src="images/heart.svg" alt="">
+                    </div>
+                </div>
+                <div class="course-item">
+                    <div class="course-img">
+                        <img src="images/class_2.png" alt="">
+                    </div>
+                    <div class="course-info">
+                        <h3>C#:從零開始前進</h3>
+                        <p class="price">NT$<span>2400</span></p>
+                    </div>
+                    <div class="des">
+                        <img src="images/x.svg" alt="">
+                        <img src="images/heart.svg" alt="">
+                    </div>
+                </div>
+                <div class="course-item">
+                    <div class="course-img">
+                        <img src="images/class_2.png" alt="">
+                    </div>
+                    <div class="course-info">
+                        <h3>C#:從零開始前進</h3>
+                        <p class="price">NT$<span>2400</span></p>
+                    </div>
+                    <div class="des">
+                        <img src="images/x.svg" alt="">
+                        <img src="images/heart.svg" alt="">
+                    </div>
+                </div>
+                <div class="course-item">
+                    <div class="course-img">
+                        <img src="images/class_2.png" alt="">
+                    </div>
+                    <div class="course-info">
+                        <h3>C#:從零開始前進</h3>
+                        <p class="price">NT$<span>2400</span></p>
+                    </div>
+                    <div class="des">
+                        <img src="images/x.svg" alt="">
+                        <img src="images/heart.svg" alt="">
+                    </div>
+                </div>
+                <div class="course-item">
+                    <div class="course-img">
+                        <img src="images/class_2.png" alt="">
+                    </div>
+                    <div class="course-info">
+                        <h3>C#:從零開始前進</h3>
+                        <p class="price">NT$<span>2400</span></p>
+                    </div>
+                    <div class="des">
+                        <img src="images/x.svg" alt="">
+                        <img src="images/heart.svg" alt="">
+                    </div>
+                </div>
+                <div class="course-item">
+                    <div class="course-img">
+                        <img src="images/class_2.png" alt="">
+                    </div>
+                    <div class="course-info">
+                        <h3>C#:從零開始前進</h3>
+                        <p class="price">NT$<span>2400</span></p>
+                    </div>
+                    <div class="des">
+                        <img src="images/x.svg" alt="">
+                        <img src="images/heart.svg" alt="">
+                    </div>
+                </div>
+                
+            </div>
+            <hr>
+        </div>
+        <div class="right">
+            <div class="right-content">
+                <div class="pay-money">
+                    <div>
+                        <p>小計</p>
+                        <p>NT$ <span>11800</span></p>
+                    </div>
+                    <div>
+                        <p>優惠</p>
+                        <select name="" id="">
+                            <option value="5">5折</option>
+                            <option value="7">7折</option>
+                            <option value="8">8折</option>
+                        </select>
+                    </div>  
+                </div>
+                <div class="sun-total">
+                    <hr>
+                    <div>
+                        <p>總計</p>
+                        <p>
+                            NT$ <span>5900</span>
+                        </p>
+                    </div>
+                    <button onclick="alert('少廢話，快給我錢！！')">結帳</button>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+    <div class="main-footer">
+        <div class="footer_nav">
+            <a href=""><h4>關於我們</h4></a>
+            <a href=""><h4>常見問題</h4></a>
+            <div class="footer_text">
+                <a href="game.html"><h4>玩遊戲拿優惠</h4></a>
+                <div>
+                    <a href="https://www.facebook.com/">
+
+                        <img src="../images/fb.svg" alt="FB">
+                    </a>
+                    <a href="https://line.me/zh-hant/">
+                        <img src="../images/line.svg" alt="Line">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <p>
+            本網站為緯育TibaMe_前端設計工程師班第71期學員專題成果作品，本平台僅供學習、展示之用。
+            <br>
+            若有抵觸有關著作權，或有第三人主張侵害智慧財產權等情事，均由學員負法律上責任，緯育公司概不負責。
+            <br>
+            若有侵權疑慮，您可以私訊<a href="https://www.facebook.com/TibaMe">[緯育TibaMe]</a>，後續會由專人協助處理。
+        </p>
+</div>
+</body>
+
+</html>
