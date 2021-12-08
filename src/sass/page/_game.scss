@@ -1,0 +1,56 @@
+h3{
+    color: $black;
+    margin: 10px 0 0 20px;
+}
+
+.game{
+    max-width: 1000px;
+    margin: 50px auto;
+    padding: 0 20px;
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.list{
+    width: 210px;
+    height: 300px;
+    order: 2;
+    padding: 15px;
+    background-color: $blue;
+    border-radius: 20px;
+    margin: 0 auto;
+    img{width: 40px;}
+    p{color: $black;}
+
+    @include dt(){
+        width: 210px;
+        order: 1;
+        margin-right: 50px;
+    }
+}
+
+.awards{
+    width: 130px;
+    margin: 20px auto;
+    h4{
+        color: $darkgreen;
+        margin: 5px 0;
+        img{
+            width: 30px;
+            vertical-align: top;
+        }
+    } 
+}
+
+.machine{
+    width: 100%;
+    height: 500px;
+    order: 1;
+    img{width: 100%;}
+
+    @include dt(){
+        max-width: 650px;
+        order: 2;
+    }
+}
+

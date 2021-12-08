@@ -1,0 +1,62 @@
+#sign h1{
+    color: $darkgreen;
+    margin: 30px 0 0 30px;
+}
+
+.sign_up_f{
+    width: 255px;
+    margin: 50px auto 150px;
+}
+
+h5{
+    color: $black;
+    margin: 15px 0 5px 0;
+}
+
+input{
+    width: 240px;
+    height: 30px;
+    background-color: $blue;
+    border: none;
+    border-radius: 15px;
+    padding-left: 1em;
+}
+
+textarea{
+    background-color: $blue;
+    border: none;
+    border-radius: 15px;
+}
+
+.btns{
+    float: right;
+    margin-top: 20px;
+}
+
+.already_btn{
+    width: 120px;
+    height: 35px;
+    border-radius: 18px;
+    border: 2px solid $darkgreen;
+    margin-right: 5px;
+    a{
+        text-decoration: none;
+        p{
+            margin: 0;
+            color: $darkgreen;
+        }
+    }
+}
+    
+
+.sign_btn{
+    width: 80px;
+    height: 35px;
+    border-radius: 18px;
+    border: none;
+    background-color: $darkgreen;
+    p{
+        margin: 0;
+        color: $white;
+    }
+}
