@@ -43,16 +43,10 @@ body{
 @import "./page/home";
 @import "./page/lesson";
 
-<<<<<<< HEAD
-body{
-  background-color: #f6f5f5;
-}
-=======
 @import './page/signUp';
 @import './page/logIn';
 @import './page/game';
 
->>>>>>> dev
 * {
   box-sizing: border-box;
 }
