@@ -51,6 +51,13 @@ article .bg {
             box-sizing: border-box;
             width: 80%;
             margin: auto;
+            li{
+                &:last-child{
+                    a{
+                        margin: 10px 10px auto auto;
+                    }
+                }
+            }
         }
         a{
             font-size:$m-size-5;
@@ -67,6 +74,8 @@ article .bg {
 
 .left-content {
     h2 {
+        font-weight: bold;
+        color: $darkblue;
         font-size:$m-size-2;
         margin-top: 20px;
         @include dt(){
@@ -136,6 +145,7 @@ article .bg {
             p {
                 margin-top: 20px;
                 font-size: 30px;
+                font-weight: bold;
             }
 
             &:nth-last-of-type(1) {
@@ -155,13 +165,14 @@ article .bg {
                     margin: 30px;
                 }
             }
+
         }
     }
 
     h2 {
-        font-size:$m-size-2;
-        margin-top: 100px;
-        margin-bottom: 50px;
+        font-weight: bold;
+        font-size:$m-size-1;
+        margin: 100px auto 30px;
         text-align: center;
         color: $darkgreen;
         @include dt(){

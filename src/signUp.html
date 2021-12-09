@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>signUp</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    @@include('layout/header.html')
+    <div id="sign">
+        <h1>註冊</h1>
+        <form action="" class="sign_up_f">
+            <div>
+                <label for="name"><h5>姓名</h5></label>
+                <input id="name" type="text" name="name" placeholder="請輸入真實姓名">
+            </div>
+            <div>
+                <label for="email"><h5>e-mail</h5></label>
+                <input id="email" type="email" name="email" placeholder="請輸入信箱">
+            </div>
+            <div>
+                <label for="tel"><h5>電話</h5></label>
+                <input id="tel" type="tel" name="tel" placeholder="請輸入手機">
+            </div>
+            <div>
+                <label for="account"><h5>帳號</h5></label>
+                <input id="account" type="text" name="account" placeholder="請輸入至少六位含英文數字">
+            </div>
+            <div>
+                <label for="pwd"><h5>密碼</h5></label>
+                <input id="pwd" type="password" name="pwd" placeholder="請輸入至少六位含英文數字">
+            </div>
+            <div>
+                <label for="check"><h5>確認密碼</h5></label>
+                <input id="check" type="password" name="check" placeholder="請輸入至少六位含英文數字">
+            </div>
+            <div>
+                <label for="about"><h5>關於我</h5></label>
+                <textarea name="about" id="about" cols="30" rows="5"></textarea>
+            </div>
+            <div class="btns">
+                <button class="already_btn">
+                    <a href="logIn.html"><p>已成為學生</p></a>
+                </button>
+                <button type="submit" class="sign_btn"><p>註 冊</p></button>
+            </div>
+        </form>
+    </div>
+    
+    @@include('layout/footer.html')
+</body>
+</html>

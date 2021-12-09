@@ -1,16 +1,21 @@
-@mixin m(){
-    @media all and (min-width: $cell) {
-      @content;
-    }
+@mixin m() {
+  @media all and (min-width: $cell) {
+    @content;
+  }
+}
+@mixin st() {
+  @media all and (min-width: $s-tablet) {
+    @content;
+  }
 }
 
-@mixin t(){
-    @media all and (min-width: $tablet){
-      @content;
-    }
+@mixin t() {
+  @media all and (min-width: $tablet) {
+    @content;
+  }
 }
-@mixin dt(){
-    @media all and (min-width: $desktop){
-      @content;
-    }
+@mixin dt() {
+  @media all and (min-width: $desktop) {
+    @content;
+  }
 }

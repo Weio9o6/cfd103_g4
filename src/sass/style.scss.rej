@@ -1,9 +1,0 @@
-diff a/src/sass/style.scss b/src/sass/style.scss	(rejected hunks)
-@@ -19,6 +19,5 @@
- @import "./page/Pay-Finish";
- @import "./page/course";
- 
--body{
-\ No newline at end of file
- body {
-   background-color: #f6f5f5;

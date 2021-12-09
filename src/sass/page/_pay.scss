@@ -1,17 +1,18 @@
 .pay-container {
     width: 100%;
     h1 {
-        margin: 50px 20px 20px;
+        margin: 50px 20px 30px;
         font-size: 32px;
         color: #276678;
         font-size: $m-size-1;
         @include dt(){
             font-size:$d-size-1;
+            margin: 20px 20px 50px;
         }
     }
 
     .course-group {
-        margin: 0px 20px 20px;
+        margin: 0px 20px 0px;
         color: #276678;
         h2{
             font-size: $m-size-4;
@@ -23,7 +24,16 @@
             float: left;
         }
     }
-
+    .left{
+        hr{
+            width: 100%;
+            margin: 30px auto;
+            @include dt(){
+                display: none;
+            }
+        }
+        
+    }
     .course-item {
         @include dt(){
             width: 550px;
@@ -74,6 +84,9 @@
                     bottom: 5px;
                     right: 5px;
                 }
+                &:hover{
+                    cursor: pointer;
+                }
             }
         }
 
@@ -113,10 +126,17 @@
         }
     }
     .sun-total{
+
+        hr{
+            margin: 30px auto;
+            width: 100%;
+        }
         @include dt(){
             width: 300px;
             hr{
                 display: block;
+                width: 100%;
+                
             }
         }
         div{
@@ -140,25 +160,21 @@
         button{
             width: 120px;
             height: 60px;
-
             margin: 20px;
             float: right;
-            clear: both;
             padding: 20px;
             border: none;
             border-radius: 50px;
             background-color: #276678;
             color: #fff;
-            
             text-align: center;
             line-height: 20px;
-
             font-size: $m-size-3;
             @include dt(){
                 font-size: $d-size-2;
             }
-            
         }
+        overflow: auto;
     }
     @include dt(){
         width: 1024px;
@@ -173,7 +189,8 @@
             top: 150px;
         }
         .right{
-            margin-left: 100px;
+            margin-left: 80px;
+            margin-top: 25vh;
         }
     }
 }

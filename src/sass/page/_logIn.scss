@@ -1,0 +1,61 @@
+#log h1{
+    color: $darkgreen;
+    margin: 30px 0 0 30px;
+}
+
+.log_in_f{
+    width: 255px;
+    margin: 50px auto 300px;
+}
+
+h5{
+    color: $black;
+    margin: 15px 0 5px 0;
+}
+
+input{
+    width: 240px;
+    height: 30px;
+    background-color: $blue;
+    border: none;
+    border-radius: 15px;
+    padding-left: 1em;
+}
+
+textarea{
+    background-color: $blue;
+    border: none;
+    border-radius: 15px;
+}
+
+.btns{
+    float: right;
+    margin-top: 20px;
+    a{
+        text-decoration: none;
+    }
+}
+
+.notready_btn{
+    width: 100px;
+    height: 35px;
+    border-radius: 18px;
+    border: 2px solid $darkgreen;
+    margin-right: 5px;
+    p{
+        margin: 0;
+        color: $darkgreen;
+    }
+}
+
+.login_btn{
+    width: 80px;
+    height: 35px;
+    border-radius: 18px;
+    border: none;
+    background-color: $darkgreen;
+    p{
+        margin: 0;
+        color: $white;
+    }
+}

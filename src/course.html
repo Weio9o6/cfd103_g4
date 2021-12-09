@@ -15,6 +15,8 @@
   </head>
   <body>
     <div class="wrap">
+      @@include('./layout/header.html')
+
       <section class="explore">
         <div class="container">
           <div class="title">
@@ -28,7 +30,7 @@
           </div>
           <div class="searchbar">
             <form action="">
-              <input type="text" placeholder="Search.." name="search" />
+              <input type="text" placeholder="Search" name="search" />
             </form>
           </div>
         </div>
@@ -229,6 +231,8 @@
           </div>
         </div>
       </section>
+
+      @@include('./layout/footer.html')
     </div>
   </body>
 </html>
