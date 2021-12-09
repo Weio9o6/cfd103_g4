@@ -77,9 +77,8 @@
 /* 管理員 A 的 左邊間距 */
 .author-name {
     margin-left: 20px;
-
     h3 {
-        margin-bottom: 5px;
+        margin: auto auto 5px auto;
         font-size:$d-size-6;
     }
     p{
@@ -95,7 +94,7 @@
     font-weight: bold;
     font-size: $m-size-3;
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
     color: #1687A7;
     @include dt(){
         font-size: $d-size-1;
@@ -105,7 +104,7 @@
 .other {
     width: 80%;
     background-color: #D3E0EA;
-    margin: 0 auto 100px;
+    margin: 0 auto 50px;
     padding: 10px;
 
     span {
@@ -113,11 +112,12 @@
         color: #777;
         font-size: $m-size-6;
         @include dt(){
-            font-size: $d-size-4;
+            font-size: $d-size-5;
         }
     }
-
-    p {
+    a {
+        display: block;
+        text-decoration: none;
         color: #1687A7;
         font-size: $m-size-4;
         text-align: center;
@@ -125,10 +125,13 @@
         @include dt(){
             font-size: $d-size-2;
         }
+        &:hover{
+            cursor: pointer;
+        }
     }
 
     @include dt() {
         width: 400px;
-        padding: 10px;
+        padding: 20px;
     }
 }
