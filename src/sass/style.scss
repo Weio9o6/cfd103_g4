@@ -5,23 +5,47 @@
 @import "./base/center";
 @import "./mixin/mixin";
 
-body{
+body {
   background-color: $gray;
   font-family: 微軟正黑體;
-  h1{font-size: $m-size-1}
-  h2{font-size: $m-size-2}
-  h3{font-size: $m-size-3}
-  h4{font-size: $m-size-4}
-  h5{font-size: $m-size-5}
-  p{font-size: $m-size-6}
+  h1 {
+    font-size: $m-size-1;
+  }
+  h2 {
+    font-size: $m-size-2;
+  }
+  h3 {
+    font-size: $m-size-3;
+  }
+  h4 {
+    font-size: $m-size-4;
+  }
+  h5 {
+    font-size: $m-size-5;
+  }
+  p {
+    font-size: $m-size-6;
+  }
 
-  @include t(){
-      h1{font-size: $d-size-1}
-      h2{font-size: $d-size-2}
-      h3{font-size: $d-size-3}
-      h4{font-size: $d-size-4}
-      h5{font-size: $d-size-5}
-      p{font-size: $d-size-6}
+  @include t() {
+    h1 {
+      font-size: $d-size-1;
+    }
+    h2 {
+      font-size: $d-size-2;
+    }
+    h3 {
+      font-size: $d-size-3;
+    }
+    h4 {
+      font-size: $d-size-4;
+    }
+    h5 {
+      font-size: $d-size-5;
+    }
+    p {
+      font-size: $d-size-6;
+    }
   }
 }
 
@@ -31,7 +55,6 @@ body{
 @import "./page/stdlogin";
 @import "./page/aboutus";
 @import "./page/backend";
-
 
 //uber
 @import "./page/page";
@@ -43,9 +66,9 @@ body{
 @import "./page/home";
 @import "./page/lesson";
 
-@import './page/signUp';
-@import './page/logIn';
-@import './page/game';
+@import "./page/signUp";
+@import "./page/logIn";
+@import "./page/game";
 
 * {
   box-sizing: border-box;
