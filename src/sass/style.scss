@@ -8,21 +8,6 @@
 body{
   background-color: $gray;
   font-family: 微軟正黑體;
-  h1{font-size: $m-size-1}
-  h2{font-size: $m-size-2}
-  h3{font-size: $m-size-3}
-  h4{font-size: $m-size-4}
-  h5{font-size: $m-size-5}
-  p{font-size: $m-size-6}
-
-  @include t(){
-      h1{font-size: $d-size-1}
-      h2{font-size: $d-size-2}
-      h3{font-size: $d-size-3}
-      h4{font-size: $d-size-4}
-      h5{font-size: $d-size-5}
-      p{font-size: $d-size-6}
-  }
 }
 
 @import "./layout/header";
