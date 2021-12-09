@@ -6,7 +6,7 @@ const {
     watch
 } = require('gulp');
 
-
+// 翰霆老師教的
 function taskcon(cb){
     console.log('第一個任務');
     cb();
