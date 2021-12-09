@@ -183,6 +183,7 @@ section {
     align-items: center;
     max-height: 400px;
     .header {
+      height: 100%;
       img {
         height: 100%;
         width: 150px;
@@ -190,7 +191,6 @@ section {
     }
 
     .content {
-      line-height: 1.5;
       flex-grow: 1;
       display: flex;
       flex-direction: column;
