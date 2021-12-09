@@ -1,61 +1,71 @@
-#log h1{
-    color: $darkgreen;
-    margin: 30px 0 0 30px;
-}
-
-.log_in_f{
-    width: 255px;
-    margin: 50px auto 300px;
-}
-
-h5{
-    color: $black;
-    margin: 15px 0 5px 0;
-}
-
-input{
-    width: 240px;
-    height: 30px;
-    background-color: $blue;
-    border: none;
-    border-radius: 15px;
-    padding-left: 1em;
-}
-
-textarea{
-    background-color: $blue;
-    border: none;
-    border-radius: 15px;
-}
-
-.btns{
-    float: right;
-    margin-top: 20px;
-    a{
-        text-decoration: none;
-    }
-}
-
-.notready_btn{
-    width: 100px;
-    height: 35px;
-    border-radius: 18px;
-    border: 2px solid $darkgreen;
-    margin-right: 5px;
-    p{
-        margin: 0;
+#log{
+    max-width: 960px;
+    margin: 50px auto 260px;
+    padding: 0 20px;
+    
+    h1{
+        font-size: $d-size-1;
         color: $darkgreen;
+        margin: 30px 0 0 30px;
+    }
+    .log_in_f{
+        width: 250px;
+        margin: 30px auto 0;
+    }
+
+    h5{
+        font-size: $d-size-5;
+        color: $black;
+        margin: 20px 0 5px 0;
+    }
+
+    input{
+        width: 250px;
+        height: 30px;
+        background-color: $blue;
+        border: none;
+        border-radius: 20px;
+        padding: 20px;
+    }
+
+    textarea{
+        background-color: $blue;
+        border: none;
+        border-radius: 15px;
+    }
+
+    .btns{
+        float: right;
+        margin-top: 30px;
+        a{
+            text-decoration: none;
+        }
+    }
+
+    .notready_btn{
+        width: 100px;
+        height: 35px;
+        border-radius: 18px;
+        border: 2px solid $darkgreen;
+        margin-right: 5px;
+        p{
+            font-size: $d-size-6;
+            margin: 0;
+            color: $darkgreen;
+        }
+    }
+
+    .login_btn{
+        width: 80px;
+        height: 35px;
+        border-radius: 18px;
+        border: none;
+        background-color: $darkgreen;
+        p{
+            font-size: $d-size-6;
+            margin: 0;
+            color: $white;
+        }
     }
 }
 
-.login_btn{
-    width: 80px;
-    height: 35px;
-    border-radius: 18px;
-    border: none;
-    background-color: $darkgreen;
-    p{
-        margin: 0;
-        color: $white;
-    }
-}
