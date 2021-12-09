@@ -1,10 +1,9 @@
-@import '../base/rwd';
-@import '../base/var';
 .main-footer{
     background-color: $blue;
     padding: 20px;
     box-sizing: border-box;
     p{
+        font-size: $d-size-6;
         text-align:center;
         line-height:1.5;
         color: $darkblue;
@@ -15,6 +14,7 @@
     // margin-left: auto;
     margin-bottom: 10px;
     a{
+        font-size: $d-size-5;
         color: $darkgreen;
         text-decoration: none;
         font-weight: bold;
@@ -22,19 +22,17 @@
         img{height: 40px;}
     }
     a:last-child{margin-right: 0;}
+    .footer_text{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
     @include m(){
         display: flex;
         align-items: center;
         justify-content: flex-end;
-        div{
-            margin-right: 20px;
-        }
     }
     
 }
 
-.footer_text{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
+
