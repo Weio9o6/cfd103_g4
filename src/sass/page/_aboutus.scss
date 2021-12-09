@@ -3,6 +3,10 @@
 .about_us{
     width: 90%;
     margin: 0 auto;
+    // max-width: 576px;
+    // @include m(){
+    //     max-width: 960px;
+    // }
     h1{
         font-size: 30px;
         width: 90%;
@@ -14,7 +18,7 @@
         }
     }
     .float_card{
-        width: 100%;
+        width: 90%;
         margin: auto;
         margin-bottom: 100px;
         @include m(){
@@ -34,8 +38,8 @@
         .txt{
             width: 100%;
             margin: -20px auto;
-            background-color: rgba(94, 133, 164, 0.7);
-            padding: 65px 50px 30px;
+            background-color: #D3E0EA;
+            padding: 40px 50px 30px;
             box-sizing: border-box;
             position: relative;
             z-index: 1;
@@ -47,12 +51,26 @@
                 font-weight: 600;
                 font-size: 40px;
                 position: absolute;
-                top: 20px;
-                left: -20px;
             }
             p{
-                color: white;
+                color: black;
                 line-height: 1.3em;
+            }
+        }
+        &:nth-child(odd){
+            h2{
+                top: -20px;
+                left: -20px;
+            }
+        }
+        &:nth-child(even){
+            h2{
+                top: 125px;
+                right: -20px;
+                @include m(){
+                    top: -20px;
+                    right: -20px;
+                }
             }
         }
     }
