@@ -1,5 +1,3 @@
-@import './base/rwd';
-@import './base/var';
 .main-header{
     background-color: #D3E0EA;
     position: relative;
@@ -7,8 +5,8 @@
     .shopcart{
         position: absolute;
         right: 90px;
-        top: 5px;
-        img{height: 50px;}
+        top: 7.5px;
+        img{height: 45px;}
     }
     
     @include dt(){
@@ -73,18 +71,22 @@
         margin: 5px 0;
         cursor:pointer;
         h4{
+            font-size: $d-size-5;
             line-height: 50px;
             margin: 0 auto;
             color: $darkgreen;
             font-weight: bold;
         }
     }
-    img:last-child{height: 40px;}
+    img:last-child{height: 35px;}
     #sort_1{display: none;}
     @include dt(){
         button{
             background-color: $darkgreen;
-            h4{color: $white;}
+            h4{
+                font-size: $d-size-5;
+                color: $white;
+            }
         }
         #sort_1{display: inline;}
         #sort_2{display: none;}
@@ -107,6 +109,7 @@
     a{
         text-decoration: none;
         h4{
+            font-size: $d-size-5;
             color: $white;
             margin: 20px;
         }
@@ -121,6 +124,7 @@
         a{
             margin: 0 20px;
             h4{ 
+                font-size: $d-size-5;
                 margin: 0;
                 color: $darkgreen;
             }
