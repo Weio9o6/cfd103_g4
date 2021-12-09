@@ -11,6 +11,7 @@ section {
       @include container-md();
     }
   }
+
   @include dt() {
     .container {
       @include container-lg();
@@ -21,6 +22,8 @@ section {
     h1 {
       font-size: $d-size-1;
       padding: 16px 0;
+      color: $darkgreen;
+      font-weight: bold;
     }
   }
 
@@ -29,24 +32,26 @@ section {
     .tag {
       border: none;
       color: white;
-      padding: 8px 12px;
+      padding: 12px 16px;
       text-align: center;
       text-decoration: none;
       display: inline-block;
       font-size: 16px;
       margin: 4px 2px;
       cursor: pointer;
-      border-radius: 15px;
+      border-radius: 20px;
       background-color: $darkgreen;
     }
   }
 
   .searchbar {
     form {
-      text-align: center;
+      text-align: left;
       input {
-        width: 80%;
-        padding: 8px;
+        border-radius: 24px;
+        width: 50%;
+        min-width: 350px;
+        padding: 24px;
       }
     }
   }
@@ -86,18 +91,18 @@ hr {
     @include st() {
       display: flex;
       flex-wrap: wrap;
-      justify-content: center;
+      justify-content: space-between;
     }
   }
   .card {
-    margin: 1.5rem;
+    margin: 1.5rem 0;
     border: 1px solid $darkblue;
     display: flex;
     align-items: stretch;
     .header {
       img {
         height: 100%;
-        width: 100px;
+        width: 140px;
       }
     }
 
@@ -149,7 +154,7 @@ hr {
     @include st() {
       flex-direction: column;
       align-items: stretch;
-      max-width: 250px;
+      max-width: 300px;
       .header {
         img {
           width: 100%;
