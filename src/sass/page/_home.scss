@@ -19,10 +19,11 @@ section {
     }
     .owl-theme {
       .owl-stage-outer {
-        height: 500px;
+        height: 558px;
         .owl-item {
           img {
             max-width: 992px;
+            height: 100%;
           }
         }
       }
@@ -140,7 +141,8 @@ section {
     @include flex-ac;
     align-items: flex-start;
     justify-content: flex-end;
-    p {
+    a {
+      text-decoration: none;
       color: $darkblue;
       font-size: $d-size-5;
     }
@@ -165,6 +167,10 @@ section {
 
   /*card*/
   .card-group {
+    a {
+      text-decoration: none;
+      color: #000;
+    }
     @include dt() {
       display: flex;
       justify-content: space-between;
@@ -175,6 +181,7 @@ section {
     border: 1px solid $darkblue;
     display: flex;
     align-items: center;
+    max-height: 400px;
     .header {
       img {
         height: 100%;
@@ -191,6 +198,7 @@ section {
       padding: 0 8px;
       h4 {
         font-size: $m-size-3;
+        color: $darkgreen;
       }
       h5,
       p {
@@ -231,7 +239,6 @@ section {
     @include dt() {
       flex-direction: column;
       align-items: stretch;
-      @include card(100px, 300px, 15px);
       .header {
         img {
           width: 100%;
@@ -240,13 +247,13 @@ section {
       .content {
         padding: 8px 12px;
         line-height: 1.5;
-        gap: 8px;
+        gap: 0px;
         h4 {
           font-size: $d-size-4;
+          color: $darkgreen;
         }
         h5 {
           display: inherit;
-          padding: 8px 0;
           font-size: $d-size-5;
         }
         p {
@@ -257,6 +264,7 @@ section {
         .bottom {
           font-size: $d-size-6;
           flex-direction: column;
+          flex-grow: 1;
           .bottom-left {
             @include flex-ac;
             justify-content: space-between;
@@ -310,22 +318,29 @@ section {
       max-width: 250px;
     }
     .item {
-      padding: 16px;
+      padding: 8px;
       width: 250px;
       height: 300px;
       border: 2px solid $darkblue;
       background-color: #fff;
       overflow: hidden;
       border-radius: 15px;
-
+      a {
+        text-decoration: none;
+        color: #000;
+      }
       h3 {
         font-size: $d-size-3;
         line-height: 1.5;
         text-align: center;
+        color: $darkblue;
+        font-weight: bold;
       }
       p {
+        text-align: center;
         font-size: $d-size-5;
-        line-height: 1.5;
+        line-height: 1.75;
+        padding: 2rem 0;
       }
     }
   }
@@ -354,18 +369,25 @@ section {
       .item {
         padding: 16px;
         width: 200px;
-        height: 300px;
+        height: 240px;
         border: 2px solid $darkblue;
         background-color: #fff;
         overflow: hidden;
         border-radius: 15px;
-
+        a {
+          text-decoration: none;
+          color: #000;
+        }
         h3 {
           font-size: $d-size-3;
           line-height: 1.5;
           text-align: center;
+          color: $darkblue;
+          font-weight: bold;
         }
         p {
+          padding: 16px 0;
+          text-align: center;
           font-size: $d-size-5;
           line-height: 1.5;
         }
