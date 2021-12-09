@@ -1,6 +1,3 @@
-* {
-  box-sizing: border-box;
-}
 section {
   margin: 64px 0;
 }
@@ -165,127 +162,129 @@ section {
       @include container-lg();
     }
   }
-}
 
-/*card*/
-.card-group {
-  @include dt() {
-    display: flex;
-    justify-content: space-between;
-  }
-}
-.card {
-  margin: 0.5rem;
-  border: 1px solid $darkblue;
-  display: flex;
-  align-items: center;
-  .header {
-    img {
-      height: 100%;
-      width: 150px;
-    }
-  }
-
-  .content {
-    line-height: 1.5;
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    padding: 0 8px;
-    h4 {
-      font-size: $m-size-3;
-    }
-    h5,
-    p {
-      display: none;
-    }
-
-    .bottom {
+  /*card*/
+  .card-group {
+    @include dt() {
       display: flex;
       justify-content: space-between;
-
-      .bottom-left {
-        .clock,
-        .people {
-          display: none;
-        }
-      }
-
-      .bottom-right {
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        .collect {
-          order: 1;
-          img {
-            width: 30px;
-          }
-        }
-        .price {
-          font-size: $m-size-3;
-          color: $darkblue;
-        }
-      }
     }
   }
-
-  @include dt() {
-    flex-direction: column;
-    align-items: stretch;
-    @include card(100px, 300px, 15px);
+  .card {
+    margin: 0.5rem;
+    border: 1px solid $darkblue;
+    display: flex;
+    align-items: center;
     .header {
       img {
-        width: 100%;
+        height: 100%;
+        width: 150px;
       }
     }
+
     .content {
-      padding: 8px 12px;
       line-height: 1.5;
-      gap: 8px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      padding: 0 8px;
       h4 {
-        font-size: $d-size-4;
+        font-size: $m-size-3;
       }
-      h5 {
-        display: inherit;
-        padding: 8px 0;
-        font-size: $d-size-5;
-      }
+      h5,
       p {
-        display: inherit;
-        font-size: $d-size-6;
+        display: none;
       }
 
       .bottom {
-        font-size: $d-size-6;
+        display: flex;
 
-        .people,
-        .clock {
-          display: flex;
-          align-items: center;
-          gap: 8px;
-          img {
-            width: 30px;
+        justify-content: space-between;
+
+        .bottom-left {
+          .clock,
+          .people {
+            display: none;
           }
         }
-        .price {
+
+        .bottom-right {
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          .collect {
+            order: 1;
+            img {
+              width: 30px;
+            }
+          }
+          .price {
+            font-size: $m-size-3;
+            color: $darkblue;
+          }
+        }
+      }
+    }
+
+    @include dt() {
+      flex-direction: column;
+      align-items: stretch;
+      @include card(100px, 300px, 15px);
+      .header {
+        img {
+          width: 100%;
+        }
+      }
+      .content {
+        padding: 8px 12px;
+        line-height: 1.5;
+        gap: 8px;
+        h4 {
           font-size: $d-size-4;
         }
-        .collect {
-          text-align: right;
-          order: 0;
-          img {
-            width: 30px;
+        h5 {
+          display: inherit;
+          padding: 8px 0;
+          font-size: $d-size-5;
+        }
+        p {
+          display: inherit;
+          font-size: $d-size-6;
+        }
+
+        .bottom {
+          font-size: $d-size-6;
+          flex-direction: column;
+          .bottom-left {
+            @include flex-ac;
+            justify-content: space-between;
+            .people,
+            .clock {
+              @include flex-ac;
+              gap: 8px;
+              img {
+                width: 30px;
+              }
+            }
+          }
+
+          .price {
+            font-size: $d-size-4;
+          }
+          .collect {
+            text-align: right;
+            order: 0;
           }
         }
       }
     }
   }
-}
-.card:hover {
-  cursor: pointer;
-  box-shadow: 1px 1px 10px $darkblue;
+  .card:hover {
+    cursor: pointer;
+    box-shadow: 1px 1px 10px $darkblue;
+  }
 }
 
 /*service*/
