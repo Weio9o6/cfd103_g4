@@ -1,0 +1,18 @@
+@import './base/rwd';
+@import './base/var';
+#app{
+    width: 100%;
+    display: flex;
+    .pages{
+        width: 30%;
+        background-color: rgb(218, 136, 136);
+        .page{
+            margin: 20px 0;
+            text-align: center;
+        }
+    }
+    p{
+        width: 70%;
+        background-color: rgb(146, 213, 240);
+    }
+}
