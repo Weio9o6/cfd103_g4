@@ -19,7 +19,7 @@ section {
     }
     .owl-theme {
       .owl-stage-outer {
-        height: 500px;
+        height: 558px;
         .owl-item {
           img {
             max-width: 992px;
@@ -141,7 +141,8 @@ section {
     @include flex-ac;
     align-items: flex-start;
     justify-content: flex-end;
-    p {
+    a {
+      text-decoration: none;
       color: $darkblue;
       font-size: $d-size-5;
     }
@@ -166,6 +167,10 @@ section {
 
   /*card*/
   .card-group {
+    a {
+      text-decoration: none;
+      color: #000;
+    }
     @include dt() {
       display: flex;
       justify-content: space-between;
@@ -176,6 +181,7 @@ section {
     border: 1px solid $darkblue;
     display: flex;
     align-items: center;
+    max-height: 400px;
     .header {
       img {
         height: 100%;
@@ -232,7 +238,6 @@ section {
     @include dt() {
       flex-direction: column;
       align-items: stretch;
-      @include card(100px, 300px, 15px);
       .header {
         img {
           width: 100%;
@@ -241,13 +246,12 @@ section {
       .content {
         padding: 8px 12px;
         line-height: 1.5;
-        gap: 8px;
+        gap: 0px;
         h4 {
           font-size: $d-size-4;
         }
         h5 {
           display: inherit;
-          padding: 8px 0;
           font-size: $d-size-5;
         }
         p {
@@ -258,6 +262,7 @@ section {
         .bottom {
           font-size: $d-size-6;
           flex-direction: column;
+          flex-grow: 1;
           .bottom-left {
             @include flex-ac;
             justify-content: space-between;
@@ -323,6 +328,8 @@ section {
         font-size: $d-size-3;
         line-height: 1.5;
         text-align: center;
+        color: $darkblue;
+        font-weight: bold;
       }
       p {
         text-align: center;
@@ -367,6 +374,8 @@ section {
           font-size: $d-size-3;
           line-height: 1.5;
           text-align: center;
+          color: $darkblue;
+          font-weight: bold;
         }
         p {
           padding: 16px 0;

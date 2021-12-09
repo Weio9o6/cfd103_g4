@@ -94,6 +94,7 @@ hr {
       justify-content: space-between;
     }
   }
+
   .card {
     margin: 1.5rem 0;
     border: 1px solid $darkblue;
@@ -179,25 +180,27 @@ hr {
 
         .bottom {
           font-size: $d-size-6;
-
-          .people,
-          .clock {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            img {
-              width: 30px;
+          flex-direction: column;
+          flex-grow: 1;
+          .bottom-left {
+            @include flex-ac;
+            justify-content: space-between;
+            .people,
+            .clock {
+              @include flex-ac;
+              gap: 8px;
+              img {
+                width: 30px;
+              }
             }
           }
+
           .price {
             font-size: $d-size-4;
           }
           .collect {
             text-align: right;
             order: 0;
-            img {
-              width: 30px;
-            }
           }
         }
       }
