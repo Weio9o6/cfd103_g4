@@ -8,25 +8,21 @@ section {
   .owl-theme {
     cursor: pointer;
     .owl-stage-outer {
-      max-width: 992px;
+      max-width: 800px;
       margin: 0 auto;
+      max-height: 450px;
+      .owl-item {
+        img {
+          max-width: 800px;
+          height: 100%;
+        }
+      }
     }
   }
 
   @include dt() {
     .container {
       @include container-lg();
-    }
-    .owl-theme {
-      .owl-stage-outer {
-        height: 558px;
-        .owl-item {
-          img {
-            max-width: 992px;
-            height: 100%;
-          }
-        }
-      }
     }
   }
 }
@@ -45,49 +41,30 @@ section {
     @include container-sm();
   }
   .info {
+    margin: auto;
     text-align: center;
     .box {
       @include flex-ac;
       justify-content: center;
+      padding: 8px;
       .logo {
         img {
-          width: 50px;
+          width: 40px;
         }
       }
       .txt {
+        max-width: 200px;
         flex-grow: 1;
         h5 {
           font-size: $d-size-5;
+          font-weight: bold;
+          color: $darkblue;
+          padding-bottom: 8px;
         }
         p {
           font-size: $d-size-6;
-          line-height: 2;
-        }
-      }
-    }
-  }
-
-  @include st() {
-    .info {
-      @include flex-ac;
-      justify-content: space-around;
-      .box {
-        @include flex-ac;
-        .logo {
-          img {
-            width: 30px;
-          }
-        }
-        .txt {
-          text-align: center;
-          h5 {
-            font-size: $d-size-6;
-            font-weight: bold;
-          }
-          p {
-            font-size: $m-size-6;
-            line-height: 1.5;
-          }
+          line-height: 1.5;
+          color: $darkgray;
         }
       }
     }
@@ -105,6 +82,7 @@ section {
         @include flex-ac;
         gap: 0.5rem;
         .txt {
+          max-width: 250px;
           h5 {
             font-size: $d-size-5;
           }
@@ -128,6 +106,10 @@ section {
   .title {
     @include flex-ac;
     padding-bottom: 8px;
+    img {
+      width: 30px;
+      height: 30px;
+    }
     h2 {
       padding-left: 8px;
       font-size: $d-size-2;
@@ -165,25 +147,35 @@ section {
     }
   }
 
-  /*card*/
+  /*card-group*/
   .card-group {
     a {
       text-decoration: none;
       color: #000;
     }
-    @include dt() {
+    @include m() {
       display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    @include st() {
+      flex-direction: column;
+      @include flex-ac();
+    }
+    @include dt() {
+      flex-direction: row;
       justify-content: space-between;
     }
   }
+
+  /*card*/
   .card {
     margin: 0.5rem;
     border: 1px solid $darkblue;
     display: flex;
     align-items: center;
-    max-height: 400px;
     .header {
-      height: 100%;
+      height: 45%;
       img {
         height: 100%;
         width: 150px;
@@ -207,9 +199,7 @@ section {
 
       .bottom {
         display: flex;
-
         justify-content: space-between;
-
         .bottom-left {
           .clock,
           .people {
@@ -238,7 +228,8 @@ section {
 
     @include dt() {
       flex-direction: column;
-      align-items: stretch;
+      width: 275px;
+      height: 400px;
       .header {
         img {
           width: 100%;
@@ -249,19 +240,23 @@ section {
         line-height: 1.5;
         gap: 0px;
         h4 {
+          flex-grow: 1;
           font-size: $d-size-4;
-          color: $darkgreen;
         }
         h5 {
+          flex-grow: 1;
           display: inherit;
           font-size: $d-size-5;
         }
         p {
+          flex-grow: 1;
           display: inherit;
           font-size: $d-size-6;
+          color: $darkgray;
         }
 
         .bottom {
+          flex-grow: 1;
           font-size: $d-size-6;
           flex-direction: column;
           flex-grow: 1;
@@ -288,6 +283,9 @@ section {
         }
       }
     }
+  }
+  .card {
+    @include card();
   }
   .card:hover {
     cursor: pointer;
@@ -341,6 +339,7 @@ section {
         font-size: $d-size-5;
         line-height: 1.75;
         padding: 2rem 0;
+        color: $darkgray;
       }
     }
   }
@@ -390,6 +389,7 @@ section {
           text-align: center;
           font-size: $d-size-5;
           line-height: 1.5;
+          color: $darkgray;
         }
       }
 
