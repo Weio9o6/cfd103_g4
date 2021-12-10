@@ -43,8 +43,8 @@
 }
 .tabs__radio:checked + .tabs__label{
     font-weight: bold;
-    color: #009578;
-    border-bottom: 2px solid #009578;
+    color: #276678;
+    border-bottom: 2px solid #276678;
 }
 .tabs__radio:checked + .tabs__label + .tabs__content{
     display: initial;
@@ -99,7 +99,7 @@
                         font-size: 13px;
                     }
                     h2{
-                        font-size: 8px;
+                        font-size: 20px;
                         color: cornflowerblue;
                     }
                 }
@@ -174,16 +174,17 @@
                     color: #F3BBBB;
                 }
             }
-            // @include btn(reserve,50px,$m-size-5,#276678){
-            //     margin-left: auto;
-            //     padding: 5px;
-            // }
-            button{
+            @include btn(reserve,50px,$m-size-5,#276678){
                 margin-left: auto;
-                background-color: #276678;
-                color: white;
-                border-radius: 20px;
+                padding: 3px;
+                margin-top: 0px;
             }
+            // button{
+            //     margin-left: auto;
+            //     background-color: #276678;
+            //     color: white;
+            //     border-radius: 20px;
+            // }
         }
         .condition::after{
             content: "";
