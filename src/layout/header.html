@@ -1,13 +1,13 @@
 <div class="main-header">
     <div class="logo">
-        <a href="../home.html"><img src="../images/CM_logo.svg" alt="code_monster"></a>
+        <a href="home.html"><img src="./images/CM_logo.svg" alt="code_monster"></a>
     </div>
-    <img src="../images/hbg.svg" alt="漢堡" id="hbg_btn">
+    <img src="./images/hbg.svg" alt="漢堡" id="hbg_btn">
     
     <nav id="menu">
         <button id="sort_btn">
-            <img src= "../images/sort.svg" id="sort_1">
-            <img src= "../images/sort_2.svg" id="sort_2">
+            <img src= "./images/sort.svg" id="sort_1">
+            <img src= "./images/sort_2.svg" id="sort_2">
             <h4>類別</h4>
         </button>
         <a href="signUp.html">
@@ -16,8 +16,8 @@
             </button>
         </a>
     </nav>
-    <a href="../Pay.html" class="shopcart">
-        <img src="../images/shopcart.svg" alt="購物車">
+    <a href="Pay.html" class="shopcart">
+        <img src="./images/shopcart.svg" alt="購物車">
     </a>
 </div>
 <div id="sortMenu">
@@ -32,10 +32,10 @@
     function openCloseMenu(){
         if(document.getElementById("menu").className == ""){
             document.getElementById("menu").className = "show";
-            document.getElementById("hbg_btn").src = "../images/hbg_2.svg";
+            document.getElementById("hbg_btn").src = "./images/hbg_2.svg";
         }else{
             document.getElementById("menu").className = "";
-            document.getElementById("hbg_btn").src = "../images/hbg.svg";
+            document.getElementById("hbg_btn").src = "./images/hbg.svg";
         }
     }
 
