@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>學生登入</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <style>
+    
+    </style>
+</head>
+<body>
+<div class="main-header">
+    <div class="logo">
+        <a href="../home.html"><img src="../images/CM_logo.svg" alt="code_monster"></a>
+    </div>
+    <img src="../images/hbg.svg" alt="漢堡" id="hbg_btn">
+    
+    <nav id="menu">
+        <button id="sort_btn">
+            <img src= "../images/sort.svg" id="sort_1">
+            <img src= "../images/sort_2.svg" id="sort_2">
+            <h4>類別</h4>
+        </button>
+        <a href="signUp.html">
+            <button>
+                <h4>登入/註冊</h4>
+            </button>
+        </a>
+    </nav>
+    <a href="../Pay.html" class="shopcart">
+        <img src="../images/shopcart.svg" alt="購物車">
+    </a>
+</div>
+<div id="sortMenu">
+    <a href="course.html"><h4>HTML</h4></a>
+    <a href="course.html"><h4>JavaScript</h4></a>
+    <a href="course.html"><h4>Python</h4></a>
+    <a href="course.html"><h4>C/C++</h4></a>
+</div>
+
+<!-- ------------漢堡選單---------------->
+<script>
+    function openCloseMenu(){
+        if(document.getElementById("menu").className == ""){
+            document.getElementById("menu").className = "show";
+            document.getElementById("hbg_btn").src = "../images/hbg_2.svg";
+        }else{
+            document.getElementById("menu").className = "";
+            document.getElementById("hbg_btn").src = "../images/hbg.svg";
+        }
+    }
+
+function init(){
+    document.getElementById("hbg_btn").onclick = openCloseMenu;
+}
+window.addEventListener("load", init, false);
+</script>
+
+<!-- ------------分類選單---------------->
+<script>
+function openCloseSort(){
+    if(document.getElementById("sortMenu").className == ""){
+        document.getElementById("sortMenu").className = "show";
+    }else{
+        document.getElementById("sortMenu").className = "";
+    }
+}
+function init(){
+    document.getElementById("sort_btn").onclick = openCloseSort;
+}
+window.addEventListener("load", init, false);
+</script>
+<section class="content">
+    <div class="tabs">
+        <input type="radio" class="tabs__radio" name="tabs-example" id="tab1" checked>
+        <label for="tab1" class="tabs__label"><h3>基本資訊</h3><img src="./images/member_2.svg" alt=""></label>
+        <div class="tabs__content">
+        <!-- 基本資訊 -->
+            <div class="info">
+                <div class="info_box">
+                    <div class="pic_area">
+                        <img src="./images/pic_3.png" alt="">
+                        <h2>魯夫</h2>
+                    </div>
+                    <div class="detail_area">
+                        <span>
+                            <h1>已參加</h1>
+                            <h2>0堂課</h2>
+                        </span>
+                        <!-- <span>
+                            <h1>已完成</h1>
+                            <h2>0堂課</h2>
+                        </span> -->
+                    </div>
+                </div>
+                <div class="info_form">
+                    <form action="#" method="get">
+                        <div class="input_group">
+                            <label for="name">姓名</label>
+                            <br>
+                            <input type="text">
+                            <br>
+                        </div>
+                        <div class="input_group">
+                            <label for="tel">電話</label>
+                            <br>
+                            <input type="tel">
+                            <br>
+                        </div>
+                        <div class="input_group">
+                            <label for="email">電子郵件</label>
+                            <br>
+                            <input type="email">
+                            <br>
+                        </div>
+                        <div class="input_group">
+                            <label for="aboutme">關於我</label>
+                            <br>
+                            <textarea name="aboutme" id=""></textarea>
+                            <br>
+                        </div>
+                        <button class="btn-submit" type="submit">確認送出</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <input type="radio" class="tabs__radio" name="tabs-example" id="tab2">
+        <label for="tab2" class="tabs__label"><h3>預約討論</h3><img src="./images/calendar_2.svg" alt=""></label>
+        <div class="tabs__content">
+        <!-- 預約討論 -->
+            <!-- 規則區 -->
+            <div class="discuss">
+                <div class="discuss_rules">
+                    <h2>一週最多預約兩次</h2>
+                    <div class="step_rules">
+                        <div class="step">1</div>
+                        選取課程
+                    </div>
+                    <div class="step_rules">
+                        <div class="step">2</div>
+                        確認師資與課程無誤點選「預約」
+                    </div>
+                    <div class="condition">
+                        <select name="lesson" id="">
+                            <option value="">課程</option>
+                            <option value="">JavaScript</option>
+                            <option value="">HTML5</option>
+                            <option value="">CSS</option>
+                        </select>
+                        <div class="reservation_status">
+                            <div class="reserved">已預約</div>
+                            <div class="full">已額滿</div>
+                        </div>
+                        <button>預約</button>
+                    </div>
+                </div>
+            </div>
+            <!-- 月曆區 -->
+            <div class="calendar">
+                <h1>&lt; 11月 2021 &gt;</h1>
+                <div class="calendar_table">
+                    <table>
+                        <tr>
+                            <th>日</th>
+                            <th>一</th>
+                            <th>二</th>
+                            <th>三</th>
+                            <th>四</th>
+                            <th>五</th>
+                            <th>六</th>
+                        </tr>
+                        <tr>
+                            <td style="color: rgb(215, 215, 215);">31</td>
+                            <td>1</td>
+                            <td>2</td>
+                            <td>3</td>
+                            <td>4</td>
+                            <td>5</td>
+                            <td>6</td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>8</td>
+                            <td>9</td>
+                            <td style="background-color: #F3BBBB; color: white;">10</td>
+                            <td>11</td>
+                            <td>12</td>
+                            <td style="background-color: #F3BBBB; color: white;">13</td>
+                        </tr>
+                        <tr>
+                            <td style="background-color: #1687A7; color: white;">14</td>
+                            <td>15</td>
+                            <td>16</td>
+                            <td>17</td>
+                            <td>18</td>
+                            <td>19</td>
+                            <td>20</td>
+                        </tr>
+                        <tr>
+                            <td>21</td>
+                            <td style="background-color: #1687A7; color: white;">22</td>
+                            <td style="background-color: #1687A7; color: white;">23</td>
+                            <td>24</td>
+                            <td>25</td>
+                            <td>26</td>
+                            <td>27</td>
+                        </tr>
+                        <tr>
+                            <td>28</td>
+                            <td>29</td>
+                            <td>30</td>
+                            <td style="color: rgb(215, 215, 215);">1</td>
+                            <td style="color: rgb(215, 215, 215);">2</td>
+                            <td style="color: rgb(215, 215, 215);">3</td>
+                            <td style="color: rgb(215, 215, 215);">4</td>
+                        </tr>     
+                    </table>
+                </div>
+            </div>
+        </div>
+        <input type="radio" class="tabs__radio" name="tabs-example" id="tab3">
+        <label for="tab3" class="tabs__label"><h3>我的課程</h3><img src="./images/class.svg" alt=""></label>
+        <div class="tabs__content">
+            <div class="my_lesson">
+                <div class="card">
+                    <a href="#">
+                        <div class="card_img">
+                            <img src="./images/class_8.png" alt="">
+                        </div>
+                    </a>
+                    <div class="card_content">
+                        <a href="#">
+                            <h1 class="content_title">C#:從零開始前進</h1>
+                            <h2 class="content_subtitle">NET物件導向程式全攻略</h2>
+                            <!-- <h3 class="title_price">
+                                NT$
+                                <span class="js-price">2600</span>
+                            </h3> -->
+                        </a>
+                        <p class="content_teacher">
+                            <a href="#">Candy</a>
+                        </p>
+                        <a href="#">
+                            <div class="content_detail">
+                                <p>
+                                    <img src="./images/time.svg" alt="">
+                                    10hr
+                                </p>
+                                <p class="complete">60%完成</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="card">
+                    <a href="">
+                        <div class="card_img">
+                            <img src="./images/class_9.png" alt="">
+                        </div>
+                    </a>
+                    <div class="card_content">
+                        <a href="">
+                            <h1 class="content_title">Python行銷資料科學</h1>
+                            <h2 class="content_subtitle">基礎語法入門最前線</h2>
+                            <!-- <h3 class="title_price">
+                                NT$
+                                <span class="js-price">5600</span>
+                            </h3> -->
+                        </a>
+                        <p class="content_teacher">
+                            <a href="">King</a>
+                        </p>
+                        <a href="">
+                            <div class="content_detail">
+                                <p>
+                                    <img src="./images/time.svg" alt="">
+                                    10hr
+                                </p>
+                                <p class="complete">60%完成</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="card">
+                    <a href="">
+                        <div class="card_img">
+                            <img src="./images/class_10.png" alt="">
+                        </div>
+                    </a>
+                    <div class="card_content">
+                        <a href="">
+                            <h1 class="content_title">JavaScript大全</h1>
+                            <h2 class="content_subtitle">帶你成為開發神手</h2>
+                            <!-- <h3 class="title_price">
+                                NT$
+                                <span class="js-price">1600</span>
+                            </h3> -->
+                        </a>
+                        <p class="content_teacher">
+                            <a href="">Amy</a>
+                        </p>
+                        <a href="">
+                            <div class="content_detail">
+                                <p>
+                                    <img src="./images/time.svg" alt="">
+                                    10hr
+                                </p>
+                                <p class="complete">60%完成</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <input type="radio" class="tabs__radio" name="tabs-example" id="tab4">
+        <label for="tab4" class="tabs__label"><h3>我的收藏</h3><img src="./images/heart_2.svg" alt=""></label>
+        <div class="tabs__content">
+            <div class="my_collection">
+                <div class="card">
+                    <a href="">
+                        <div class="card_img">
+                            <img src="./images/class_8.png" alt="">
+                        </div>
+                    </a>
+                    <div class="card_content">
+                        <a href="">
+                            <h1 class="content_title">C#:從零開始前進</h1>
+                            <h2 class="content_subtitle">NET物件導向程式全攻略</h2>
+                            <h3 class="title_price">
+                                NT$
+                                <span class="js-price">2600</span>
+                            </h3>
+                        </a>
+                        <p class="content_teacher">
+                            <a href="">Candy</a>
+                        </p>
+                        <a href="">
+                            <div class="content_detail">
+                                <p>
+                                    <img src="./images/time.svg" alt="">
+                                    10hr
+                                </p>
+                                <!-- <p class="complete">60%完成</p> -->
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="card">
+                    <a href="">
+                        <div class="card_img">
+                            <img src="./images/class_9.png" alt="">
+                        </div>
+                    </a>
+                    <div class="card_content">
+                        <a href="">
+                            <h1 class="content_title">Python行銷資料科學</h1>
+                            <h2 class="content_subtitle">基礎語法入門最前線</h2>
+                            <h3 class="title_price">
+                                NT$
+                                <span class="js-price">5600</span>
+                            </h3>
+                        </a>
+                        <p class="content_teacher">
+                            <a href="">King</a>
+                        </p>
+                        <a href="">
+                            <div class="content_detail">
+                                <p>
+                                    <img src="./images/time.svg" alt="">
+                                    10hr
+                                </p>
+                                <!-- <p class="complete">60%完成</p> -->
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="card">
+                    <a href="">
+                        <div class="card_img">
+                            <img src="./images/class_10.png" alt="">
+                        </div>
+                    </a>
+                    <div class="card_content">
+                        <a href="">
+                            <h1 class="content_title">JavaScript大全</h1>
+                            <h2 class="content_subtitle">帶你成為開發神手</h2>
+                            <h3 class="title_price">
+                                NT$
+                                <span class="js-price">1600</span>
+                            </h3>
+                        </a>
+                        <p class="content_teacher">
+                            <a href="">Amy</a>
+                        </p>
+                        <a href="">
+                            <div class="content_detail">
+                                <p>
+                                    <img src="./images/time.svg" alt="">
+                                    10hr
+                                </p>
+                                <!-- <p class="complete">60%完成</p> -->
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <input type="radio" class="tabs__radio" name="tabs-example" id="tab5">
+        <label for="tab5" class="tabs__label"><h3>我的優惠</h3><img src="./images/discount.svg" alt=""></label>
+        <div class="tabs__content">
+            <div class="coupon">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="background-color: #D3E0EA; color:#276678;">優惠折扣</th>
+                            <th style="background-color: #1687A7; color:white">使用狀況</th>
+                            <th style="background-color: #D3E0EA; color:#276678;">取得日期</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <img src="./images/ball_6.svg" alt="">
+                                5折券
+                            </td>
+                            <td>已使用</td>
+                            <td>2021.11.16</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <img src="./images/ball_5.svg" alt="">
+                                7折券
+                            </td>
+                            <td>未使用</td>
+                            <td>2021.11.17</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <img src="./images/ball_2.svg" alt="">
+                                9折券
+                            </td>
+                            <td>未使用</td>
+                            <td>2021.11.18</td>
+                        </tr>
+                    </tbody>
+                    
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="main-footer">
+        <div class="footer_nav">
+            <a href="../about_us.html"><h4>關於我們</h4></a>
+            <a href="../Problem.html"><h4>常見問題</h4></a>
+            <div class="footer_text">
+                <a href="game.html"><h4>玩遊戲拿優惠</h4></a>
+                <div>
+                    <a href="https://www.facebook.com/">
+
+                        <img src="../images/fb.svg" alt="FB">
+                    </a>
+                    <a href="https://line.me/zh-hant/">
+                        <img src="../images/line.svg" alt="Line">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <p>
+            本網站為緯育TibaMe_前端設計工程師班第71期學員專題成果作品，本平台僅供學習、展示之用。
+            <br>
+            若有抵觸有關著作權，或有第三人主張侵害智慧財產權等情事，均由學員負法律上責任，緯育公司概不負責。
+            <br>
+            若有侵權疑慮，您可以私訊<a href="https://www.facebook.com/TibaMe">[緯育TibaMe]</a>，後續會由專人協助處理。
+        </p>
+</div>
+</body>
+</html>

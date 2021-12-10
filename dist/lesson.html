@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js"></script>
+</head>
+<body>
+  <div class="main-header">
+    <div class="logo">
+        <a href="../home.html"><img src="../images/CM_logo.svg" alt="code_monster"></a>
+    </div>
+    <img src="../images/hbg.svg" alt="漢堡" id="hbg_btn">
+    
+    <nav id="menu">
+        <button id="sort_btn">
+            <img src= "../images/sort.svg" id="sort_1">
+            <img src= "../images/sort_2.svg" id="sort_2">
+            <h4>類別</h4>
+        </button>
+        <a href="signUp.html">
+            <button>
+                <h4>登入/註冊</h4>
+            </button>
+        </a>
+    </nav>
+    <a href="../Pay.html" class="shopcart">
+        <img src="../images/shopcart.svg" alt="購物車">
+    </a>
+</div>
+<div id="sortMenu">
+    <a href="course.html"><h4>HTML</h4></a>
+    <a href="course.html"><h4>JavaScript</h4></a>
+    <a href="course.html"><h4>Python</h4></a>
+    <a href="course.html"><h4>C/C++</h4></a>
+</div>
+
+<!-- ------------漢堡選單---------------->
+<script>
+    function openCloseMenu(){
+        if(document.getElementById("menu").className == ""){
+            document.getElementById("menu").className = "show";
+            document.getElementById("hbg_btn").src = "../images/hbg_2.svg";
+        }else{
+            document.getElementById("menu").className = "";
+            document.getElementById("hbg_btn").src = "../images/hbg.svg";
+        }
+    }
+
+function init(){
+    document.getElementById("hbg_btn").onclick = openCloseMenu;
+}
+window.addEventListener("load", init, false);
+</script>
+
+<!-- ------------分類選單---------------->
+<script>
+function openCloseSort(){
+    if(document.getElementById("sortMenu").className == ""){
+        document.getElementById("sortMenu").className = "show";
+    }else{
+        document.getElementById("sortMenu").className = "";
+    }
+}
+function init(){
+    document.getElementById("sort_btn").onclick = openCloseSort;
+}
+window.addEventListener("load", init, false);
+</script>
+    <section class="course">
+       <div class="course-wrap">
+           <div class="crumb">
+               <a href="">JavaScript超級秘笈</a>
+               <span>></span>
+               <a href="">你阿嬤都會的JavaScript入門</a>
+           </div>
+           <div class="course-content">
+               <div class="video">
+                   <img src="https://picsum.photos/500/300/?random=1">
+               </div>
+               <div class="chapter">
+                <button class="accordion">點我看更多</button>
+                <div class="panel">
+                    <div class="chapter-title">
+                        <h3>JavaScript入門</h3>
+                    </div>
+                    <div class="chapter-content">
+                        <div class="chapter-content-item">
+                         <p>第1堂 - 資料型別&變數</p>
+                         <p>08:08</p>
+                        </div>
+                        <div class="chapter-content-item">
+                         <p>第2堂 - 如何使用字串、字串用法</p>
+                         <p>08:08</p>
+                     </div>
+                     <div class="chapter-content-item">
+                         <p>第3堂 - 如何使用數字、數字用法</p>
+                         <p>08:08</p>
+                     </div>
+                     <div class="chapter-content-item">
+                         <p>第4堂 - 製作一個基本計算機</p>
+                         <p>08:08</p>
+                     </div>
+                     <div class="chapter-content-item">
+                         <p>第5堂 - 陣列array</p>
+                         <p>08:08</p>
+                     </div>
+                     <div class="chapter-content-item">
+                         <p>第6堂 - 函式function</p>
+                         <p>08:08</p>
+                     </div>
+                    </div>
+                  </div>
+               </div>
+           </div>
+       </div> 
+    </section>
+
+    <section class="course-data">
+        <div class="course-data-wrap">
+            <div class="course-data-content">
+                <div class="member">
+                  <div class="member-pic">
+                    <img src="images/people.svg" alt="";>
+                  </div>
+                  <div class="member-txt">
+                    124位同學
+                  </div>
+                </div>
+                <div class="time">
+                  <div class="time-pic">
+                    <img src="images/time.svg" alt="";>
+                  </div>
+                  <div class="time-txt">
+                      <span>480</span>
+                      <span>分鐘</span>
+                  </div>
+                </div>
+            </div>
+            <div class="course-data-price">
+              <div class="price-pic">
+                <img src="images//money.svg" alt="";>
+              </div>
+              <div class="price-txt">
+                  <span>課程售價NT$</span>
+              </div>
+              <div class="price-count">
+                <span>3600</span>
+              </div>
+            </div>
+            <div class="course-data-join">
+                <button class="btn">立即參加</button>
+                <div class="love">
+                    <img src="images/heart.svg" alt="";>
+                </div>
+            </div>     
+        </div>
+    </section>
+    <div class="tab">
+      <button class="tablinks" onclick="openCity(event,'profile')">課程簡介</button>
+      <button class="tablinks" onclick="openCity(event,'message')">留言區</button>
+      <!-- <button class="tablinks" onclick="openCity(event,'comment')">課程評價</button> -->
+      </div>
+      <div id="profile" class="tabcontent">
+        <section class="part-profile">
+          <div class="container-course">
+            <div class="item">
+              <h3>您會學到</h3>
+                <p>理解 JavaScript 的運作機制與基本概念</br>
+                  寫出優良穩定的 JavaScript 程式碼</br>
+                  瞭解進階觀念，像是閉包、原型繼承、IIFEs</br>
+                  徹底地增進 JavaScript 的除錯能力</br>
+                  避免一般開發者會犯的 JavaScript 陷阱和錯誤</br>
+                  瞭解 JavaScript 受歡迎框架的原始碼</br>
+                  建立自己的 JavaScript 框架或資源庫</p>
+            </div>
+            <div class="item">
+              <h3>說明</h3>
+              <p>
+               JavaScript 是現今開發者都必須熟悉的程式語言，這可以讓你得到工作、建立好的網站及應用。</br>
+               注意：這們課包含了ECMAScript 6 (ES6)，也就是下一版本的JavaScript之資訊！</br>
+               在這門課中你能深入瞭解JavaScript，知道它的運作模式，來幫助你避免一些可能會犯的錯誤，大幅提升你除錯的能力。</br>
+               你可以懂得一些其他人（甚至是有經驗的開發者）都很困惑的東西，你將見識到這個程式語言的美麗與強大。</br> 
+               這門課將提到進階概念，包含了物件與物件實體、函數表示式、原型繼承、函數程式設計、範圍鏈、</br>
+               函數建構子（還有新的ES6功能）、立即呼叫的函數表示式（IIFEs）、call、apply、bind等等。
+              </p></br>
+              <h3>此課程適合那些人</h3>
+              <p>
+               瞭解基本的 JavaScript 技巧並想要增進的人</br>
+               有程式語言經驗的開發者</br>
+               想要深入瞭解這個語言的 JavaScript 新手或老手</br>
+               認為物件原型、閉包與其他進階觀念很難懂的人</br>
+               在 JavaScript 遇到許多莫名其妙的錯誤，而想要瞭解如何避免錯誤的人</br>
+               想要建立自己的框架，或想從知名框架及資源庫的原始碼學習的人</br>
+              </p>
+            </div>
+          </div>
+          <div class="container-teacher">
+            <div class="item">
+              <div class="teacher-pic">
+                <img src="https://picsum.photos/50/50/?random=1">
+              </div>
+              <div class="teacher-txt">
+                <h3>Leo王</h3>
+                <li>向前衝網頁前端交流站發起人</li>
+                <li>中華一番電信網頁前端講師</li>
+                <li>台北帝國大學教授</li>
+                <li>二十年教學經驗資深講師</li>
+              </div>
+          </div>
+          </div>       
+        </section>
+      </div>
+      <div id="message" class="tabcontent">
+        <form action="">
+          <input id ="words" type="text"><input id ="send" type="submit">
+        </form>
+        <div class="contentbox">
+          <div class="contentbox-content">
+            <div class="student-pic">
+              <img src="https://picsum.photos/50/50/?random=1">
+            </div>
+            <div class="student-txt">
+              <p id ="big-txt">chapter1，unit1</p>
+              <p id ="middle-txt">我不知道什麼是字串。</p>
+              <p id ="small-txt">小呆妹，2個月前</p>
+            </div>
+          </div>
+        </div>
+        <div class="contentbox">
+          <div class="contentbox-content">
+            <div class="student-pic">
+              <img src="https://picsum.photos/50/50/?random=1">
+            </div>
+            <div class="student-txt">
+              <p id ="big-txt">chapter1，unit1</p>
+              <p id ="middle-txt">我不知道什麼是字串。</p>
+              <p id ="small-txt">小呆妹，2個月前</p>
+            </div>
+          </div>
+        </div>
+        <div class="contentbox">
+          <div class="contentbox-content">
+            <div class="student-pic">
+              <img src="https://picsum.photos/50/50/?random=1">
+            </div>
+            <div class="student-txt">
+              <p id ="big-txt">chapter1，unit1</p>
+              <p id ="middle-txt">我不知道什麼是字串。</p>
+              <p id ="small-txt">小呆妹，2個月前</p>
+            </div>
+          </div>
+        </div>
+        <div class="contentbox">
+          <div class="contentbox-content">
+            <div class="student-pic">
+              <img src="https://picsum.photos/50/50/?random=1">
+            </div>
+            <div class="student-txt">
+              <p id ="big-txt">chapter1，unit1</p>
+              <p id ="middle-txt">我不知道什麼是字串。</p>
+              <p id ="small-txt">小呆妹，2個月前</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <script>
+        function openCity(evt, cityName) {
+          var i, tabcontent, tablinks;
+          tabcontent = document.getElementsByClassName("tabcontent");
+          for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+          }
+          tablinks = document.getElementsByClassName("tablinks");
+          for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+          }
+          document.getElementById(cityName).style.display = "block";
+          evt.currentTarget.className += " active";
+        }
+        var acc = document.getElementsByClassName("accordion");
+            var i;          
+            for (i = 0; i < acc.length; i++) {
+              acc[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                var panel = this.nextElementSibling;
+                if (panel.style.display =="none") {
+                  panel.style.display = "block" ;
+                } else {
+                  panel.style.display = "none";
+                } 
+              });
+            }
+        </script>
+        <script>
+          document.getElementById("send").addEventListener("click",function(){
+            var temp =document.getElementById('words');
+            axios.get('course-message.php?var='+temp)
+            .then((res) => {
+            console.log(res);
+            });
+          });
+        </script>
+            <div class="main-footer">
+        <div class="footer_nav">
+            <a href="../about_us.html"><h4>關於我們</h4></a>
+            <a href="../Problem.html"><h4>常見問題</h4></a>
+            <div class="footer_text">
+                <a href="game.html"><h4>玩遊戲拿優惠</h4></a>
+                <div>
+                    <a href="https://www.facebook.com/">
+
+                        <img src="../images/fb.svg" alt="FB">
+                    </a>
+                    <a href="https://line.me/zh-hant/">
+                        <img src="../images/line.svg" alt="Line">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <p>
+            本網站為緯育TibaMe_前端設計工程師班第71期學員專題成果作品，本平台僅供學習、展示之用。
+            <br>
+            若有抵觸有關著作權，或有第三人主張侵害智慧財產權等情事，均由學員負法律上責任，緯育公司概不負責。
+            <br>
+            若有侵權疑慮，您可以私訊<a href="https://www.facebook.com/TibaMe">[緯育TibaMe]</a>，後續會由專人協助處理。
+        </p>
+</div>
+</body>
+</html>
