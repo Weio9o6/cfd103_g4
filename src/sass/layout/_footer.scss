@@ -2,8 +2,9 @@
     background-color: $blue;
     padding: 20px;
     box-sizing: border-box;
+    margin-top: 60px;
     p{
-        font-size: $d-size-6;
+        font-size: $size-7;
         text-align:center;
         line-height:1.5;
         color: $darkblue;
@@ -12,14 +13,14 @@
 
 .footer_nav{
     // margin-left: auto;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     a{
-        font-size: $d-size-5;
+        font-size: $size-4;
         color: $darkgreen;
         text-decoration: none;
         font-weight: bold;
-        margin-right: 10px;
-        img{height: 40px;}
+        margin-right: 15px;
+        img{height: 35px;}
     }
     a:last-child{margin-right: 0;}
     .footer_text{
