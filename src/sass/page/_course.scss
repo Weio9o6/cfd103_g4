@@ -1,5 +1,5 @@
 section {
-  margin: 64px 0;
+  margin: 5rem 0;
 }
 .explore {
   .container {
@@ -66,6 +66,7 @@ hr {
   text-align: center;
   background-color: $darkblue;
   height: 2px;
+  max-width: 960px;
 }
 
 .course-list {
@@ -107,7 +108,7 @@ hr {
     }
     @include dt() {
       flex-direction: row;
-      justify-content: space-between;
+      justify-content: space-evenly;
     }
   }
 
