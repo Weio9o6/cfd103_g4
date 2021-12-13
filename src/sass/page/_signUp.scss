@@ -1,12 +1,12 @@
 #sign{
-    max-width: 960px;
-    margin: 50px auto 150px;
+    max-width: $layoutwidth;
+    margin: 0 auto 125px;
     padding: 0 20px;
 
     h1{
-        font-size: $d-size-1;
+        font-size: $size-1;
         color: $darkgreen;
-        margin: 30px 0 0 30px;
+        margin-bottom: 30px;
     }
 
     .sign_up_f{
@@ -14,7 +14,7 @@
         margin: 30px auto 0;
 
         h5{
-            font-size: $d-size-5;
+            font-size: $size-5;
             color: $black;
             margin: 20px 0 5px 0;
         }
@@ -36,43 +36,41 @@
 
         .btns{
             float: right;
-            margin-top: 20px;
-        }
-
-        .already_btn{
-            width: 120px;
-            height: 35px;
-            border-radius: 18px;
-            border: 2px solid $darkgreen;
-            margin-right: 5px;
-            a{
-                text-decoration: none;
-                p{
-                    font-size: $d-size-6;
-                    margin: 0;
-                    color: $darkgreen;
+            margin-top: 30px;
+    
+            .already_btn{
+                width: 120px;
+                height: 35px;
+                border-radius: 18px;
+                border: 2px solid $darkgreen;
+                margin-right: 5px;
+                a{
+                    text-decoration: none;
+                    p{
+                        font-size: $size-6;
+                        margin: 0;
+                        color: $darkgreen;
+                    }
                 }
             }
-        }
-            
-
-        .sign_btn{
-            width: 80px;
-            height: 35px;
-            border-radius: 18px;
-            border: none;
-            background-color: $darkgreen;
-            a{
-                text-decoration: none;
-                p{
-                    font-size: $d-size-6;
-                    margin: 0;
-                    color: $white;
+                
+        
+            .sign_btn{
+                width: 80px;
+                height: 35px;
+                border-radius: 18px;
+                border: none;
+                background-color: $darkgreen;
+                a{
+                    text-decoration: none;
+                    p{
+                        font-size: $size-6;
+                        margin: 0;
+                        color: $white;
+                    }
                 }
             }
         }
     }
-
-    
 }
 
