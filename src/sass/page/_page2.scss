@@ -61,9 +61,7 @@ article .bg {
         }
         a{
             font-size:$m-size-5;
-            @include dt(){
-                font-size:$d-size-3;
-            }
+            font-weight: 800;
         }
 
         @include dt() {
@@ -76,21 +74,15 @@ article .bg {
     h2 {
         font-weight: bold;
         color: $darkblue;
-        font-size:$m-size-2;
+        font-size:$size-3;
         margin-top: 20px;
-        @include dt(){
-            font-size:$d-size-2;
-        }
     }
 
     p {
-        font-size:$m-size-5;
+        font-size:$size-5;
         color: #777;
         margin: 10px 50px;
         line-height: 25px;
-        @include dt(){
-            font-size: $d-size-5;
-        }
     }
     hr{
         margin: 30px 30px;
@@ -102,7 +94,6 @@ article .bg {
 
     @include dt() {
         background-color: #fff;
-        font-size: 26px;
         margin-bottom: 10px;
     }
 }
@@ -115,11 +106,10 @@ article .bg {
     margin-bottom: 30px;
     padding: 30px;
     background-color: #fff;
-    font-size: 20px;
+    font-size: $size-5;
 
     @include dt() {
         background-color: #fff;
-        font-size: 26px;
         margin-bottom: 10px;
     }
 }
@@ -144,7 +134,7 @@ article .bg {
 
             p {
                 margin-top: 20px;
-                font-size: 30px;
+                font-size: $size-5;
                 font-weight: bold;
             }
 
@@ -171,7 +161,7 @@ article .bg {
 
     h2 {
         font-weight: bold;
-        font-size:$m-size-1;
+        font-size:$size-3;
         margin: 100px auto 30px;
         text-align: center;
         color: $darkgreen;

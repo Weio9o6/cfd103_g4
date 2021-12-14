@@ -4,9 +4,8 @@
         margin: 50px 20px 30px;
         font-size: 32px;
         color: #276678;
-        font-size: $m-size-1;
+        font-size: $size-1;
         @include dt(){
-            font-size:$d-size-1;
             margin: 20px 20px 50px;
         }
     }
@@ -15,10 +14,7 @@
         margin: 0px 20px 0px;
         color: #276678;
         h2{
-            font-size: $m-size-4;
-            @include dt(){
-                font-size: $d-size-3;
-            }
+            font-size: $size-3;
         }
         @include dt(){
             float: left;
@@ -56,19 +52,14 @@
         .course-info {
             margin-top: 10px;
             h3 {
-                font-size: $m-size-4;
+                font-size: $size-5;
                 margin-right: 20px;
                 line-height: 20px;
                 position: relative;
-                @include dt(){
-                    font-size: $d-size-3;
-                }
             }
             p{
-                font-size:$m-size-4;
-                @include dt(){
-                    font-size: $d-size-4;
-                }
+                font-size:$size-7;
+                font-weight: bold;
             }
         }
         .des{
@@ -94,9 +85,7 @@
             color: #1687a7;
             position: absolute;
             bottom: 5px;
-            left: 135px;
-            // font-weight: bold;
-            // font-size: $m-size-4;            
+            left: 135px;      
         }
     }
     .pay-money{
@@ -108,19 +97,17 @@
         width: 100%;
         
         div{
+
             display: flex;
             justify-content: space-between;
             p{
                 margin: 20px;
-                font-size: $m-size-3;
-                @include dt(){
-                    font-size: $d-size-2;
-                }
+                font-size: $size-3;
             }
             select{
-                width: 150px;
+                width: 100px;
                 margin: 20px;
-                font-size: 22px;
+                font-size: $size-4;
                 text-align: center;
             }
         }
@@ -144,16 +131,10 @@
             display: flex;
             justify-content: space-between;
             p:nth-child(1){
-                font-size: $m-size-3;
-                @include dt(){   
-                    font-size: $d-size-2;
-                }
+                font-size: $size-3;
             }
             p:nth-child(2){
-                font-size: $m-size-3;
-                @include dt(){   
-                    font-size: $d-size-1;
-                }
+                font-size: $size-3;
             }
             
         }
@@ -162,17 +143,14 @@
             height: 60px;
             margin: 20px;
             float: right;
-            padding: 20px;
+            padding: 5px;
             border: none;
             border-radius: 50px;
             background-color: #276678;
             color: #fff;
             text-align: center;
             line-height: 20px;
-            font-size: $m-size-3;
-            @include dt(){
-                font-size: $d-size-2;
-            }
+            font-size: $size-4;
         }
         overflow: auto;
     }

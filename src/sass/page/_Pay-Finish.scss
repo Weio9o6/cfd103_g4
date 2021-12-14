@@ -5,26 +5,20 @@
     align-items: center;
     justify-content: center;
     h2{
-        font-size:$m-size-1;
+        font-size:$size-3;
         margin: 20px auto 50px;
         color: #1687A7;
-        @include dt(){
-            font-size:$d-size-2;
-        }
     }
     button{
         user-select: none;
-        width: 130px;
-        height: 50px;
+        width: 100px;
+        height: 45px;
         border-radius: 50px;
         background-color: #276678;   
         color: #fff;  
         border: none;
-        font-size: $m-size-4;
+        font-size: $size-6;
         margin-bottom: 50px;
-        @include dt(){
-            font-size: $d-size-5;
-        }
     }
     .finish-icon{
         width: 134px;

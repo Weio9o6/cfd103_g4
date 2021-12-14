@@ -7,10 +7,7 @@
     justify-content: center;
     align-items: center;
     h2{
-        font-size: $m-size-1;
-        @include dt(){
-            font-size: $d-size-2;
-        }
+        font-size: $size-1;
     }
 }
 /* 問題 item  */
@@ -28,19 +25,13 @@
     /* 圖片標題 */
     h3 {
         margin: 20px auto;
-        font-size: $m-size-2;
+        font-size: $size-3;
         color: $darkblue;
-        @include dt(){
-            font-size: $d-size-2;
-        }
     }
     p{
-        font-size: $m-size-5;
+        font-size: $size-7;
         color: $darkgray;
         line-height: 25px;
-        @include dt(){
-            font-size: $d-size-5;
-        }
     }
     @include dt(){
         width: 300px;
