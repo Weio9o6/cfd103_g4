@@ -12,26 +12,28 @@
 }
 
 .footer_nav{
-    // margin-left: auto;
-    margin-bottom: 15px;
+    max-width: $layoutwidth;
+    margin: 0 auto 15px;
     a{
         font-size: $size-4;
         color: $darkgreen;
         text-decoration: none;
         font-weight: bold;
-        margin-right: 15px;
+        margin-right: 10px;
         img{height: 35px;}
     }
     a:last-child{margin-right: 0;}
     .footer_text{
         display: flex;
-        justify-content: space-between;
+        justify-content: flex-end;
         align-items: center;
     }
+    #footer-m{display: none;}
     @include m(){
         display: flex;
         align-items: center;
         justify-content: flex-end;
+        #footer-m{display: flex;}
     }
     
 }
