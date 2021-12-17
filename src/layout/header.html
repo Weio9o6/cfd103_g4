@@ -1,61 +1,103 @@
-<div class="main-header">
-    <div class="logo">
-        <a href="home.html"><img src="./images/CM_logo.svg" alt="code_monster"></a>
-    </div>
-    <img src="./images/hbg.svg" alt="漢堡" id="hbg_btn">
-    
-    <nav id="menu">
-        <button id="sort_btn">
-            <img src= "./images/sort.svg" id="sort_1">
-            <img src= "./images/sort_2.svg" id="sort_2">
-            <h4>類別</h4>
-        </button>
-        <a href="signUp.html">
-            <button>
-                <h4>登入/註冊</h4>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
+    <link rel="stylesheet" href="css/header.css">
+    <title>header</title>
+    <script>
+        $(window).ready(function () {
+            $('.course-class').mouseover(function () {
+                $('.course-items-group').slideDown(200).mouseleave(function () {
+                    $(this).stop(true).slideUp(100);
+                });
+            });
+
+            $('.hub').click(function () {
+                $('.hub-nav').show().animate({
+                    "right": "0",
+                }, 'easeInOutQuart');
+            });
+
+            $('.close').click(function (e) {
+                $('.hub-nav').animate({
+                    "right": "-100%",
+                }, 'easeInOutQuart').hide(300);
+                e.stopPropagation();
+            });
+
+            $('.items').prev().click(function () {
+                $('.items').slideToggle();
+            });
+
+        });
+    </script>
+</head>
+
+<body>
+
+    <div class="header-container">
+        <header>
+            <a href="home.html" class="logo-icon">
+                <img src="images/CM_logo.svg" alt="CodeMonster">
+            </a>
+            <div class="course-class">
+                <img src="images/sort_2.svg" alt="">
+                <span>類別</span>
+            </div>
+            <div class="car">
+                <a href="pay.html"><img src="images/shopcart.svg" alt="購物車"></a>
+            </div>
+            <button class="login">
+                <a href="logIn.html">登入 / 註冊</a>
             </button>
-        </a>
-    </nav>
-    <a href="Pay.html" class="shopcart">
-        <img src="./images/shopcart.svg" alt="購物車">
-    </a>
-</div>
-<div id="sortMenu">
-    <a href="course.html"><h4>HTML</h4></a>
-    <a href="course.html"><h4>JavaScript</h4></a>
-    <a href="course.html"><h4>Python</h4></a>
-    <a href="course.html"><h4>C/C++</h4></a>
-</div>
+            <div class="hub">
+                <img src="images/hbg.svg">
+                <nav class="hub-nav">
+                    <ul>
+                        <li class="hub-login">
+                            <a href="logIn.html">
+                                <img src="images/member_3.svg" alt="">
+                                登入/註冊
+                            </a>
+                            <button class="close">X</button>
+                        </li>
+                        <li><img src="images/sort.svg" alt="">課程類別</li>
+                        <div class="items">
+                            <li><a href="#">HTML</a></li>
+                            <li><a href="#">CSS</a></li>
+                            <li><a href="#">Python</a></li>
+                            <li><a href="#">Javascript</a></li>
+                            <li><a href="#">Jquery</a></li>
+                        </div>
+                        <li><a href="aboutus.html">
+                                <img src="images/about.svg" alt="">關於我們
+                            </a></li>
+                        <li><a href="game.html">
+                                <img src="images/discount_2.svg" alt="">玩遊戲拿優惠
+                            </a></li>
+                        <li><a href="problem.html">
+                                <img src="images/question_2.svg" alt="">常見問題
+                            </a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <div class="course-items-group">
+            <ul>
+                <li><a href="#">HTML</a></li>
+                <li><a href="#">CSS</a></li>
+                <li><a href="#">Python</a></li>
+                <li><a href="#">Javascript</a></li>
+                <li><a href="#">Jquery</a></li>
+            </ul>
+        </div>
+    </div>
 
-<!-- ------------漢堡選單---------------->
-<script>
-    function openCloseMenu(){
-        if(document.getElementById("menu").className == ""){
-            document.getElementById("menu").className = "show";
-            document.getElementById("hbg_btn").src = "./images/hbg_2.svg";
-        }else{
-            document.getElementById("menu").className = "";
-            document.getElementById("hbg_btn").src = "./images/hbg.svg";
-        }
-    }
 
-function init(){
-    document.getElementById("hbg_btn").onclick = openCloseMenu;
-}
-window.addEventListener("load", init, false);
-</script>
+</body>
 
-<!-- ------------分類選單---------------->
-<script>
-function openCloseSort(){
-    if(document.getElementById("sortMenu").className == ""){
-        document.getElementById("sortMenu").className = "show";
-    }else{
-        document.getElementById("sortMenu").className = "";
-    }
-}
-function init(){
-    document.getElementById("sort_btn").onclick = openCloseSort;
-}
-window.addEventListener("load", init, false);
-</script>
+</html>

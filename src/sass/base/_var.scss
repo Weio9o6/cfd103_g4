@@ -15,6 +15,32 @@ $white: #ffffff;
 $link: rgb(0, 56, 177);
 
 
+// header 參數設定
+
+  // header 背景色
+  $header-color:#D3E0EA;
+  // header 類別文字色
+  $header-font:#276678;
+  // 類別下拉式背景色
+  $course-items-group:#fff;
+  // 類別下拉式li背景色
+  $course-items-group-item:#276678;
+  // 類別下拉式 a 文字
+  $course-items-group-font:#fff;
+
+
+  // 登入註冊
+  $login-color:#276678;
+  // 登入文字色
+  $login-font:#fff;
+
+  // rwd 類別文字顏色
+  $rwd-items-group-font:#1687A7;
+
+
+
+
+
 //字體大小(新)
 $size-1: 30px; //頁面大標題(粗體bold).主頁分類標題
 $size-2: 24px; //金額
