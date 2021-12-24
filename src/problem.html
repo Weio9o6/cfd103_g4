@@ -1,49 +1,314 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.14/vue.min.js"></script>
     <link rel="stylesheet" href="css/style.css">
     <title>問題</title>
 </head>
 
 <body>
     @@include('./layout/header.html')
-    <div class="bg">
-        <h2>遇到問題了嗎？</h2>
+
+
+
+    <div id="problem-app">
+        <div class="bg">
+            <h2>{{title}}</h2>
+        </div>
+        <component :is="content"></component>
     </div>
-   
-    <div class="problem-q">
-        <a href="problem-group.html" class="q-item">
-            <div class="q-item-img">
-                <img src="images/question.svg">
+
+
+
+
+
+
+
+
+    <script>
+
+
+        Vue.component('problem-anw', {
+            template:`
+                <div class="problem-anw">
+                    <p>請先將會員帳戶登出後，再重新使用購課時的帳號登入，在「我的課程」當中，才會顯示你已成功購入的所有課程。</p>
+                    <p>你也可以透過平台右下方的SNS傳送訂單訊息，包含「訂單編號」、「購課人姓名」、「購課人手機號碼」，我們將協助你找回正確的購課帳號。</p>
+                </div>
+            `
+        });
+
+
+
+
+        //page3
+
+        Vue.component('problem-content', {
+            methods: {
+                changepage() {
+                    problem.content = 'problem-list'
+                }
+            },
+            template: `
+            <div class="problem">
+                <div class="problem-content">
+                    <h2>登入後，找不到以購買的課程?</h2>
+                    <div class="author-info">
+                        <div class="author-pic">
+                            <img src="./images/asm.jpeg">
+                        </div>
+                        <div class="author-name">
+                            <h3>管理員 A</h3>
+                            <P>上次更新 11 天前</P>
+                        </div>
+                    </div>
+                    <div class="problem-tip">
+                        <p>請先確認當初購買課程時是以「 Facebook 帳號」、「 Google 帳號」或
+                            「 帳號密碼 」登入方式 。</p>
+                    </div>
+                    <problem-anw></problem-anw>
+                </div>
+                <h2>相關文章</h2>
+                <div class="other">
+                    <span>其他人還會閱讀這些文章</span>
+                    <a href="">無法登入帳戶</a>
+                </div>
             </div>
-            <h3>常見問題</h3>
-            <p>12 篇文章</p>
-            <p>上次更新 13 小時前</p>
-        </a>
-        <a href="problem-group.html" class="q-item">
-            <div class="q-item-img">
-                <img src="images/shopcart_2.svg">
+            `
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // page2
+
+        Vue.component('problem-item-bottom', {
+            props: ['now'],
+            data() {
+                return {
+                    items: [{
+                        item: '帳戶及個人檔案',
+                        img: 'images/member.svg'
+                    },
+                    {
+                        item: '購買課程相關',
+                        img: 'images/shopcart_2.svg'
+                    },
+                    {
+                        item: '預約輔導',
+                        img: 'images/calendar.svg'
+                    },
+                    {
+                        item: '常見問題',
+                        img: 'images/question.svg'
+                    }]
+                }
+            },
+            methods: {
+                flipup() {
+                    window.scrollTo(0, 0);
+                }
+            },
+
+            template: `
+                <div class="content-bottom">
+                    <h2>其他類別</h2>
+                    <div>
+                        <ol>
+                            <li @click="flipup" class="item" v-for="item in items" v-if=" now.img != item.img" @click="problem.changepage('problem-item',item);">
+                                <a @click="problem.changepage('problem-item',item);" class="item-icon" >
+                                    <img :src="item.img">
+                                    <p>{{item.item}}</p>
+                                </a>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            `
+        });
+        Vue.component('problem-item-top', {
+
+            data() {
+                return {
+                    items: [
+                        "登入後，找不到已購買的課程？",
+                        "如何觀看課程影片？",
+                        "如何註冊會員？",
+                        "介面怎麼操作？",
+                        "錢不夠用怎麼辦？",
+                        "如何玩遊戲？",
+                        "預約系統怎麼操作？"
+                    ]
+                }
+            },
+
+            template: `
+            <div class="content-top">
+                    <div class="left">
+                        <div class="left-content">
+                            <div class="left-icon">
+                                <img :src="problem.now.img">
+                            </div>
+                            <h2>{{problem.now.item}}</h2>
+                            <hr>
+                            <p>一些常見問題的文章解答，趕快來閱讀吧</p>
+                        </div>
+                    </div>
+                    <div class="right">
+                        <ol>
+                            <li v-for='item in items'><a @click="problem.changepage('problem-content',item);">{{item}}</a></li>
+                        </ol>
+                    </div>
+                </div>
+            `
+        });
+
+
+
+
+
+        Vue.component('problem-item', {
+            data() {
+                return {
+                    now: problem.now
+                }
+            },
+            template: `
+            <div class="content">
+                <problem-item-top></problem-item-top>
+                <problem-item-bottom :now='now'></problem-item-bottom>  
             </div>
-            <h3>購買課程</h3>
-        </a>
-        <a href="problem-group.html" class="q-item">
-            <div class="q-item-img">
-                <img src="images/calendar.svg">
-            </div>
-            <h3>預約輔導</h3>
-        </a>
-        <a href="problem-group.html" class="q-item">
-            <div class="q-item-img">
-                <img src="images/member.svg">
-            </div>
-            <h3>帳號及個人檔案</h3>
-            <p>12 篇文章</p>
-            <p>上次更新 13 小時前</p>
-        </a>
-    </div>
+            `
+        });
+
+
+
+
+        // First 1 page
+        Vue.component('problem-list', {
+            data() {
+                return {
+                    items: [
+                        {
+                            item: '常見問題',
+                            img: 'images/question.svg',
+                            p: {
+                                chart: '12 篇文章',
+                                time: '上次更新 13 小時前'
+                            }
+                        },
+                        {
+                            item: '購買課程',
+                            img: 'images/shopcart_2.svg',
+                            p: {
+                                chart: '',
+                                time: ''
+                            }
+                        },
+                        {
+                            item: '預約輔導',
+                            img: 'images/calendar.svg',
+                            p: {
+                                chart: '',
+                                time: ''
+                            }
+                        },
+                        {
+                            item: '帳號及個人檔案',
+                            img: 'images/member.svg',
+                            p: {
+                                chart: '12 篇文章',
+                                time: '上次更新 11 小時前'
+                            }
+                        }]
+                }
+            },
+            methods: {
+
+            },
+            template: `
+            <div class="problem-q">
+                <a @click="problem.changepage('problem-item',item);" class="q-item" v-for="(item,index) in items">
+                    <div class="q-item-img" >
+                        <img :src="item.img">
+                    </div>
+                    <h3>{{item.item}}</h3>
+                    <p v-for="txt in item.p">{{txt}}</p>
+                </a>
+            <div>
+                `
+        });
+
+
+        let problem = new Vue({
+            el: '#problem-app',
+            methods: {
+                changepage(page, item) {
+                    this.content = page;
+                    this.now = item;
+                }
+            },
+            data: {
+                title: '遇到問題了嗎？',
+                content: 'problem-list',
+                now: {},
+                items: [
+                    {
+                        item: '常見問題',
+                        img: 'images/question.svg',
+                        p: {
+                            chart: '12 篇文章',
+                            time: '上次更新 13 小時前'
+                        }
+                    },
+                    {
+                        item: '購買課程',
+                        img: 'images/shopcart_2.svg',
+                        p: {
+                            chart: '',
+                            time: ''
+                        }
+                    },
+                    {
+                        item: '預約輔導',
+                        img: 'images/calendar.svg',
+                        p: {
+                            chart: '',
+                            time: ''
+                        }
+                    },
+                    {
+                        item: '帳號及個人檔案',
+                        img: 'images/member.svg',
+                        p: {
+                            chart: '12 篇文章',
+                            time: '上次更新 11 小時前'
+                        }
+                    }]
+            }
+        });
+    </script>
+
     @@include('./layout/footer.html')
 </body>
 
