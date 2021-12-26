@@ -61,14 +61,12 @@
                 border-radius: 18px;
                 border: none;
                 background-color: $darkgreen;
-                a{
-                    text-decoration: none;
-                    p{
-                        font-size: $size-6;
-                        margin: 0;
-                        color: $white;
-                    }
+                p{
+                    font-size: $size-6;
+                    margin: 0;
+                    color: $white;
                 }
+                
             }
         }
     }
