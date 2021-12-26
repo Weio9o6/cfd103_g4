@@ -11,25 +11,23 @@
     @@include('layout/header.html')
     <div id="log">
         <h1>登入</h1>
-        <form action="" class="log_in_f">
+        <form action="login.php" method="post" class="log_in_f">
             <div>
                 <label for="account"><h5>帳號</h5></label>
                 <input id="account" type="text" name="account" placeholder="請輸入帳號">
             </div>
             <div>
-                <label for="pwd"><h5>密碼</h5></label>
-                <input id="pwd" type="password" name="pwd" placeholder="請輸入密碼">
+                <label for="psw"><h5>密碼</h5></label>
+                <input id="psw" type="password" name="psw" placeholder="請輸入密碼">
             </div>
             <div class="btns">
-                <button class="notready_btn">
+                <button id="notready_btn">
                     <a href="signUp.html">
                         <p>尚未註冊</p>
                     </a>
                 </button>
-                <button type="submit" class="login_btn">
-                    <a href="stdlogin.html">
-                        <p>登 入</p>
-                    </a>
+                <button id="submit_btn" type="submit" name="submit">
+                    <p>登 入</p>
                 </button>
             </div>
         </form>

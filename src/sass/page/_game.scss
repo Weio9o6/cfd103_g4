@@ -1,68 +1,23 @@
-.game_wrap{
-    max-width: 960px;
-    padding-right: 20px;
-    padding-left: 20px;
-    margin: 50px auto;
-    h1{
-        color: $darkgreen;
-    }
-    h3{
-        color: $black;
-        margin-top: 10px;
-    }
+#bg {
+  width: 550px;
+  height: 600px;
+  margin: 0 auto;
+  background: url(../images/turntable-bg.png) no-repeat;
+  position: relative; 
 
-    .game{
-        display: flex;
-        flex-flow: row wrap;
-
-        .list{
-            width: 210px;
-            height: 320px;
-            order: 2;
-            padding: 15px;
-            background-color: $blue;
-            border-radius: 20px;
-            margin: 0 auto;
-            img{width: 40px;}
-            p{color: $black;}
-
-            @include dt(){
-                width: 250px;
-                order: 1;
-                margin-right: 20px;
-                margin-top: 30px;
-            }
-        }
-
-        .awards{
-            width: 130px;
-            margin: 20px auto;
-            h4{
-                color: $darkgreen;
-                margin: 5px 0;
-                img{
-                    width: 30px;
-                    vertical-align: top;
-                }
-            } 
-        }
-
-        .machine{
-            width: 100%;
-            margin: 50px 0;
-            order: 1;
-            img{width: 100%;}
-
-            @include dt(){
-                max-width: 650px;
-                order: 2;
-                margin: 0;
-            }
-        }
-    }
-
-    
+  #pointer{
+    position: absolute;
+    z-index: 10;
+    top: 190px;
+    left: 224px;
+  }
+  #turntable{
+    position: absolute;
+    z-index: 5;
+    top: 30px;
+    left: 30px;
+    transition: all 4s;
+  }
 }
-
 
 
