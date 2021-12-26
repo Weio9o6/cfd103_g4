@@ -45,7 +45,7 @@
             },
             mounted() {
 
-                var url = "./php/test.php"
+                var url = "./php/fetchclass.php"
                 let arr, json;
                 // 預設空
                 this.information = [];
@@ -128,15 +128,25 @@
                 },
                 discount(){
                     return paycar.moneycalc.initprice * paycar.moneycalc.discount;
+                },
+                coursegroup(){
+                    var num="";
+                    for(var i=0;i<paycar.count;i++){
+                        num+="購買課程"+(i+1)+"："+paycar.information[i].coursename+"#";
+                    }
+                    num+="#"+ "使用優惠：";
+                    return num;
                 }
             },
             template: `
                 <div class="right">
                     <form class="right-content" action="./php/order_add.php" method="POST">
+                        <input type="hidden" name="class" v-model="coursegroup">
+                        <input type="hidden"  name="discount" v-model="paycar.moneycalc.discount">
                         <div class="pay-money">
                             <div>
                                 <p>小計</p>
-                                <p>NT$ <input class="input-change" v-model="initprice" maxlength="5" disabled></p>
+                                <p>NT$ <input class="input-change" v-model="initprice" maxlength="5" readonly></p>
                             </div>
                             <div>
                                 <p>優惠</p>
@@ -150,7 +160,7 @@
                             <div>
                                 <p>總計</p>
                                 <p>
-                                    NT$ <input class="input-change" name="disprice" maxlength="5" v-model="discount" disabled>
+                                    NT$ <input class="input-change" name="disprice" maxlength="5" v-model="discount" readonly>
                                 </p>
                             </div>
                             <button type="sumbit">結帳</button>
