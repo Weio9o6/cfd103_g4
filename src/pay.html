@@ -5,117 +5,162 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./js/vue.min.js"></script>
     <link rel="stylesheet" href="css/style.css">
     <title>購物車</title>
 </head>
 
 <body>
     @@include('./layout/header.html')
+
     <div class="pay-container">
-        <div class="left">
-            <h1>購物車</h1>
-            <div class="course-group">
-                <h2>購物車有<span>3</span>門課程</h2>
-                <div class="course-item">
-                    <div class="course-img">
-                        <img src="images/class_2.png" alt="">
-                    </div>
-                    <div class="course-info">
-                        <h3>C#:從零開始前進</h3>
-                        <p class="price">NT$<span>2400</span></p>
-                    </div>
-                    <div class="des">
-                        <img src="images/x.svg" alt="">
-                        <img src="images/heart.svg" alt="">
-                    </div>
-                </div>
-                <div class="course-item">
-                    <div class="course-img">
-                        <img src="images/class_2.png" alt="">
-                    </div>
-                    <div class="course-info">
-                        <h3>C#:從零開始前進</h3>
-                        <p class="price">NT$<span>2400</span></p>
-                    </div>
-                    <div class="des">
-                        <img src="images/x.svg" alt="">
-                        <img src="images/heart.svg" alt="">
-                    </div>
-                </div>
-                <div class="course-item">
-                    <div class="course-img">
-                        <img src="images/class_2.png" alt="">
-                    </div>
-                    <div class="course-info">
-                        <h3>C#:從零開始前進</h3>
-                        <p class="price">NT$<span>2400</span></p>
-                    </div>
-                    <div class="des">
-                        <img src="images/x.svg" alt="">
-                        <img src="images/heart.svg" alt="">
-                    </div>
-                </div>
-                <div class="course-item">
-                    <div class="course-img">
-                        <img src="images/class_2.png" alt="">
-                    </div>
-                    <div class="course-info">
-                        <h3>C#:從零開始前進</h3>
-                        <p class="price">NT$<span>2400</span></p>
-                    </div>
-                    <div class="des">
-                        <img src="images/x.svg" alt="">
-                        <img src="images/heart.svg" alt="">
-                    </div>
-                </div>
-                <div class="course-item">
-                    <div class="course-img">
-                        <img src="images/class_2.png" alt="">
-                    </div>
-                    <div class="course-info">
-                        <h3>C#:從零開始前進</h3>
-                        <p class="price">NT$<span>2400</span></p>
-                    </div>
-                    <div class="des">
-                        <img src="images/x.svg" alt="">
-                        <img src="images/heart.svg" alt="">
-                    </div>
-                </div>
-            </div>
-            <hr>
-        </div>
-        <div class="right">
-            <div class="right-content">
-                <div class="pay-money">
-                    <div>
-                        <p>小計</p>
-                        <p>NT$ <span>11800</span></p>
-                    </div>
-                    <div>
-                        <p>優惠</p>
-                        <select name="" id="">
-                            <option value="5">5折</option>
-                            <option value="7">7折</option>
-                            <option value="8">8折</option>
-                        </select>
-                    </div>  
-                </div>
-                <div class="sun-total">
-                    <hr>
-                    <div>
-                        <p>總計</p>
-                        <p>
-                            NT$ <span>5900</span>
-                        </p>
-                    </div>
-                    <button onclick="alert('金流 API')">結帳</button>
-                </div>
-            </div>
-
-        </div>
-
-
+        <buy-car-left :count='count' :information="information"></buy-car-left>
+        <buy-car-right :information="information" :moneycalc="moneycalc"></buy-car-right>
     </div>
+
+    <script>
+        var paycar = new Vue({
+            el: '.pay-container',
+            
+            data: {
+                information: [],
+                moneycalc: {
+                    initprice: 0,
+                    discount: 1,
+                    finalprice: 0
+                },
+                count: 0
+            },
+            computed:{
+                popo(){
+                    return 100;
+                }  ,
+                test(){
+                    // for(var i=0;i< paycar.information.length;i++){
+                    //     paycar.moneycalc.initprice += parseInt(paycar.information[i].price);
+                    // }
+                    // console.log(information);
+                    return 100;
+                }
+            },
+            mounted() {
+
+                var url = "./php/test.php"
+                let arr, json;
+                // 預設空
+                this.information = [];
+                let local = localStorage;
+                // 判斷購物車
+                if (local['course'] === undefined || local['course'] === "") {
+                    local['course'] = "";
+                } else {
+                    arr = local['course'].split(',');
+                }
+                // ajax
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', url, false);
+                xhr.onload = function () {
+                    json = JSON.parse(xhr.responseText);
+                };
+                xhr.setRequestHeader("Content-type", "application/json");
+                xhr.send(null);
+
+                // 取值 + 運算
+                for (var i = 0; i < json.length; i++) {
+                    for (var j = 0; j < arr.length; j++) {
+                        if (arr[j] == json[i].cno) {
+                            // console.log(json[i].cno);
+                            this.information.push({
+                                coursename: json[i].cname,
+                                courseimg: json[i].cpic,
+                                price: json[i].cpr
+                            });
+                            this.count += 1;
+                            // this.moneycalc.initprice += parseInt(this.information[i].price);
+                        }
+                    }
+                }
+            },
+        });
+        Vue.component('buy-car-left', {
+            props: ["count", "information"],
+            methods: {
+                remove(index) {
+                    var arr = localStorage['course'].split(',');
+                    arr.splice(index,1);
+                    localStorage['course'] = arr;
+                    paycar.information.splice(index, 1);
+                    paycar.count -= 1;
+                }
+            },
+            template: `
+                <div class="left">
+                    <h1>購物車</h1>
+                    <div class="course-group">
+                        <h2>購物車有 <span>{{count}}</span> 門課程</h2>
+                        <div v-if="count >= 1" class="course-item" v-for=" (a,index) in information">
+                            <div class="course-img">
+                                <img :src="information[index].courseimg" alt="">
+                            </div>
+                            <div class="course-info">
+                                <h3>{{information[index].coursename}}</h3>
+                                <p class="price">NT$<span>{{information[index].price}}</span></p>
+                            </div>
+                            <div class="des" @click="remove(index)">
+                                <img src="images/x.svg" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tip-car" v-if="count <= 0 ">購物車內沒有課程</div>
+                    <hr>
+                </div>
+            `
+        });
+        Vue.component('buy-car-right', {
+            props: ["information", "moneycalc"],
+            computed:{
+                initprice(){
+                    paycar.moneycalc.initprice = 0;
+                    for(var i=0;i<paycar.information.length;i++){
+                        paycar.moneycalc.initprice += parseInt(paycar.information[i].price);
+                    }
+                    return paycar.moneycalc.initprice;
+                },
+                discount(){
+                    return paycar.moneycalc.initprice * paycar.moneycalc.discount;
+                }
+            },
+            template: `
+                <div class="right">
+                    <form class="right-content" action="./php/order_add.php" method="POST">
+                        <div class="pay-money">
+                            <div>
+                                <p>小計</p>
+                                <p>NT$ <input class="input-change" v-model="initprice" maxlength="5" disabled></p>
+                            </div>
+                            <div>
+                                <p>優惠</p>
+                                <select name="dis" id="dis">
+                                    <option value="1">請選擇</option>
+                                </select>
+                            </div>  
+                        </div>
+                        <div class="sun-total">
+                            <hr>
+                            <div>
+                                <p>總計</p>
+                                <p>
+                                    NT$ <input class="input-change" name="disprice" maxlength="5" v-model="discount" disabled>
+                                </p>
+                            </div>
+                            <button type="sumbit">結帳</button>
+                        </div>
+                    </form>
+                </div>
+            `
+        });
+    </script>
+
     @@include('./layout/footer.html')
 </body>
 

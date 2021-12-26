@@ -73,7 +73,8 @@ header {
     }
 
     &::after {
-        content: '0';
+        // content: '0';
+        content: attr(data-text);
         color: #fff;
         background-color: #FF5b74;
         position: absolute;

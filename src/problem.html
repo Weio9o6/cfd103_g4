@@ -5,16 +5,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.14/vue.min.js"></script>
-    <link rel="stylesheet" href="css/style.css">
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script> -->
+    <script src="./js/vue.min.js"></script>
+
+    <link rel="stylesheet" href="./css/style.css">
     <title>問題</title>
 </head>
 
 <body>
     @@include('./layout/header.html')
-
-
-
     <div id="problem-app">
         <div class="bg">
             <h2>{{title}}</h2>
@@ -22,18 +22,9 @@
         <component :is="content"></component>
     </div>
 
-
-
-
-
-
-
-
     <script>
-
-
         Vue.component('problem-anw', {
-            template:`
+            template: `
                 <div class="problem-anw">
                     <p>請先將會員帳戶登出後，再重新使用購課時的帳號登入，在「我的課程」當中，才會顯示你已成功購入的所有課程。</p>
                     <p>你也可以透過平台右下方的SNS傳送訂單訊息，包含「訂單編號」、「購課人姓名」、「購課人手機號碼」，我們將協助你找回正確的購課帳號。</p>
@@ -41,17 +32,8 @@
             `
         });
 
-
-
-
         //page3
-
         Vue.component('problem-content', {
-            methods: {
-                changepage() {
-                    problem.content = 'problem-list'
-                }
-            },
             template: `
             <div class="problem">
                 <div class="problem-content">
@@ -80,26 +62,6 @@
             `
         });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         // page2
 
         Vue.component('problem-item-bottom', {
@@ -108,35 +70,51 @@
                 return {
                     items: [{
                         item: '帳戶及個人檔案',
-                        img: 'images/member.svg'
+                        img: 'images/member.svg',
+                        show: true
                     },
                     {
                         item: '購買課程相關',
-                        img: 'images/shopcart_2.svg'
+                        img: 'images/shopcart_2.svg',
+                        show: true
                     },
                     {
                         item: '預約輔導',
-                        img: 'images/calendar.svg'
+                        img: 'images/calendar.svg',
+                        show: true
                     },
                     {
                         item: '常見問題',
-                        img: 'images/question.svg'
+                        img: 'images/question.svg',
+                        show: true
                     }]
                 }
+            },
+            mounted() {
+                this.items.forEach(res => {
+                    if (res.img == this.now.img) {
+                        res.show = false;
+                    }
+                });
             },
             methods: {
                 flipup() {
                     window.scrollTo(0, 0);
+                },
+                change(itemclick) {
+                    this.items.forEach(res => {
+                        res.show = true;
+                    });
+                    itemclick.show = false;
                 }
             },
-
             template: `
                 <div class="content-bottom">
                     <h2>其他類別</h2>
                     <div>
                         <ol>
-                            <li @click="flipup" class="item" v-for="item in items" v-if=" now.img != item.img" @click="problem.changepage('problem-item',item);">
-                                <a @click="problem.changepage('problem-item',item);" class="item-icon" >
+                            <li @click="flipup();change(item);" class="item" v-for="item in items" v-if="item.show" @click="problem.changepage('problem-item',item);">
+                                <a class="item-icon" >
                                     <img :src="item.img">
                                     <p>{{item.item}}</p>
                                 </a>
@@ -147,7 +125,6 @@
             `
         });
         Vue.component('problem-item-top', {
-
             data() {
                 return {
                     items: [
@@ -176,16 +153,15 @@
                     </div>
                     <div class="right">
                         <ol>
-                            <li v-for='item in items'><a @click="problem.changepage('problem-content',item);">{{item}}</a></li>
+                            <li v-for='item in items'>
+                                <a @click="problem.changepage('problem-content',item);">{{item}}</a>
+                            </li>
                         </ol>
                     </div>
                 </div>
+            </div>
             `
         });
-
-
-
-
 
         Vue.component('problem-item', {
             data() {
@@ -200,8 +176,6 @@
             </div>
             `
         });
-
-
 
 
         // First 1 page
@@ -243,9 +217,6 @@
                         }]
                 }
             },
-            methods: {
-
-            },
             template: `
             <div class="problem-q">
                 <a @click="problem.changepage('problem-item',item);" class="q-item" v-for="(item,index) in items">
@@ -255,7 +226,7 @@
                     <h3>{{item.item}}</h3>
                     <p v-for="txt in item.p">{{txt}}</p>
                 </a>
-            <div>
+            </div>
                 `
         });
 

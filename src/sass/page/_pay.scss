@@ -1,11 +1,13 @@
 .pay-container {
     width: 100%;
+
     h1 {
         margin: 50px 20px 30px;
         font-size: 32px;
         color: #276678;
         font-size: $size-1;
-        @include dt(){
+
+        @include dt() {
             margin: 20px 20px 50px;
         }
     }
@@ -13,98 +15,148 @@
     .course-group {
         margin: 0px 20px 0px;
         color: #276678;
-        h2{
+
+        h2 {
             font-size: $size-3;
         }
-        @include dt(){
+
+        @include dt() {
             float: left;
         }
     }
-    .left{
-        hr{
+
+    .tip-car {
+        width: 100%;
+        margin-top: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #666;
+        font-size: 25px;
+
+        @include dt() {
+            margin-top: 200px;
+            height: 50px;
+            width: 550px;
+        }
+    }
+
+    .left {
+        hr {
             width: 100%;
             margin: 30px auto;
-            @include dt(){
+
+            @include dt() {
                 display: none;
             }
         }
-        
+
     }
+
+    .input-change {
+        text-align: right;
+        border: none;
+        width: 70px;
+        font-size: 25px;
+        background-color: transparent;
+    }
+
     .course-item {
-        @include dt(){
+        @include dt() {
             width: 550px;
         }
+
         clear: both;
         overflow: auto;
         width: 100%;
         border: 1px solid #D3E0EA;
         margin: 20px 0;
         position: relative;
+
         .course-img {
             width: 130px;
             margin-right: 5px;
             float: left;
+
             img {
                 width: 100%;
                 vertical-align: top;
             }
         }
+
         .course-info {
             margin-top: 10px;
+
             h3 {
                 font-size: $size-5;
                 margin-right: 20px;
                 line-height: 20px;
                 position: relative;
             }
-            p{
-                font-size:$size-7;
+
+            p {
+                font-size: $size-7;
                 font-weight: bold;
             }
         }
-        .des{
-            img{
+
+        .des {
+            img {
                 width: 15px;
-                &:nth-child(1){
+
+                &:nth-child(1) {
                     position: absolute;
                     top: 5px;
                     right: 5px;
                 }
-                &:nth-child(2){
+
+                &:nth-child(2) {
                     position: absolute;
                     bottom: 5px;
                     right: 5px;
                 }
-                &:hover{
+
+                &:hover {
                     cursor: pointer;
                 }
             }
         }
 
-        .price{
+        .price {
             color: #1687a7;
             position: absolute;
             bottom: 5px;
-            left: 135px;      
+            // left: 135px;   
+            right: 10px;
+
+            span {
+                font-size: $size-4;
+                margin-left: 10px;
+            }
         }
     }
-    .pay-money{
+
+    .pay-money {
         clear: both;
-        @include dt(){
+
+        @include dt() {
             width: 300px;
 
         }
+
         width: 100%;
-        
-        div{
+
+        div {
 
             display: flex;
             justify-content: space-between;
-            p{
+
+            p {
                 margin: 20px;
                 font-size: $size-3;
             }
-            select{
+
+            select {
                 width: 100px;
                 margin: 20px;
                 font-size: $size-4;
@@ -112,33 +164,40 @@
             }
         }
     }
-    .sun-total{
 
-        hr{
+    .sun-total {
+
+        hr {
             margin: 30px auto;
             width: 100%;
         }
-        @include dt(){
+
+        @include dt() {
             width: 300px;
-            hr{
+
+            hr {
                 display: block;
                 width: 100%;
-                
+
             }
         }
-        div{
+
+        div {
             margin: 20px;
             display: flex;
             justify-content: space-between;
-            p:nth-child(1){
+
+            p:nth-child(1) {
                 font-size: $size-3;
             }
-            p:nth-child(2){
+
+            p:nth-child(2) {
                 font-size: $size-3;
             }
-            
+
         }
-        button{
+
+        button {
             width: 120px;
             height: 60px;
             margin: 20px;
@@ -152,21 +211,26 @@
             line-height: 20px;
             font-size: $size-4;
         }
+
         overflow: auto;
     }
-    @include dt(){
+
+    @include dt() {
         width: 1024px;
         margin: 100px auto;
         display: flex;
         justify-content: center;
-        h1{
+
+        h1 {
             margin-left: -10px;
         }
-        .right-content{
+
+        .right-content {
             position: sticky;
             top: 150px;
         }
-        .right{
+
+        .right {
             margin-left: 80px;
             margin-top: 25vh;
         }
