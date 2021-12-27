@@ -21,21 +21,22 @@
     <script>
         var paycar = new Vue({
             el: '.pay-container',
-            
+
             data: {
                 information: [],
                 moneycalc: {
                     initprice: 0,
                     discount: 1,
-                    finalprice: 0
+                    finalprice: 0,
                 },
+                userdiscount: [],
                 count: 0
             },
-            computed:{
-                popo(){
+            computed: {
+                popo() {
                     return 100;
-                }  ,
-                test(){
+                },
+                test() {
                     // for(var i=0;i< paycar.information.length;i++){
                     //     paycar.moneycalc.initprice += parseInt(paycar.information[i].price);
                     // }
@@ -43,7 +44,50 @@
                     return 100;
                 }
             },
+            methods: {
+
+            },
             mounted() {
+
+                var logincheck = new XMLHttpRequest();
+                logincheck.open('GET', "./php/logincheck.php", false);
+                logincheck.onload = function () {
+                    if (logincheck.responseText != 1) {
+                        alert('您尚未登入');
+                        window.location.href = 'login.html';
+                    }
+                };
+                logincheck.send(null);
+
+
+
+                // fetch(discount_url, { method: 'GET' })
+                // .then(res => {
+                //     return res.json();
+                // })
+                // .then(res => {
+
+                // })
+                // .catch(error => {
+                //     console.log(error);
+                // });
+
+
+
+
+                this.userdiscount = [];
+                var discount_url = "./php/fetchdiscount.php";
+                var dis = [];
+                var userdis = new XMLHttpRequest();
+                userdis.open('GET', discount_url, false);
+                userdis.onload = function () {
+                    dis = JSON.parse(userdis.responseText);
+                };
+                userdis.send(null);
+                for (var i = 0; i < dis.length; i++) {
+                    this.userdiscount.push(dis[i].dcinifo);
+                }
+
 
                 var url = "./php/fetchclass.php"
                 let arr, json;
@@ -80,6 +124,7 @@
                         }
                     }
                 }
+                console.log(this.userdiscount);
             },
         });
         Vue.component('buy-car-left', {
@@ -87,7 +132,7 @@
             methods: {
                 remove(index) {
                     var arr = localStorage['course'].split(',');
-                    arr.splice(index,1);
+                    arr.splice(index, 1);
                     localStorage['course'] = arr;
                     paycar.information.splice(index, 1);
                     paycar.count -= 1;
@@ -118,23 +163,23 @@
         });
         Vue.component('buy-car-right', {
             props: ["information", "moneycalc"],
-            computed:{
-                initprice(){
+            computed: {
+                initprice() {
                     paycar.moneycalc.initprice = 0;
-                    for(var i=0;i<paycar.information.length;i++){
+                    for (var i = 0; i < paycar.information.length; i++) {
                         paycar.moneycalc.initprice += parseInt(paycar.information[i].price);
                     }
                     return paycar.moneycalc.initprice;
                 },
-                discount(){
+                discount() {
                     return paycar.moneycalc.initprice * paycar.moneycalc.discount;
                 },
-                coursegroup(){
-                    var num="";
-                    for(var i=0;i<paycar.count;i++){
-                        num+="購買課程"+(i+1)+"："+paycar.information[i].coursename+"#";
+                coursegroup() {
+                    var num = "";
+                    for (var i = 0; i < paycar.count; i++) {
+                        num += "購買課程" + (i + 1) + "：" + paycar.information[i].coursename + "#";
                     }
-                    num+="#"+ "使用優惠：";
+                    num += "#" + "使用優惠：";
                     return num;
                 }
             },
@@ -142,16 +187,18 @@
                 <div class="right">
                     <form class="right-content" action="./php/order_add.php" method="POST">
                         <input type="hidden" name="class" v-model="coursegroup">
-                        <input type="hidden"  name="discount" v-model="paycar.moneycalc.discount">
+                        <input type="hidden"  name="dismoney" :value="-( initprice - discount)">
                         <div class="pay-money">
                             <div>
                                 <p>小計</p>
-                                <p>NT$ <input class="input-change" v-model="initprice" maxlength="5" readonly></p>
+                                <input class="input-change" v-model="initprice" maxlength="5" readonly type="hidden">
+                                <p>NT$ <span>{{initprice}} </span></p>
                             </div>
                             <div>
                                 <p>優惠</p>
-                                <select name="dis" id="dis">
+                                <select name="discount" id="dis" v-model="paycar.moneycalc.discount" >
                                     <option value="1">請選擇</option>
+                                    <option v-for="i in paycar.userdiscount" :value="i">{{i*10}}折</option>
                                 </select>
                             </div>  
                         </div>
@@ -160,7 +207,8 @@
                             <div>
                                 <p>總計</p>
                                 <p>
-                                    NT$ <input class="input-change" name="disprice" maxlength="5" v-model="discount" readonly>
+                                    <input class="input-change" name="disprice" maxlength="5" v-model="discount" readonly type="hidden">
+                                    NT$ <span>{{discount}}</span>                                
                                 </p>
                             </div>
                             <button type="sumbit">結帳</button>
