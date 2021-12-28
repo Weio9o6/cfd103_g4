@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="css/style.css">
     <title>header</title>
     <script>
         $(window).ready(function () {
@@ -43,10 +43,35 @@
             }
         });
     </script>
+    <script src="js/login.js"></script>
 </head>
 
 <body>
-
+    <div id="showbox">
+        <div id="logbox">
+            <h1>登入 
+                <a href="signUp.html">註冊</a>
+            </h1>
+            <form action="javascript:void(0)" class="log_in_f">
+                <div>
+                    <label for="account"><h5>帳號</h5></label>
+                    <input id="account" type="text" name="account" placeholder="請輸入帳號">
+                </div>
+                <div>
+                    <label for="psw"><h5>密碼</h5></label>
+                    <input id="psw" type="password" name="psw" placeholder="請輸入密碼">
+                </div>
+                <div class="btns">
+                    <button id="cancel_btn" class="cancel_btn">
+                        <p>取消</p>
+                    </button>
+                    <button id="submit_btn" class="submit_btn" type="submit" name="submit">
+                        <p>登入</p>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
     <div class="header-container">
         <header>
             <a href="home.html" class="logo-icon">
@@ -59,18 +84,19 @@
             <div class="car" data-text="0" id="car">
                 <a href="pay.html"><img src="images/shopcart.svg" alt="購物車"></a>
             </div>
-            <button class="login">
-                <a href="logIn.html">登入 / 註冊</a>
-            </button>
+            <div class="std-ifo" id="std-ifo">
+                <a href="stdlogin.html">
+                    <img src="images/member_2.svg" alt="學生資訊">
+                </a>
+            </div>
+            <input type="button" class="btn-login" id="btn-login" value="登入">
             <div class="hub">
                 <img src="images/hbg.svg">
                 <nav class="hub-nav">
                     <ul>
                         <li class="hub-login">
-                            <a href="logIn.html">
-                                <img src="images/member_3.svg" alt="">
-                                登入/註冊
-                            </a>
+                            <img src="images/loginout.svg" alt="">
+                            <input type="button" value="登入" id="btn-login2">
                             <button class="close">X</button>
                         </li>
                         <li><img src="images/sort.svg" alt="">課程類別</li>
@@ -85,11 +111,12 @@
                                 <img src="images/about.svg" alt="">關於我們
                             </a></li>
                         <li><a href="game.html">
-                                <img src="images/discount_2.svg" alt="">玩遊戲拿優惠
+                                <img src="images/discount_2.svg" alt="">抽獎拿優惠
                             </a></li>
                         <li><a href="problem.html">
                                 <img src="images/question_2.svg" alt="">常見問題
                             </a></li>
+                        
                     </ul>
                 </nav>
             </div>
@@ -104,8 +131,6 @@
             </ul>
         </div>
     </div>
-
-
 </body>
 
 </html>
