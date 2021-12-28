@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.js"></script>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    @@include('./layout/header.html')
+    <div id="stdlogin">
+        <div class="tabs">
+            <label v-for="(label,index) in labels" class="tabs__label" @click="changeColor(index)">
+                <h3>{{label.title}}</h3><img :src="label.imgUrl" alt="">
+            </label>
+        </div>
+       <keep-alive>
+         <component :is="content" @sendclass="abc" :xyz="cards"></component>
+ 
+    <!--    <basic v-show="content =='basic'" @sendclass="abc" :xyz="cards"></basic>
+            <reserve v-show="content =='reserve'" @sendclass="abc" :xyz="cards"></reserve>
+            <lesson v-show="content =='lesson'" @sendclass="abc" :xyz="cards"></lesson>
+            <collection v-show="content =='collection'" @sendclass="abc" :xyz="cards"></collection> -->
+        </keep-alive>
+    </div>
+    
+    <script>
+        Vue.component('basic', {
+            props:["xyz"],
+            data() {
+                return {
+                    // classjoin: 5,
+                    form: {
+                        name: '',
+                        tel: '',
+                        email: '',
+                        aboutme: '',
+                        stdpic: '',
+                        nickname: ''
+                    },
+                    newpic: '',
+                }
+            },
+            computed: {
+                xyzLen() {
+                    // return this.xyz?.length ?? 0;
+                    return this.xyz.length;
+                },
+            },
+            // axios.post('./php/changeProfile2.php',params,{headers:{
+            // 'Content-Type':'application/json',
+            methods: {
+                test(e) {
+                    let file = e.target.files[0];
+                    this.newpic =  file.name;
+                    let reader = new FileReader();
+                    reader.onload = function () {
+                        document.getElementById("stdpic").src = reader.result;
+                    }
+                    reader.readAsDataURL(file);
+                },
+                // submitHandler() {
+                //     let params = this.form;
+                //     // console.log(params)
+                //     axios.post('./php/changeProfile2.php', params, {
+                //         headers: {
+                //             'Content-Type': 'application/json',
+                //             // console.log(params);
+                //             // console.log(res.data[0].STEL)
+                //             //console.log(params.tel)
+                //             // console.log(this.form)
+                //             //res.data[0].STEL = params.tel;
+                //             //console.log(res.data[0].STEL);
+                //             // return res;
+                //         }
+                //     });
+                //     alert("修改成功");
+                // },
+
+                submitHandler() {
+                    let tel = document.getElementById('tele').value
+                    let re = new RegExp("^09[0-9]{8}$");
+                    if (re.exec(tel)) {
+                        // 傳資料到php start
+                        let params = this.form;
+                        // console.log(params)
+                        axios.post('./php/changeProfile2.php', params, {
+                            headers: {
+                                'Content-Type': 'application/json',
+                                // console.log(params);
+                                // console.log(res.data[0].STEL)
+                                //console.log(params.tel)
+                                // console.log(this.form)
+                                //res.data[0].STEL = params.tel;
+                                //console.log(res.data[0].STEL);
+                                // return res;
+                            }
+                        });
+                        // 傳資料到php end
+                        alert("修改成功");
+                    } else {
+                        alert('手機號碼有誤');
+                    }
+                },
+                
+                //uploadpic(){
+                //     if(this.newpic != ''){
+                //         axios.post('./php/uploadPic.php', params, {
+                //         headers: {
+                //             'Content-Type': 'application/json',
+                //         }
+                //     }).then((res)=> console.log(res)).catch((error => console.log(error)))
+                //     }
+                // },
+
+                uploadpic() {
+                    if(this.newpic != ''){
+                        let picimg = {
+                            "newpic":this.newpic,
+                            "newpic64":document.getElementById("stdpic").src,
+                        };
+                        axios.post('./php/uploadPic.php', picimg, {
+                            headers: {
+                                'Content-Type': 'application/json'
+                            }
+
+                        }).then(res => {
+                            // console.log(document.getElementById("stdpic").src);
+                            console.log(res.data);
+                            // console.log(picimg);
+                        });
+                    }    
+                },
+
+
+                getHandler() {
+                    // let params = this.form;
+                    console.log("getHandler")
+                    // this.form.name = '';
+                    axios.get('./php/sendProfile.php').then(res => {
+                        this.form.name = res.data[0].sname;
+                        this.form.tel = res.data[0].stel;
+                        this.form.email = res.data[0].semail;
+                        this.form.stdpic = res.data[0].pic;
+                        this.form.nickname = res.data[0].nickname;
+                        this.form.aboutme = res.data[0].sabout;
+                    })
+                    // this.form.name = res.data.sname;
+                },
+            },
+            mounted() {
+                this.getHandler();
+            },
+            template: `
+                <div class="info">
+                    <div class="info_box">
+                        <div class="pic_area">
+                            <img :src="form.stdpic" alt="" id="stdpic">
+                            <h2>{{form.nickname}}</h2>
+                            <input type="file" @change="test($event)" accept=".png,.jpg">
+                        </div>
+                        <div class="detail_area">
+                            <span>
+                                <h1>已參加</h1>
+                                <h2>{{xyzLen}}堂課</h2>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="info_form">
+                        <form action="javascript:void(0)" @submit="submitHandler">
+                            <div class="input_group">
+                                <label for="name">姓名</label>
+                                <br>
+                                <input type="text" readonly v-model="form.name">
+                                <br>
+                            </div>
+                            <div class="input_group" >
+                                <label for="tel">電話</label>
+                                <br>
+                                <input type="tel" id="tele" maxlength="10" v-model="form.tel">
+                                <br>
+                            </div>
+                            <div class="input_group" >
+                                <label for="email">電子郵件</label>
+                                <br>
+                                <input type="email" v-model="form.email">
+                                <br>
+                            </div>
+                            <div class="input_group" >
+                                <label for="aboutme">關於我</label>
+                                <br>
+                                <textarea name="aboutme" id="" v-model="form.aboutme"></textarea>
+                                <br>
+                            </div>
+                            <button class="btn-submit" type="button" @click="uploadpic();submitHandler();">確認修改</button>
+                        </form>
+                    </div>
+                </div>
+            `,
+        });
+        Vue.component('reserve', {
+            props:["xyz"],
+            data() {
+                return {
+                    // lessons: ['課程', 'JavaScript', 'Vue', 'HTML5'],
+                    // lessons: [],
+                    today:{
+                        year:0,
+                        month:0,
+                        date:0,
+                        day:0
+                    },
+                    calendar:{
+                        year:0,
+                        month:0,
+                        date:0,
+                        day:0
+                    }
+                }
+            },
+            // computed:{
+            //     cf() {
+            //         let arr = this.xyz.map(item => item.cname);
+            //         arr.unshift('課程');
+            //         return arr;
+            //         // return arr = this.lessons;
+            //     },
+            // },
+            mounted(){
+               this.setToday() 
+            },
+            methods:{
+                setToday(){
+                    const date = new Date()
+                    this.today.year = this.calendar.year = date.getFullYear()
+                    this.today.month = this.calendar.month = date.getMonth() //0~11
+                    this.today.date = this.calendar.date = date.getDate()
+                    this.today.day = this.calendar.day = date.getDay()
+                },
+                adjustYear(fix){
+                    this.calendar.year += fix
+                },
+                adjustMonth(fix){
+                    // this.calendar.month += fix 範圍
+                    let month = this.calendar.month + fix
+
+                    if(month > 11){
+                        this.adjustYear(1)
+                        this.calendar.month = 0
+                    }else if(month < 0){
+                        this.adjustYear(-1)
+                        this.calendar.month = 11
+                    }else{
+                        this.calendar.month = month
+                    }
+                }
+            },
+            computed:{
+                cf() {
+                    let arr = this.xyz.map(item => item.cname);
+                    // arr.unshift('課程');
+                    return arr;
+                    // return arr = this.lessons;
+                },
+                calendarFirstDay(){
+                    const mDate = new Date(this.calendar.year,this.calendar.month,1)
+                    const date = new Date(this.calendar.year,this.calendar.month,1 - mDate.getDay())
+                    return{
+                        year:date.getFullYear(),
+                        month:date.getMonth(),
+                        date:date.getDate(),
+                        day:date.getDay(),
+                    }
+                },
+                calendarMonth(){
+                    const data = []
+                    let date
+                    for(let i=0; i<42; i++){
+                        date = new Date(this.calendarFirstDay.year,this.calendarFirstDay.month,this.calendarFirstDay.date + i)
+                        data.push({
+                            year:date.getFullYear(),
+                            month:date.getMonth(),
+                            date:date.getDate(),
+                            day:date.getDay(),
+                        })
+                    }
+                    return data
+                },
+                reserveCheck(){
+                    // let arr = [{date: 28},{date: 29},{date: 30}]
+                    let target = [29,30];
+                    arr2 = calendarMonth.map(v =>{
+                        return{
+                            isCheck: target.indexOf(v.date) > -1 ? 1:0,
+                            ...v,
+                        }
+                    })
+                    return arr2
+                }
+            },
+            template: `
+            <div class="reserve">
+                <div class="discuss">
+                    <div class="discuss_rules">
+                        <h2>一週最多預約兩次</h2>
+                        <div class="step_rules">
+                            <div class="step">1</div>
+                            選取課程
+                        </div>
+                        <div class="step_rules">
+                            <div class="step">2</div>
+                            確認師資與課程無誤點選「預約」
+                        </div>
+                        <div class="condition">
+                            <select name="lesson" id="">
+                                <option v-for="lesson in cf">{{lesson}}</option>
+                            </select>
+                            <div class="reservation_status">
+                                <div class="reserved">已預約</div>
+                                <div class="full">已額滿</div>
+                            </div>
+                            <button class="btn-reserve">預約</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="for_calendar">
+                    <h1>{{calendar.year}} <span>年</span> {{calendar.month+1}} <span>月</span></h1>
+                    <div>
+                        <button class="btn-calendar" @click="adjustYear(-1)">上一年</button>
+                        <button class="btn-calendar" @click="adjustMonth(-1)">上個月</button>
+                        <button class="btn-calendar" @click="setToday">今天</button>
+                        <button class="btn-calendar" @click="adjustMonth(1)">下個月</button>
+                        <button class="btn-calendar" @click="adjustYear(1)">下一年</button>
+                    </div>
+                    <div class="calendar">
+                        <div class="weekDay">
+                            <div>日</div>
+                            <div>一</div>
+                            <div>二</div>
+                            <div>三</div>
+                            <div>四</div>
+                            <div>五</div>
+                            <div>六</div>
+                        </div>
+                        <div class="week" v-for="i in 6">
+                            <div class="day" v-for="j in 7" :data-date="calendarMonth[(i-1)*7+j-1].date" :class="{
+                                today: calendarMonth[(i-1)*7+j-1].year === today.year && calendarMonth[(i-1)*7+j-1].month === today.month && calendarMonth[(i-1)*7+j-1].date === today.date, others: calendarMonth[(i-1)*7+j-1].month !== calendar.month
+                            }"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            `,
+        });
+        Vue.component('lesson', {
+            props: ['xyz'],
+            data() {
+                return {
+                    clockImg:'./images/time.svg',
+                    cards: []
+                }
+            },
+            methods:{
+                // getClass() {
+                //     console.log("getClass")
+                //     axios.get('./php/getMyclass.php').then(res => {
+                //         //console.log(this);
+                //         //console.log(res.data);
+                //         this.cards = res.data
+                //         console.log(this.cards);
+                //         this.sendTotalclass();
+                //     })
+                //     // this.form.name = res.data.sname;
+                // },
+                sendTotalclass(){
+                    this.$emit('sendclass',this.cards)
+                }
+            },
+            
+            mounted() {
+                // this.getClass();
+            },
+            template: `
+                <div class="my_lesson">
+                    <a href="./lesson.html" v-for='(card,index) in xyz'>
+                        <div class="card">
+                            <div class="header">
+                                <img
+                                    :src='xyz[index].cpic'
+                                    alt=""
+                                />
+                            </div>
+                            <div class="content">
+                                <div class="top">
+                                    <h4>{{xyz[index].cname}}</h4>
+                                    <p>{{xyz[index].subtitle}}</p>
+                                </div>
+                                <h5>{{xyz[index].tname}}</h5>
+                                <div class="bottom">
+                                    <div class="bottom-left">
+                                        <div class="clock">
+                                            <img :src='clockImg' alt="" />
+                                            <span>{{xyz[index].ctime}}min</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>    
+                </div>
+            `,
+        });
+        Vue.component('collection', {
+            data() {
+                return {
+                    clockImg:'./images/time.svg',
+                    attendImg:'./images/people.svg',
+                    collectImg:'./images/heart.svg',
+                    cards: []
+                }
+            },
+            methods:{
+                getCollection() {
+                    console.log("getCollection")
+                    axios.get('./php/getMycollection.php').then(res => {
+                        //console.log(this);
+                        //console.log(res.data);
+                        this.cards = res.data
+                        console.log(this.cards);
+                    })
+                    // this.form.name = res.data.sname;
+                },
+            },
+            mounted() {
+                this.getCollection();
+            },
+            template: `
+                <div class="my_collection">
+                    <a href="./lesson.html" v-for='(card,index) in cards'>
+                        <div class="card">
+                            <div class="header">
+                                <img :src='cards[index].cpic' alt=""/>
+                            </div>
+                            <div class="content">
+                                <div class="top">
+                                    <h4>{{cards[index].cname}}</h4>
+                                    <p>{{cards[index].subtitle}}</p>
+                                </div>
+                                <h5>{{cards[index].tname}}</h5>
+                                <div class="bottom">
+                                    <div class="bottom-left">
+                                        <div class="clock">
+                                            <img :src='clockImg' alt="" />
+                                            <span>{{cards[index].ctime}}min</span>
+                                        </div>
+                                        <div class="people">
+                                            <img :src='attendImg'alt="" />
+                                            <span>{{cards[index].attend}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="bottom-right">
+                                        <div class="collect">
+                                            <img :src='collectImg' alt="" @click='switchFavorite($event, index);setCno($event)'/>
+                                        </div>
+                                        <div class="price">NT$ {{cards[index].cpr}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>    
+                </div>
+            `,
+        });
+        Vue.component('coupon', {
+            data() {
+                return {
+                    coupons: []
+                }
+            },
+            methods:{
+                getCoupon() {
+                    console.log("getCoupon")
+                    axios.get('./php/getMycoupon.php').then(res => {
+                        this.coupons = res.data
+                        console.log(res.data);
+                    })
+                    // this.form.name = res.data.sname;
+                },
+            },
+            mounted() {
+                this.getCoupon();
+            },
+            template: `
+                <div class="coupon">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="background-color: #D3E0EA; color:#276678;">優惠折扣</th>
+                                <th style="background-color: #1687A7; color:white">使用狀況</th>
+                                <th style="background-color: #D3E0EA; color:#276678;">取得日期</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="(coupon,index) in coupons">
+                                <td>
+                                    <img :src="coupons[index].dpic" alt="">
+                                    {{coupons[index].dcinifo * 10}}折券
+                                </td>
+                                <td>{{coupons[index].dstatus}}</td>
+                                <td>{{coupons[index].getdate}}</td>
+                            </tr>
+                        </tbody>
+                        
+                    </table>
+                </div>
+            `,
+        });
+        new Vue({
+            el: '#stdlogin',
+            data: {
+                cards:[],
+                content: 'basic',
+                labels: [
+                    {
+                        imgUrl: './images/member_2.svg',
+                        title: '基本資訊'
+                    },
+                    {
+                        imgUrl: './images/calendar_2.svg',
+                        title: '預約討論'
+                    },
+                    {
+                        imgUrl: './images/class.svg',
+                        title: '我的課程'
+                    },
+                    {
+                        imgUrl: './images/heart_2.svg',
+                        title: '我的收藏'
+                    },
+                    {
+                        imgUrl: './images/discount.svg',
+                        title: '我的優惠'
+                    }
+                ]
+
+            },
+            mounted() {
+                document.getElementsByTagName("label")[0].className = "tabs__label change";
+                this.getClass();
+            },
+            methods: {
+                getClass() {
+                    console.log("getClass")
+                    axios.get('./php/getMyclass.php').then(res => {
+                        //console.log(this);
+                        //console.log(res.data);
+                        this.cards = res.data
+                        console.log(this.cards);
+                    })
+                    // this.form.name = res.data.sname;
+                },
+                changeColor(index) {
+                    let tabs = document.getElementsByTagName("label");
+                    for (var i = 0; i < 5; i++) {
+                        tabs[i].className = "tabs__label";
+                    }
+                    tabs[index].classList.add('change');
+                    switch (index) {
+                        case 0:
+                            this.content = "basic";
+                            document.getElementsByTagName("label")[index].classList.add('change');
+                            break;
+                        case 1:
+                            this.content = "reserve";
+                            document.getElementsByTagName("label")[index].classList.add('change');
+                            break;
+                        case 2:
+                            this.content = "lesson";
+                            document.getElementsByTagName("label")[index].classList.add('change');
+                            break;
+                        case 3:
+                            this.content = "collection";
+                            document.getElementsByTagName("label")[index].classList.add('change');
+                            break;
+                        case 4:
+                            this.content = "coupon";
+                            document.getElementsByTagName("label")[index].classList.add('change');
+                            break;
+                    }
+                    //console.log(index);
+                },
+                abc(cards){
+                    this.cards = cards;
+                }
+            },
+        });
+    </script>
+    @@include('./layout/footer.html')
+</body>
+
+</html>
