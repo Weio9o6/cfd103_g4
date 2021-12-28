@@ -61,7 +61,7 @@ section {
   }
 }
 
-hr {
+#course hr {
   width: 80%;
   text-align: center;
   background-color: $darkblue;
@@ -114,6 +114,10 @@ hr {
 
   .card {
     @include card();
+    @include m() {
+      width: 275px;
+      height: 400px;
+    }
   }
 
   // .card {

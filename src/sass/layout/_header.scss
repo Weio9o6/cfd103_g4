@@ -1,365 +1,356 @@
 * {
-    padding: 0;
-    margin: 0;
-    list-style: none;
+	list-style: none;
 }
-#showbox{
-    width: 100%;
-    height: 100%;
-    background-color: rgba(66,66,66,.6);
-    position: fixed;
-    z-index: 990;
-    display: none;
-    #logbox{
-        width: 300px;
-        height: 320px;
-        padding: 20px 20px 0;
-        background-color: $gray;
-        border-radius: 25px;
-        position: fixed;
-        left: 50%;
-        top: 150px;
-        margin-left:-150px;
-        z-index: 999;
-    
-        h1{
-            font-size: $size-1;
-            color: $darkgreen;
-            margin-bottom: 0px;
-            a{
-                font-size: $size-5;
-                text-decoration: none;
-                float: right;
-            }
-        }
+#showbox {
+	width: 100%;
+	height: 100%;
+	background-color: rgba(66, 66, 66, 0.6);
+	position: fixed;
+	z-index: 990;
+	display: none;
+	#logbox {
+		width: 300px;
+		height: 320px;
+		padding: 20px 20px 0;
+		background-color: $gray;
+		border-radius: 25px;
+		position: fixed;
+		left: 50%;
+		top: 150px;
+		margin-left: -150px;
+		z-index: 999;
 
-        .log_in_f{
-            width: 250px;
-            margin: 30px auto 0;
+		h1 {
+			font-size: $size-1;
+			color: $darkgreen;
+			margin-bottom: 0px;
+			a {
+				font-size: $size-5;
+				text-decoration: none;
+				float: right;
+			}
+		}
 
-            h5{
-                font-size: $size-5;
-                color: $black;
-                margin: 20px 0 5px 0;
-            }
+		.log_in_f {
+			width: 250px;
+			margin: 30px auto 0;
 
-            input{
-                width: 250px;
-                height: 30px;
-                background-color: $blue;
-                border: none;
-                border-radius: 20px;
-                padding: 20px;
-            }
+			h5 {
+				font-size: $size-5;
+				color: $black;
+				margin: 20px 0 5px 0;
+			}
 
-            textarea{
-                background-color: $blue;
-                border: none;
-                border-radius: 15px;
-            }
+			input {
+				width: 250px;
+				height: 30px;
+				background-color: $blue;
+				border: none;
+				border-radius: 20px;
+				padding: 20px;
+			}
 
-        }
+			textarea {
+				background-color: $blue;
+				border: none;
+				border-radius: 15px;
+			}
+		}
 
-        .btns{
-            float: right;
-            margin-top: 30px;
+		.btns {
+			float: right;
+			margin-top: 30px;
 
-            .cancel_btn{
-                width: 80px;
-                height: 35px;
-                border-radius: 18px;
-                border: 2px solid $darkgreen;
-                margin-right: 10px;
-                cursor: pointer;
-                p{
-                    font-size: $size-6;
-                    margin: 0;
-                    color: $darkgreen;
-                }
-            }
+			.cancel_btn {
+				width: 80px;
+				height: 35px;
+				border-radius: 18px;
+				border: 2px solid $darkgreen;
+				margin-right: 10px;
+				cursor: pointer;
+				p {
+					font-size: $size-6;
+					margin: 0;
+					color: $darkgreen;
+				}
+			}
 
-            .submit_btn{
-                width: 80px;
-                height: 35px;
-                border-radius: 18px;
-                border: none;
-                background-color: $darkgreen;
-                cursor: pointer;
-                p{
-                    font-size: $size-6;
-                    margin: 0;
-                    color: $white;
-                }
-            }
-        }
-    }
+			.submit_btn {
+				width: 80px;
+				height: 35px;
+				border-radius: 18px;
+				border: none;
+				background-color: $darkgreen;
+				cursor: pointer;
+				p {
+					font-size: $size-6;
+					margin: 0;
+					color: $white;
+				}
+			}
+		}
+	}
 }
 
 .header-container {
-    background-color: $header-color;
-    user-select: none;
-    width: 100%;
-    margin-bottom: 50px;
+	background-color: $header-color;
+	user-select: none;
+	width: 100%;
+	margin-bottom: 50px;
 }
 
 header {
-    width: 100%;
-    box-sizing: border-box;
-    display: flex;
-    align-items: center;
-    margin: auto;
-    padding: 10px;
+	width: 100%;
+	box-sizing: border-box;
+	display: flex;
+	align-items: center;
+	margin: auto;
+	padding: 10px;
 
-    @include dt() {
-        width: 1024px;
-    }
+	@include dt() {
+		width: 1024px;
+	}
 }
 
 .logo-icon {
-    width: 150px;
-    margin-right: 25px;
+	width: 150px;
+	margin-right: 25px;
 
-    img {
-        width: 100%;
-        vertical-align: top;
-    }
+	img {
+		width: 100%;
+		vertical-align: top;
+	}
 }
 
-
 .course-class {
-    display: none;
+	display: none;
 
-    @include dt() {
-        display: flex;
-        margin-right: auto;
-        align-items: center;
-    }
+	@include dt() {
+		display: flex;
+		margin-right: auto;
+		align-items: center;
+	}
 
-    img {
-        width: 25px;
-        vertical-align: top;
-        margin-right: 5px;
-    }
+	img {
+		width: 25px;
+		vertical-align: top;
+		margin-right: 5px;
+	}
 
-    span {
-        font-weight: 700;
-        color: $header-font;
-    }
+	span {
+		font-weight: 700;
+		color: $header-font;
+	}
 }
 
 .car {
-    width: 30px;
-    margin-right: 20px;
-    margin-left: auto;
-    position: relative;
+	width: 30px;
+	margin-right: 20px;
+	margin-left: auto;
+	position: relative;
 
-    @include dt() {
-        .car {
-            margin-left: auto;
-        }
-    }
+	@include dt() {
+		.car {
+			margin-left: auto;
+		}
+	}
 
-    img {
-        width: 100%;
-        vertical-align: top;
-    }
+	img {
+		width: 100%;
+		vertical-align: top;
+	}
 
-    &::after {
-        // content: '0';
-        content: attr(data-text);
-        color: #fff;
-        background-color: #FF5b74;
-        position: absolute;
-        width: 20px;
-        border-radius: 50%;
-        top: -5px;
-        right: -10px;
-        text-align: center;
-    }
+	&::after {
+		// content: '0';
+		content: attr(data-text);
+		color: #fff;
+		background-color: #ff5b74;
+		position: absolute;
+		width: 20px;
+		border-radius: 50%;
+		top: -5px;
+		right: -10px;
+		text-align: center;
+	}
 }
-.std-ifo{
-    width: 35px;
-    margin-right: 20px;
-    display: none;
-    img {
-        width: 100%;
-        vertical-align: top;
-    }  
-    display: none;
+.std-ifo {
+	width: 35px;
+	margin-right: 20px;
+	display: none;
+	img {
+		width: 100%;
+		vertical-align: top;
+	}
+	display: none;
 }
 
 .btn-login {
-    width: 80px;
-    height: 35px;
-    font-size: $size-6;
-    border: none;
-    background-color: transparent;
-    background-color: $login-color;
-    border-radius: 20px;
-    color: $login-font;
-    cursor: pointer;
-    display: none;
-    @include dt() {
-        display: block;
-    }
+	width: 80px;
+	height: 35px;
+	font-size: $size-6;
+	border: none;
+	background-color: transparent;
+	background-color: $login-color;
+	border-radius: 20px;
+	color: $login-font;
+	cursor: pointer;
+	display: none;
+	@include dt() {
+		display: block;
+	}
 }
 
 .course-items-group {
-    display: none;
+	display: none;
 
-    @include dt() {
-        width: 100%;
-        background-color: $course-items-group;
-        padding: 10px;
-        position: absolute;
-        z-index: 99;
-    }
+	@include dt() {
+		width: 100%;
+		background-color: $course-items-group;
+		padding: 10px;
+		position: absolute;
+		z-index: 99;
+	}
 
-    ul {
-        width: 960px;
-        display: flex;
-        justify-content: center;
-        margin: auto;
-    }
+	ul {
+		width: 960px;
+		display: flex;
+		justify-content: center;
+		margin: auto;
+	}
 
-    li {
-        /* background-image: url("images/bg.jpg"); */
-        background-color: $course-items-group-item;
-        margin: 10px;
-        border-radius: 5px;
-        a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 180px;
-            height: 100px;
-            text-decoration: none;
-            color: $course-items-group-font;
-        }
-    }
+	li {
+		/* background-image: url("images/bg.jpg"); */
+		background-color: $course-items-group-item;
+		margin: 10px;
+		border-radius: 5px;
+		a {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 180px;
+			height: 100px;
+			text-decoration: none;
+			color: $course-items-group-font;
+		}
+	}
 
-    // a{
-    //     width: 180px;
-    //     height: 100px;
-    //     text-decoration: none;
-    //     color: $course-items-group-font;
-    //     background-color: $course-items-group-item;
-    //     border-radius: 5px;
-    //     display: flex;
-    //     justify-content: center;
-    //     align-items: center;
-    //     margin: 10px;
-    //     li{
-    //         width: 100%;
-    //         height: 100%;
-    //         background-image: url('../../images/ball_1.svg');
-    //         background-repeat: no-repeat;
-    //     }
-    // }
-
-
-
-
+	// a{
+	//     width: 180px;
+	//     height: 100px;
+	//     text-decoration: none;
+	//     color: $course-items-group-font;
+	//     background-color: $course-items-group-item;
+	//     border-radius: 5px;
+	//     display: flex;
+	//     justify-content: center;
+	//     align-items: center;
+	//     margin: 10px;
+	//     li{
+	//         width: 100%;
+	//         height: 100%;
+	//         background-image: url('../../images/ball_1.svg');
+	//         background-repeat: no-repeat;
+	//     }
+	// }
 }
 
 .hub {
-    display: block;
-    width: 30px;
-    height: 30px;
+	display: block;
+	width: 30px;
+	height: 30px;
 
-    @include dt() {
-        display: none;
-    }
+	@include dt() {
+		display: none;
+	}
 
-    img {
-        width: 100%;
-        vertical-align: top;
-    }
+	img {
+		width: 100%;
+		vertical-align: top;
+	}
 
-    .hub-nav {
-        background-color: #F6F5F5;
-        display: none;
-        position: fixed;
-        top: 0;
-        right: -100vw;
-        height: 100vh;
-        width: 100%;
-        z-index: 98;
-        overflow: auto;
+	.hub-nav {
+		background-color: #f6f5f5;
+		display: none;
+		position: fixed;
+		top: 0;
+		right: -100vw;
+		height: 100vh;
+		width: 100%;
+		z-index: 98;
+		overflow: auto;
 
-        /* transition: all .8s; */
-        li {
-            font-size: 20px;
-            font-weight: bold;
-            cursor: pointer;
+		/* transition: all .8s; */
+		li {
+			font-size: 20px;
+			font-weight: bold;
+			cursor: pointer;
 
-            img {
-                width: 25px;
-                vertical-align: top;
-                margin-right: 10px;
-            }
-        }
-        
-    }
+			img {
+				width: 25px;
+				vertical-align: top;
+				margin-right: 10px;
+			}
+		}
+	}
 
-    .hub-login {
-        margin: 50px 20px auto;
-        padding-top: 5px;
-        img {
-            margin-right: 5px;
-        }
-        input{
-            border: none;
-            background-color: transparent;
-            font-size: $size-4;
-            font-weight: bold;
-            color: #333;
-            cursor: pointer;
-        }
-        .close {
-            border: none;
-            float: right;
-            background-color: transparent;
-            font-size: $size-5;
-            cursor: pointer;
-        }
+	.hub-login {
+		margin: 50px 20px auto;
+		padding-top: 5px;
+		img {
+			margin-right: 5px;
+		}
+		input {
+			border: none;
+			background-color: transparent;
+			font-size: $size-4;
+			font-weight: bold;
+			color: #333;
+			cursor: pointer;
+		}
+		.close {
+			border: none;
+			float: right;
+			background-color: transparent;
+			font-size: $size-5;
+			cursor: pointer;
+		}
 
-        &::after {
-            content: '';
-            margin: 20px auto 30px;
-            display: block;
-            background-color: #276678;
-            height: 2px;
-            width: 100%;
-        }
-    }
+		&::after {
+			content: "";
+			margin: 20px auto 30px;
+			display: block;
+			background-color: #276678;
+			height: 2px;
+			width: 100%;
+		}
+	}
 }
 .hub-nav ul li:not(.hub-login) {
-    display: flex;
-    align-items: center;
-    padding: 15px 20px 15px;
-    color: #333;
-    text-decoration: none;
+	display: flex;
+	align-items: center;
+	padding: 15px 20px 15px;
+	color: #333;
+	text-decoration: none;
 }
 
 .hub-nav li a:not(.hub-login) {
-    color: #333;
-    text-decoration: none;
+	color: #333;
+	text-decoration: none;
 }
 .items {
-    display: none;
-    padding-left: 35px;
-    li {
-        a {
-            &:first-child {
-                text-decoration: none;
-                color: $rwd-items-group-font;
-            }
-        }
-    }
+	display: none;
+	padding-left: 35px;
+	li {
+		a {
+			&:first-child {
+				text-decoration: none;
+				color: $rwd-items-group-font;
+			}
+		}
+	}
 }
 
 .hide {
-    position: absolute;
-    right: -100vw;
+	position: absolute;
+	right: -100vw;
 }
