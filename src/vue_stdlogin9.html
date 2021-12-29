@@ -6,11 +6,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="./css/style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.js"></script>
     <script src="./js/vue.js"></script>
-    <link rel="stylesheet" href="./css/style.css">
 </head>
+<style>
+    .for_calendar .reserved{
+    color: #fff;
+    background-color: #f3bbbb;
+}
+</style>
 <body>
     @@include('./layout/header.html')
     <div id="stdlogin">
@@ -609,8 +615,18 @@
 
             },
             mounted() {
-                document.getElementsByTagName("label")[0].className = "tabs__label change";
-                this.getClass();
+                var logincheck = new XMLHttpRequest();
+                logincheck.open('GET', "./php/logincheck.php", false);
+                logincheck.onload = function () {
+                    if (logincheck.responseText != 1) {
+                        alert('您尚未登入');
+                        window.location.href = 'home.html';
+                    }else{
+                        document.getElementsByTagName("label")[0].className = "tabs__label change";
+                        this.getClass();
+                    }
+                };
+                logincheck.send(null);
             },
             methods: {
                 getClass() {
