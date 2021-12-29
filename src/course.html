@@ -59,7 +59,6 @@
 										collectIcon: vm.pic.collectIcon,
 									};
 								});
-								console.log(resArr);
 								vm.$emit("update-result", resArr);
 							} else {
 								console.log(xhr.status);
@@ -75,6 +74,7 @@
 						let data_info =
 							"keyWord=" + document.getElementById("search").value;
 						xhr.send(data_info);
+						document.getElementById("search").value = "";
 					},
 					tagHandler(str) {
 						//產生XMLHttpRequest物件
@@ -85,7 +85,7 @@
 							if (xhr.status == 200) {
 								//console.log("成功");
 								//console.log(xhr.responseText);
-								//console.log(JSON.parse(xhr.responseText));
+								console.log(JSON.parse(xhr.responseText));
 								vm.$emit("update-result", JSON.parse(xhr.responseText));
 							} else {
 								console.log(xhr.status);
@@ -101,26 +101,43 @@
 						let data_info = "keyWord=" + str;
 						xhr.send(data_info);
 					},
+
+					//偵測網址
+					// watchLinkHref() {
+					// 	let courseLinkHref = window.location.href.split("=")[1];
+					// 	console.log(courseLinkHref);
+					// 	// let categoryHref = window.location.href.split("?")[1].split("=")[1]; //latest
+
+					// 	switch (courseLinkHref) {
+					// 		case "css":
+					// 			this.tagHandler("css");
+					// 			break;
+					// 		case "html":
+					// 			this.tagHandler("html");
+					// 		default:
+					// 			break;
+					// 	}
+					// },
 				},
 				mounted() {},
 				template: `<section class="explore">
-        <div class="container">
-          <div class="title">
-            <h1>探索課程</h1>
-          </div>
-          <div class="tag-group">
-            <div class="tag" @click="tagHandler('html')"">Html</div>
-            <div class="tag" @click="tagHandler('css')">Css</div>
-            <div class="tag" @click="tagHandler('javascript')">JavaScript</div>
-            <div class="tag" @click="tagHandler('python')">Python</div>
-          </div>
-          <div class="searchbar">
-            <form  @submit.prevent='submitHandler()'>
-              <input type="text" placeholder="Search" name="search" id='search'  />
-            </form>
-          </div>
-        </div>
-      </section>`,
+								<div class="container">
+								<div class="title">
+									<h1>探索課程</h1>
+								</div>
+								<div class="tag-group">
+									<div class="tag" @click="tagHandler('html')"">Html</div>
+									<div class="tag" @click="tagHandler('css')">Css</div>
+									<div class="tag" @click="tagHandler('javascript')">JavaScript</div>
+									<div class="tag" @click="tagHandler('python')">Python</div>
+								</div>
+								<div class="searchbar">
+									<form  @submit.prevent='submitHandler()'>
+									<input type="text" placeholder="Search" name="search" id='search'  />
+									</form>
+								</div>
+								</div>
+							</section>`,
 			});
 
 			Vue.component("course-list", {
@@ -139,12 +156,18 @@
 				},
 				watch: {
 					result(nVal, oVal) {
+						//console.log(nVal);
+						//console.log(oVal);
+						let vm = this;
+						let noResult = document.querySelector(".noResult");
 						if (nVal.length == 0) {
-							// let noResult = document.querySelector("card");
-							// noResult.appendChild();
+							noResult.style.display = "block";
+							vm.cards = [];
+						} else {
+							noResult.style.display = "none";
+							vm.cards = vm.result;
+							vm.getCollect();
 						}
-						this.cards = this.result;
-						this.getCollect();
 					},
 
 					selected: {
@@ -158,25 +181,24 @@
 								case "hotest":
 									this.getCourse("./php/getAllHotCourse.php");
 									break;
+								case "all":
+									this.getCourse("./php/getAllCourse.php");
+									break;
 								case "html":
-									this.linkHandler("'html'");
+									this.linkHandler("html");
 									break;
 								case "css":
 									this.linkHandler("css");
 									break;
 								case "python":
-									this.linkHandler("'python'");
+									this.linkHandler("python");
 									break;
 								case "javascript":
-									this.linkHandler("'javascript'");
+									this.linkHandler("javascript");
 									break;
 								case "java":
-									this.linkHandler("'java'");
+									this.linkHandler("java");
 									break;
-								case "":
-									this.linkHandler("./php/getCourse.php");
-									break;
-
 								default:
 									break;
 							}
@@ -209,29 +231,28 @@
 					},
 
 					linkHandler(str) {
-						//產生XMLHttpRequest物件
-						let xhr = new XMLHttpRequest();
-						//註冊callback function
 						let vm = this;
-						xhr.onload = function () {
-							if (xhr.status == 200) {
-								//console.log("成功");
-								//console.log(xhr.responseText);
-								console.log(JSON.parse(xhr.responseText));
-								vm.$emit("update-result", JSON.parse(xhr.responseText));
-							} else {
-								console.log(xhr.status);
-							}
+						let params = {
+							str: str,
 						};
-						//設定好所要連結的程式
-						xhr.open("Post", "./php/searchCourse.php", true);
-						xhr.setRequestHeader(
-							"content-type",
-							"application/x-www-form-urlencoded"
-						);
-						//送出資料
-						let data_info = "keyWord=" + str;
-						xhr.send(data_info);
+						axios
+							.post("./php/getHtml.php", params)
+							.then((response) => {
+								console.log(response.data);
+								let res = response.data;
+								let resArr = [];
+								resArr = res.map((v) => {
+									return {
+										...v,
+										collectIcon: vm.pic.collectIcon,
+									};
+								});
+								console.log(resArr);
+								vm.cards = resArr;
+							})
+							.catch((error) => {
+								console.log(error.response);
+							});
 					},
 
 					//判斷愛心渲染
@@ -338,11 +359,28 @@
 						});
 					},
 
+					changeHerf() {
+						let link = window.location.href;
+						console.log(link);
+						let linkBasic = link.split("course.html")[0];
+						let linkCheck = link.split("course.html")[1];
+
+						console.log(linkBasic);
+						console.log(linkCheck);
+						if (linkCheck == "") {
+							window.location.href = linkBasic + "course.html?catagory=all";
+							console.log(link);
+							this.watchHref();
+						} else {
+							this.watchHref();
+						}
+					},
+
 					//偵測網址
 					watchHref() {
-						let courseHref = window.location.href.split("=")[1];
-						console.log(courseHref);
+						//console.log(courseHref);
 						// let categoryHref = window.location.href.split("?")[1].split("=")[1]; //latest
+						let courseHref = window.location.href.split("=")[1];
 						switch (courseHref) {
 							case "hotest":
 								this.selected = "hotest";
@@ -351,81 +389,88 @@
 								this.selected = "latest";
 								break;
 							case "html":
-								this.selected = "'html'";
+								this.selected = "html";
 								break;
-							case "python":
-								this.selected = "'python'";
-								break;
-							case "%27css%27":
+							case "css":
 								this.selected = "css";
 								break;
+							case "python":
+								this.selected = "python";
+								break;
 							case "javascript":
-								this.selected = "'javascript'";
+								this.selected = "javascript";
 								break;
 							case "java":
-								this.selected = "'java'";
+								this.selected = "java";
 								break;
-							default:
+							case "all":
+								this.selected = "all";
 								break;
+
+							// default:
+							// 	break;
 						}
 					},
 				},
 				mounted() {
-					this.watchHref();
+					this.changeHerf();
 				},
 
 				template: `
-        <section class="course-list">
-        <div class="container">
-          <div class="dropdown">
-            <form>
-              <select name="filter" id="filter" v-model="selected" >
-                <option value="" selected >所有課程</option>
-                <option value="latest">最新課程</option>
-                <option value="hotest">熱門課程</option>
-              </select>
-            </form>
-          </div>
+			     <section class="course-list">
+			     <div class="container">
+			       <div class="dropdown">
+			         <form>
+			           <select name="filter" id="filter" v-model="selected" >
+			             <option value="all" selected >所有課程</option>
+			             <option value="latest">最新課程</option>
+			             <option value="hotest">熱門課程</option>
+			           </select>
+			         </form>
+			       </div>
+			 <div class="noResult">
+			            <p>找不到結果，請嘗試不同或更換常見的關鍵字~</p>
+			       </div>
 
-           <div class="card-group">
-                  <a href="./lesson.html" v-for='(card,index) in cards'>
-                      <div class="card">
-                          <div class="header">
-                          <img
-                            :src='cards[index].cpic'
-                            alt=""
-                          />
-                        </div>
-                        <div class="content">
-                          <div class="top">
-                            <h4>{{cards[index].cname}}</h4>
-                            <p>{{cards[index].subtitle}}</p>
-                          </div>
-                          <h5>{{cards[index].tname}}</h5>
-                          <div class="bottom">
-                            <div class="bottom-left">
-                            <div class="clock">
-                              <img :src='pic.timeIcon' alt="" />
-                              <span>{{cards[index].ctime}}min</span>
-                            </div>
-                            <div class="people">
-                              <img :src='pic.peopleIcon'alt="" />
-                              <span>{{cards[index].attend}}</span>
-                            </div>
-                          </div>
-                          <div class="bottom-right">
-                            <div class="collect">
-                              <img :src='cards[index].collectIcon' :id='cards[index].cno' @click='switchFavorite($event, index)'/>
-                            </div>
-                            <div class="price">NT$ {{cards[index].cpr}}</div>
-                          </div>
-                          </div>
-                        </div>
-                      </div>
-                  </a>
-                </div>
-        </div>
-      </section>`,
+			        <div class="card-group">
+			               <a href="./lesson.html" v-for='(card,index) in cards'>
+			                   <div class="card">
+			                       <div class="header">
+			                       <img
+			                         :src='cards[index].cpic'
+			                         alt=""
+			                       />
+			                     </div>
+			                     <div class="content">
+			                       <div class="top">
+			                         <h4>{{cards[index].cname}}</h4>
+			                         <p>{{cards[index].subtitle}}</p>
+			                       </div>
+			                       <h5>{{cards[index].tname}}</h5>
+			                       <div class="bottom">
+			                         <div class="bottom-left">
+			                         <div class="clock">
+			                           <img :src='pic.timeIcon' alt="" />
+			                           <span>{{cards[index].ctime}}min</span>
+			                         </div>
+			                         <div class="people">
+			                           <img :src='pic.peopleIcon'alt="" />
+			                           <span>{{cards[index].attend}}</span>
+			                         </div>
+			                       </div>
+			                       <div class="bottom-right">
+			                         <div class="collect">
+			                           <img :src='cards[index].collectIcon' :id='cards[index].cno' @click='switchFavorite($event, index)'/>
+			                         </div>
+			                         <div class="price">NT$ {{cards[index].cpr}}</div>
+			                       </div>
+			                       </div>
+			                     </div>
+			                   </div>
+			               </a>
+			             </div>
+			     </div>
+			   </section>`,
 			});
 
 			new Vue({
