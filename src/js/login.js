@@ -10,6 +10,8 @@ function showLoginForm(){
     xhr.onload = function(){
       $id('btn-login').value = '登入';
       $id('std-ifo').style.display = 'none';
+      window.alert('已登出');
+      window.location.href='home.html';
     }
     xhr.open("get", "php/logout.php", true);
     xhr.send(null);
@@ -24,6 +26,8 @@ function showLoginForm2(){
     xhr.onload = function(){
       $id('btn-login2').value = '登入';
       $id('std-ifo').style.display = 'none';
+      window.alert('已登出');
+      window.location.href='home.html';
     }
     xhr.open("get", "php/logout.php", true);
     xhr.send(null);
