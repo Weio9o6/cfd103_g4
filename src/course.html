@@ -164,6 +164,21 @@
 								case "hotest":
 									this.getCourse("./php/getAllHotCourse.php");
 									break;
+								case "html":
+									this.linkHandler("html");
+									break;
+								case "css":
+									this.getCourse("css");
+									break;
+								case "python":
+									this.getCourse("python");
+									break;
+								case "javascript":
+									this.getCourse("javascript");
+									break;
+								case "java":
+									this.getCourse("java");
+									break;
 								case "":
 									this.getCourse("./php/getCourse.php");
 									break;
@@ -197,6 +212,32 @@
 							.catch(function (error) {
 								console.log(`Error: ${error}`);
 							});
+					},
+
+					linkHandler(str) {
+						//產生XMLHttpRequest物件
+						let xhr = new XMLHttpRequest();
+						//註冊callback function
+						let vm = this;
+						xhr.onload = function () {
+							if (xhr.status == 200) {
+								//console.log("成功");
+								//console.log(xhr.responseText);
+								//console.log(JSON.parse(xhr.responseText));
+								vm.$emit("update-result", JSON.parse(xhr.responseText));
+							} else {
+								console.log(xhr.status);
+							}
+						};
+						//設定好所要連結的程式
+						xhr.open("Post", "./php/searchCourse.php", true);
+						xhr.setRequestHeader(
+							"content-type",
+							"application/x-www-form-urlencoded"
+						);
+						//送出資料
+						let data_info = "keyWord=" + str;
+						xhr.send(data_info);
 					},
 
 					//判斷愛心渲染
@@ -308,6 +349,32 @@
 						let courseHref = window.location.href.split("=")[1];
 						console.log(courseHref);
 						// let categoryHref = window.location.href.split("?")[1].split("=")[1]; //latest
+						switch (courseHref) {
+							case "hotest":
+								this.selected = "hotest";
+								break;
+							case "latest":
+								this.selected = "latest";
+								break;
+							case "html":
+								this.selected = "html";
+								break;
+							case "python":
+								this.selected = "python";
+								break;
+							case "css":
+								this.selected = "css";
+								break;
+							case "javascript":
+								this.selected = "javascript";
+								break;
+							case "java":
+								this.selected = "java";
+								break;
+
+							default:
+								break;
+						}
 						if (courseHref == "hotest") {
 							this.selected = "hotest";
 						} else if (courseHref == "latest") {
