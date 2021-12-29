@@ -20,6 +20,7 @@
 // }
 
 @mixin card() {
+  @content;
   margin-top: 2rem;
   border: 1px solid $darkblue;
   display: flex;
@@ -81,8 +82,8 @@
   @include m() {
     justify-content: center;
     flex-direction: column;
-    width: 275px;
-    height: 400px;
+    // width: 275px;
+    // height: 400px;
     .header {
       img {
         width: 100%;

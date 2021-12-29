@@ -1,10 +1,23 @@
 @import './base/rwd';
 @import './base/var';
+@import './base/card';
 .tabs{
     display: flex;
     flex-wrap: wrap;
     width: 100%;
     font-family: sans-serif;
+    position: relative;
+}
+.tabs::after{
+    content: "";
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        background-color: rgb(114, 114, 114);
+        top: 48px;
+        @include m(){
+            top: 38px;
+        }
 }
 .tabs__label{
         padding: 10px 16px;
@@ -23,33 +36,15 @@
         }
     }
 }
-.tabs__radio{
-    display: none;
-}
-.tabs__content{
-    order: 1;
-    width: 100%;
-    line-height: 1.5;
-    font-size: 0.9em;
-    display: none;
-    position: relative;
-}
-.tabs__content::before{
-    content: "";
-        position: absolute;
-        width: 100%;
-        height: 2px;
-        background-color: rgb(114, 114, 114);
-}
-.tabs__radio:checked + .tabs__label{
+.change{
     font-weight: bold;
     color: #276678;
     border-bottom: 2px solid #276678;
 }
-.tabs__radio:checked + .tabs__label + .tabs__content{
-    display: initial;
-}
-.tabs__content{
+#stdlogin{
+    width: 100%;
+    margin: 0px auto;
+    max-width: 1024px;
     .info{
         @include m(){
             width: 80%;
@@ -101,6 +96,7 @@
                     h2{
                         font-size: 20px;
                         color: cornflowerblue;
+                        padding: 5px;
                     }
                 }
             }
@@ -148,187 +144,150 @@
             }
         }
     }
-}
-.discuss{
-    margin-top: 25px;
-    .discuss_rules{
-        width: 95%;
-        margin: 0 auto;
-        .condition{
-            display: flex;
-            position: relative;
-            .reservation_status{
+    .discuss{
+        margin-top: 25px;
+        .discuss_rules{
+            width: 95%;
+            margin: 0 auto;
+            .condition{
                 display: flex;
-                margin: 0 25px;
-                font-size: 13px;
-                align-items: center;
-                .reserved{
-                    margin-right: 5px;
+                position: relative;
+                .reservation_status{
+                    display: flex;
+                    margin: 0 25px;
+                    font-size: 13px;
+                    align-items: center;
+                    .reserved{
+                        margin-right: 5px;
+                    }
+                    .reserved::before{
+                        content:"■ ";
+                        color: #1687A7;
+                    }
+                    .full::before{
+                        content:"■ ";
+                        color: #F3BBBB;
+                    }
                 }
-                .reserved::before{
-                    content:"■ ";
-                    color: #1687A7;
+                @include btn(reserve,50px,$m-size-5,#276678){
+                    margin-left: auto;
+                    padding: 3px;
+                    margin-top: 0px;
                 }
-                .full::before{
-                    content:"■ ";
-                    color: #F3BBBB;
-                }
+                // button{
+                //     margin-left: auto;
+                //     background-color: #276678;
+                //     color: white;
+                //     border-radius: 20px;
+                // }
             }
-            @include btn(reserve,50px,$m-size-5,#276678){
-                margin-left: auto;
+            .condition::after{
+                content: "";
+                position: absolute;
+                top: 35px;
+                width: 100%;
+                height: 1px;
+                background-color: rgb(191, 191, 191);
+            }
+        }
+        .step_rules{
+            display: flex;
+            align-items: center;
+            margin: 10px;
+            .step{
+                text-align: center;
+                width: 20px;
+                height: 20px;
+                border-radius: 50%;
+                background-color: rgb(228, 163, 163);
+                margin: 5px;
+            }
+        }
+    }
+    .reserve{
+        .for_calendar{
+            @include btn(calendar,50px,$m-size-5,#276678){
                 padding: 3px;
                 margin-top: 0px;
             }
-            // button{
-            //     margin-left: auto;
-            //     background-color: #276678;
-            //     color: white;
-            //     border-radius: 20px;
-            // }
-        }
-        .condition::after{
-            content: "";
-            position: absolute;
-            top: 35px;
-            width: 100%;
-            height: 1px;
-            background-color: rgb(191, 191, 191);
-        }
-    }
-    .step_rules{
-        display: flex;
-        align-items: center;
-        margin: 10px;
-        .step{
-            text-align: center;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background-color: rgb(228, 163, 163);
-            margin: 5px;
         }
     }
 }
-.calendar{
-    margin-top: 40px;
-    width: 90%;
-    margin: 40px auto;
-    h1{
-        font-size: 20px;
-    }
-    table{
-        width: 90%;
-        margin: 15px auto;
-        th{
-            height: 40px;
-            font-size: 18px;
-        }
-        th:nth-child(1),
-        th:nth-child(7){
-            color: red;
-        }
-        td{
-            height: 40px;
-            border: 1px solid rgb(174, 174, 174);
-            @include m(){
-                height: 55px;
-            }
-        }
-    }
+.for_calendar{
+    width: 95%;
+    margin: auto;
+    margin-top: 20px;
+}
+.for_calendar h1{
+    font-size: 20px;
+    font-weight: 900;
+    color: #276678;
+    margin-bottom: 10px;
+}
+.for_calendar span{
+    color: black;
+    font-weight: normal;
+}
+.for_calendar .calendar{
+    margin: 20px auto;
+    text-align: center;
+}
+.for_calendar .weekDay,.week{
+    display: flex;
+    border-bottom: 1px solid rgb(196, 194, 194);
+}
+.for_calendar .week{
+    border-right: 1px solid rgb(196, 194, 194);
+}
+.for_calendar .weekDay>div{
+    flex: 1 1 0%;
+    line-height: 30px;
+}
+.for_calendar .week>div{
+    position: relative;
+    flex: 1 1 0%;
+    height: 90px;
+    line-height: 30px;
+    border-left: 1px solid rgb(196, 194, 194);
+}
+.for_calendar .week>div:before{
+    position: absolute;
+    content: attr(data-date);
+    top: 0;
+    right: 0;
+    display: block;
+    width: 30px;
+    border-left: 1px solid rgb(196, 194, 194);
+    border-bottom: 1px solid rgb(196, 194, 194);
+}
+.for_calendar .today:before{
+    color: #fff;
+    background-color: #276678;
+}
+.for_calendar .others{
+    color: rgb(112, 112, 112);
+    background-color: rgb(214, 214, 214);
 }
 .my_lesson,
 .my_collection{
+    a{
+        text-decoration: none;
+    }
     margin: 30px auto;
     width: 90%;
     @include m(){
         display: flex;
+        flex-wrap: wrap;
     }
     .card{
-        width: 100%;
-        display: flex;
-        border: 2px solid #D3E0EA;
-        margin-bottom: 15px;
-        @include m(){
-            display: block;
-            width: 20%;
-            margin: 15px;
-            height: 350px;
-        }
-        a{
-            width: 25%;
-            .card_img{
-                width: 100%;
-                height: 100%;
-                @include m(){
-                    height: 50%;
-                }
-                img{
-                    width: 100%;
-                    height: 100%;
-                    vertical-align: middle;
-                    object-fit: cover;
-                }
-            }
-        }
-        .card_content{
-            width: 75%;
-            line-height: 1.2;
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-            padding: 3px;
-            box-sizing: border-box;
+        @include card(){
             @include m(){
-                width: 100%;
-                height: 50%;
+                width: 234px;
+                height: 345px;
             }
-            a{
-                text-decoration: none;
-                color: black;
-                font-size: 0.1em;
-                width: 100%;
-                @include m(){
-                    font-size: 14px;
-                }
-                @include t(){
-                    font-size: 16px;
-                }
-                h1{
-                    font-size: 14px;
-                    @include m(){
-                        font-size: 16px;
-                    }
-                    @include t(){
-                        font-size: 24px;
-                    }
-                }
-                h2{
-                    font-size: 10px;
-                    font-weight: 300;
-                    @include m(){
-                        font-size: 14px;
-                    }
-                    @include t(){
-                        font-size: 17px;
-                    }
-                }
-                .content_detail{
-                    display: flex;
-                    justify-content: space-between;
-                    p{  
-                        img{
-                            width: 10px;
-                            height: 10px;
-                        }
-                    }
-                    p:nth-child(2){
-                        color: #1687A7;
-                    }
-                }
-            }
-            .content_teacher{
-                flex-grow: 1;
-            }
+        }
+        @include m(){
+            margin: 20px;
         }
     }
 }
