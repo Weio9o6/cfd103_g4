@@ -1,0 +1,57 @@
+.index-b{
+    background-color: #F6F5F5;
+    overflow: hidden;
+    position: relative;
+    .slider{
+        background: url("../../images/cloud2.svg");
+        background-repeat: repeat-x;
+        height: 500px;
+        width: 100000px;
+        animation: MOVE 1000s linear infinite;
+        @keyframes MOVE {
+            0%{transform: translateX(0%)};
+            100%{transform: translateX(-100%)};
+        }
+    }
+    
+    .front{
+        position: absolute;
+        width: 350px;
+        left: 200px;
+        top: 200px;
+            &:hover{
+                transform: scale(1.1);
+            }
+        }
+    
+
+    .back{
+        position: absolute;
+        width: 350px;
+        right: 200px;
+        top: 200px;
+            &:hover{
+                transform: scale(1.1);
+            }
+        }
+
+    .logo{
+        width: 200px;
+        position: absolute;
+        right: 44%;
+        top: 60px;
+    }
+    .index-footer img{
+        min-height: 100px;
+        width: 100%;
+    }
+    .f-down{
+        height: 100px;
+        p{
+            color: #276678;
+            text-align:center;
+            line-height:1.5;
+        }
+    }
+}
+
