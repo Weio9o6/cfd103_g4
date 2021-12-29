@@ -43,7 +43,6 @@
 				},
 				methods: {
 					submitHandler() {
-						//cardGroup.removeChild(noResult);
 						//產生XMLHttpRequest物件
 						let xhr = new XMLHttpRequest();
 						//註冊callback function
@@ -60,7 +59,7 @@
 										collectIcon: vm.pic.collectIcon,
 									};
 								});
-								//console.log(resArr);
+								console.log(resArr);
 								vm.$emit("update-result", resArr);
 							} else {
 								console.log(xhr.status);
@@ -76,7 +75,6 @@
 						let data_info =
 							"keyWord=" + document.getElementById("search").value;
 						xhr.send(data_info);
-						document.getElementById("search").value = "";
 					},
 					tagHandler(str) {
 						//產生XMLHttpRequest物件
@@ -88,7 +86,6 @@
 								//console.log("成功");
 								//console.log(xhr.responseText);
 								//console.log(JSON.parse(xhr.responseText));
-
 								vm.$emit("update-result", JSON.parse(xhr.responseText));
 							} else {
 								console.log(xhr.status);
@@ -142,15 +139,12 @@
 				},
 				watch: {
 					result(nVal, oVal) {
-						let noResult = document.querySelector(".noResult");
 						if (nVal.length == 0) {
-							noResult.style.display = "block";
-							this.cards = [];
-						} else {
-							noResult.style.display = "none";
-							this.cards = this.result;
-							this.getCollect();
+							// let noResult = document.querySelector("card");
+							// noResult.appendChild();
 						}
+						this.cards = this.result;
+						this.getCollect();
 					},
 
 					selected: {
@@ -165,22 +159,22 @@
 									this.getCourse("./php/getAllHotCourse.php");
 									break;
 								case "html":
-									this.linkHandler("html");
+									this.linkHandler("'html'");
 									break;
 								case "css":
-									this.getCourse("css");
+									this.linkHandler("css");
 									break;
 								case "python":
-									this.getCourse("python");
+									this.linkHandler("'python'");
 									break;
 								case "javascript":
-									this.getCourse("javascript");
+									this.linkHandler("'javascript'");
 									break;
 								case "java":
-									this.getCourse("java");
+									this.linkHandler("'java'");
 									break;
 								case "":
-									this.getCourse("./php/getCourse.php");
+									this.linkHandler("./php/getCourse.php");
 									break;
 
 								default:
@@ -223,7 +217,7 @@
 							if (xhr.status == 200) {
 								//console.log("成功");
 								//console.log(xhr.responseText);
-								//console.log(JSON.parse(xhr.responseText));
+								console.log(JSON.parse(xhr.responseText));
 								vm.$emit("update-result", JSON.parse(xhr.responseText));
 							} else {
 								console.log(xhr.status);
@@ -357,30 +351,22 @@
 								this.selected = "latest";
 								break;
 							case "html":
-								this.selected = "html";
+								this.selected = "'html'";
 								break;
 							case "python":
-								this.selected = "python";
+								this.selected = "'python'";
 								break;
-							case "css":
+							case "%27css%27":
 								this.selected = "css";
 								break;
 							case "javascript":
-								this.selected = "javascript";
+								this.selected = "'javascript'";
 								break;
 							case "java":
-								this.selected = "java";
+								this.selected = "'java'";
 								break;
-
 							default:
 								break;
-						}
-						if (courseHref == "hotest") {
-							this.selected = "hotest";
-						} else if (courseHref == "latest") {
-							this.selected = "latest";
-						} else {
-							this.selected = "";
 						}
 					},
 				},
@@ -402,8 +388,7 @@
           </div>
 
            <div class="card-group">
-				<div class="noResult"><p>沒有結果，請重新搜尋~</p></div>
-                <a href="./lesson.html" v-for='(card,index) in cards'>
+                  <a href="./lesson.html" v-for='(card,index) in cards'>
                       <div class="card">
                           <div class="header">
                           <img
