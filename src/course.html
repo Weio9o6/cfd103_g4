@@ -43,6 +43,7 @@
 				},
 				methods: {
 					submitHandler() {
+						//cardGroup.removeChild(noResult);
 						//產生XMLHttpRequest物件
 						let xhr = new XMLHttpRequest();
 						//註冊callback function
@@ -59,7 +60,7 @@
 										collectIcon: vm.pic.collectIcon,
 									};
 								});
-								console.log(resArr);
+								//console.log(resArr);
 								vm.$emit("update-result", resArr);
 							} else {
 								console.log(xhr.status);
@@ -75,6 +76,7 @@
 						let data_info =
 							"keyWord=" + document.getElementById("search").value;
 						xhr.send(data_info);
+						document.getElementById("search").value = "";
 					},
 					tagHandler(str) {
 						//產生XMLHttpRequest物件
@@ -86,6 +88,7 @@
 								//console.log("成功");
 								//console.log(xhr.responseText);
 								//console.log(JSON.parse(xhr.responseText));
+
 								vm.$emit("update-result", JSON.parse(xhr.responseText));
 							} else {
 								console.log(xhr.status);
@@ -139,12 +142,15 @@
 				},
 				watch: {
 					result(nVal, oVal) {
+						let noResult = document.querySelector(".noResult");
 						if (nVal.length == 0) {
-							// let noResult = document.querySelector("card");
-							// noResult.appendChild();
+							noResult.style.display = "block";
+							this.cards = [];
+						} else {
+							noResult.style.display = "none";
+							this.cards = this.result;
+							this.getCollect();
 						}
-						this.cards = this.result;
-						this.getCollect();
 					},
 
 					selected: {
@@ -396,7 +402,8 @@
           </div>
 
            <div class="card-group">
-                  <a href="./lesson.html" v-for='(card,index) in cards'>
+				<div class="noResult"><p>沒有結果，請重新搜尋~</p></div>
+                <a href="./lesson.html" v-for='(card,index) in cards'>
                       <div class="card">
                           <div class="header">
                           <img

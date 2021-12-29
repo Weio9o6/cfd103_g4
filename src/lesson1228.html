@@ -30,13 +30,13 @@
                         <img :src="previewImgURL" alt="">
                     </div>
                     <div class="chapter">
-                        <button class="accordion">點我看更多</button>
+                        <button class="accordion" id="touch">點我看更多</button>
                         <div class="panel">
                             <div class="chapter-title">
                                 <h3>JavaScript入門</h3>
                             </div>
                             <div class="chapter-content">
-                                <div v-for='(item, idx) in courses' :key='item.id'
+                                <div v-for='(item,idx) in courses' :key='item.id'
                                     @click='navigatorTo(item.url, item.allow, item.previewImgURL, item.cname, item.attend,item.ctime,item.cpr,item.subtitle,item.totaltime)'
                                     class="chapter-content-item">
                                     <!-- <p>{{item.cname}}</p> -->
@@ -181,12 +181,10 @@
             document.getElementById(pageName).style.display = "block";
             evt.currentTarget.className += " active";
         }
-        var acc = document.getElementsByClassName("accordion");
-        var j;
-        for (j = 0; j < acc.length; j++) {
-            acc[j].addEventListener("click", function () {
-                this.classList.toggle("active");
-                var panel = this.nextElementSibling;
+
+        function addEventToButton() {
+            document.getElementById("touch").addEventListener("click", function () {
+                let panel = this.nextElementSibling;
                 if (panel.style.display == "none") {
                     panel.style.display = "block";
                 } else {
@@ -194,6 +192,7 @@
                 }
             });
         }
+
     </script>
     <script type="module">
 
@@ -232,10 +231,10 @@
                 },
                 getdata() {
                     axios
-                        .get('getcourse.php')
-                        .then(res => {
+                        .get('./php/getCourse.php')
+                        .then((res) => {
                             this.courses = res.data;
-                            // console.log(this.courses);
+                            console.log(this.courses);
                             this.courses = res.data.map(v => {
                                 let _obj = {
                                     cname: v.cname,
@@ -397,6 +396,7 @@
 
         window.onload = function () {
             makeRequest('http://localhost/phpLab/CMPHP/src/messageImport_json2.php');
+            addEventToButton();
         }
 
         function makeRequest(url) {

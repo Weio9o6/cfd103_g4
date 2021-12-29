@@ -1,10 +1,11 @@
-section {
-	margin: 3rem 0;
+#home section {
+	margin: 2.5rem 0;
 }
 
 /* slider */
 
-.slider {
+#home .slider {
+	margin-top: 0;
 	.owl-theme {
 		cursor: pointer;
 		.owl-stage-outer {
@@ -27,7 +28,7 @@ section {
 	}
 }
 
-.owl-carousel .item h4 {
+#home .owl-carousel .item h4 {
 	color: #fff;
 	font-weight: 400;
 	font-size: 1.4375rem;
@@ -36,7 +37,7 @@ section {
 
 /*slogan*/
 
-.slogan {
+#home .slogan {
 	.container {
 		@include container-sm();
 	}
@@ -98,7 +99,7 @@ section {
 
 /*latest*/
 
-.latest,
+#home .latest,
 .hot {
 	.container {
 		@include container-sm();
@@ -297,7 +298,7 @@ section {
 	}
 }
 
-.animate {
+#home .animate {
 	@include container();
 	overflow: hidden;
 	.animation {
@@ -319,7 +320,7 @@ section {
 }
 
 /*service*/
-.service {
+#home .service {
 	.pic {
 		margin: 0 auto;
 		width: 100%;
