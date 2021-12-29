@@ -621,12 +621,11 @@
                     if (logincheck.responseText != 1) {
                         alert('您尚未登入');
                         window.location.href = 'home.html';
-                    }else{
-                        document.getElementsByTagName("label")[0].className = "tabs__label change";
-                        this.getClass();
-                    }
+                    }       
                 };
                 logincheck.send(null);
+                document.getElementsByTagName("label")[0].className = "tabs__label change";
+                this.getClass();
             },
             methods: {
                 getClass() {
