@@ -1,22 +1,38 @@
 #bg {
-  width: 550px;
-  height: 600px;
+  width: 80%;
+  height: 450px;
   margin: 0 auto;
-  background: url(../images/turntable-bg.png) no-repeat;
+  // background: url(../images/turntable-bg.png) no-repeat;
   position: relative; 
+  img{width: 100%;}
+  @include m(){
+    height: 600px;
+    max-width: 550px;
+  }
 
   #pointer{
+    width: 20%;
     position: absolute;
     z-index: 10;
-    top: 190px;
-    left: 224px;
+    top: 120px;
+    left: 132px;
+    @include m(){
+      top: 190px;
+      left: 220px;
+    }
+    
   }
   #turntable{
+    width: 89%;
     position: absolute;
     z-index: 5;
-    top: 30px;
-    left: 30px;
+    top: 17px;
+    left: 18px;
     transition: all 4s;
+    @include m(){
+      top: 30px;
+      left: 30px;
+    }
   }
 }
 
