@@ -54,6 +54,22 @@
                 }
             }
                 
+            .cancel_btn {
+				width: 80px;
+				height: 35px;
+				border-radius: 18px;
+				border: 2px solid $darkgreen;
+				margin-right: 10px;
+                a{
+                    text-decoration: none;
+                    p {
+                        font-size: $size-6;
+                        margin: 0;
+                        color: $darkgreen;
+                    }
+                }
+				
+			}
         
             .sign_btn{
                 width: 80px;
@@ -61,6 +77,7 @@
                 border-radius: 18px;
                 border: none;
                 background-color: $darkgreen;
+                cursor: pointer;
                 p{
                     font-size: $size-6;
                     margin: 0;
