@@ -85,8 +85,14 @@
 							if (xhr.status == 200) {
 								//console.log("成功");
 								//console.log(xhr.responseText);
-								console.log(JSON.parse(xhr.responseText));
-								vm.$emit("update-result", JSON.parse(xhr.responseText));
+								let res =JSON.parse(xhr.responseText);
+								let tagRes = res.map((v) => {
+									return {
+										...v,
+										collectIcon: vm.pic.collectIcon,
+									};
+								});
+								vm.$emit("update-result", tagRes);
 							} else {
 								console.log(xhr.status);
 							}
@@ -278,7 +284,7 @@
 						loginCheck.onload = function () {
 							if (loginCheck.responseText != 1) {
 								alert("請先登入唷~");
-								window.location.href = "login.html";
+								window.location.href = "course.html";
 							} else {
 								console.log();
 							}
