@@ -221,19 +221,45 @@
 						fetch(url)
 							.then(function (response) {
 								response.json().then(function (response) {
-									console.log(response);
-									vm.cards = response.map((v) => {
+									//console.log(response);
+									let mapCards = response.map((v) => {
 										return {
 											...v,
 											collectIcon: vm.pic.collectIcon,
 										};
 									});
-									vm.CheckRenderFav();
+									//console.log(mapCards);
+									vm.cards = mapCards;
+									vm.spliceCards();
 								});
 							})
 							.catch(function (error) {
 								console.log(`Error: ${error}`);
 							});
+					},
+
+					spliceCards() {
+						let vm = this;
+						let cards = vm.cards;
+						console.log(cards);
+						let spliceIndex = [];
+						cards.forEach((card, index) => {
+							if (card.cc == "下架") {
+								console.log(index);
+								spliceIndex.push(index);
+							}
+						});
+						spliceIndex.reverse();
+						console.log(spliceIndex);
+
+						for (let i = 0; i < spliceIndex.length; i++) {
+							console.log(spliceIndex[i]);
+							cards.splice(spliceIndex[i], 1);
+							console.log(cards);
+						}
+						console.log(cards);
+						vm.cards = cards;
+						vm.CheckRenderFav();
 					},
 
 					linkHandler(str) {
@@ -439,7 +465,7 @@
 			       </div>
 
 			        <div class="card-group">
-			               <a href="./buylesson.html" v-for='(card,index) in cards'>
+			               <a href="./lesson.html" v-for='(card,index) in cards'>
 			                   <div class="card">
 			                       <div class="header">
 			                       <img
