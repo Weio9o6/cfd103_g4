@@ -386,10 +386,8 @@
                                 <option v-for="lesson in cf">{{lesson}}</option>
                             </select>
                             <div class="reservation_status">
-                                <div class="reserved">已預約</div>
-                                <div class="full">已額滿</div>
+                                <div class="full">已預約</div>
                             </div>
-                            <button class="btn-reserve">預約</button>
                         </div>
                     </div>
                 </div>
@@ -485,8 +483,9 @@
                 return {
                     clockImg:'./images/time.svg',
                     attendImg:'./images/people.svg',
-                    collectImg:'./images/heart.svg',
-                    cards: []
+                    collectImg:'./images/heart_2.svg',
+                    cards: [],
+                    fav:[],
                 }
             },
             methods:{
@@ -496,10 +495,64 @@
                         //console.log(this);
                         //console.log(res.data);
                         this.cards = res.data
-                        console.log(this.cards);
+                        res.data.forEach((result,index)=>{
+                                //console.log(result.cno);
+                                this.fav.push(result.cno)
+                              
+                            })
+                        //console.log(this.cards);
                     })
                     // this.form.name = res.data.sname;
+                    
                 },
+
+                switchFavorite(e, index) {
+                let watchLink = window.location.href
+                let vm = this;
+                //console.log(e.target.src);
+                let src = e.target.src;
+                let srcBasic = src.split("images")[0]; //把heart連在後面
+                let srcCheck = src.split("images/")[1]; //檢查heart or heart_2
+                console.log(src);
+                console.log(srcBasic);
+                console.log(srcCheck); // heart.svg
+                let url = "heart.svg";
+                let url2 = "heart_2.svg";
+
+                if (srcCheck == url) {
+                  e.target.src = srcBasic + "images/" + url2;
+                  this.insertFav(e.target.id);
+                } else if (srcCheck == url2) {
+                  e.target.src = srcBasic + "images/" + url;
+                  this.deleteFav(e.target.id);
+                }
+                e.preventDefault();
+                window.location.href =watchLink;
+              },
+
+              //新增收藏進資料庫
+              insertFav(cno){
+                let params = {
+                  cno:cno
+                };
+                    // console.log(params)
+                    axios.post('./php/insertFav.php', params )
+                      .catch(error => {
+                        console.log(error.response);
+                      });
+                },
+
+              deleteFav(cno){
+                let params = {
+                  cno:cno
+                };
+                    // console.log(params)
+                    axios.post('./php/deleteFav.php', params )
+                      .catch(error => {
+                        console.log(error.response);
+                      });
+                },
+
             },
             mounted() {
                 this.getCollection();
@@ -530,7 +583,7 @@
                                     </div>
                                     <div class="bottom-right">
                                         <div class="collect">
-                                            <img :src='collectImg' alt="" @click='switchFavorite($event, index);setCno($event)'/>
+                                            <img :src='collectImg' alt="" :id ='cards[index].cno' @click='switchFavorite($event, index)'/>
                                         </div>
                                         <div class="price">NT$ {{cards[index].cpr}}</div>
                                     </div>

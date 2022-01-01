@@ -279,6 +279,7 @@
     }
     margin: 30px auto;
     width: 90%;
+    height: 50vh;
     @include m(){
         display: flex;
         flex-wrap: wrap;
@@ -298,6 +299,7 @@
 .coupon{
     font-size: 20px;
     text-align: center;
+    height: 50vh;
     table{
         margin: 70px auto;
         width: 80%;

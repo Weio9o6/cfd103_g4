@@ -127,119 +127,26 @@
 			width: 275px;
 			height: 400px;
 		}
+		@media all and (max-width: 400px) {
+			line-height: 1.5;
+			width: 360px;
+			height: 110px;
+			.header {
+				height: 100%;
+				width: 50%;
+				img {
+					width: 100%;
+				}
+			}
+			.content {
+				gap: 0;
+				width: 50%;
+				height: 100%;
+				justify-content: space-evenly;
+			}
+		}
 	}
 
-	// .card {
-	//   margin: 1.5rem 0;
-	//   border: 1px solid $darkblue;
-	//   display: flex;
-	//   align-items: stretch;
-	//   .header {
-	//     img {
-	//       height: 100%;
-	//       width: 140px;
-	//     }
-	//   }
-
-	//   .content {
-	//     line-height: 1.5;
-	//     flex-grow: 1;
-	//     display: flex;
-	//     flex-direction: column;
-	//     gap: 20px;
-	//     padding: 0 8px;
-	//     h4 {
-	//       font-size: $m-size-4;
-	//     }
-	//     h5,
-	//     p {
-	//       display: none;
-	//     }
-
-	//     .bottom {
-	//       display: flex;
-	//       justify-content: space-between;
-
-	//       .bottom-left {
-	//         .clock,
-	//         .people {
-	//           display: none;
-	//         }
-	//       }
-
-	//       .bottom-right {
-	//         width: 100%;
-	//         display: flex;
-	//         justify-content: space-between;
-	//         align-items: center;
-	//         .collect {
-	//           order: 1;
-	//           img {
-	//             width: 30px;
-	//           }
-	//         }
-	//         .price {
-	//           font-size: $m-size-4;
-	//           color: $darkblue;
-	//         }
-	//       }
-	//     }
-	//   }
-
-	//   @include st() {
-	//     flex-direction: column;
-	//     align-items: stretch;
-	//     max-width: 300px;
-	//     .header {
-	//       img {
-	//         width: 100%;
-	//       }
-	//     }
-	//     .content {
-	//       padding: 8px 12px;
-	//       line-height: 1.5;
-	//       gap: 8px;
-	//       h4 {
-	//         font-size: $d-size-4;
-	//       }
-	//       h5 {
-	//         display: inherit;
-	//         padding: 8px 0;
-	//         font-size: $d-size-5;
-	//       }
-	//       p {
-	//         display: inherit;
-	//         font-size: $d-size-6;
-	//       }
-
-	//       .bottom {
-	//         font-size: $d-size-6;
-	//         flex-direction: column;
-	//         flex-grow: 1;
-	//         .bottom-left {
-	//           @include flex-ac;
-	//           justify-content: space-between;
-	//           .people,
-	//           .clock {
-	//             @include flex-ac;
-	//             gap: 8px;
-	//             img {
-	//               width: 30px;
-	//             }
-	//           }
-	//         }
-
-	//         .price {
-	//           font-size: $d-size-4;
-	//         }
-	//         .collect {
-	//           text-align: right;
-	//           order: 0;
-	//         }
-	//       }
-	//     }
-	//   }
-	// }
 	.card:hover {
 		cursor: pointer;
 		box-shadow: 1px 1px 10px $darkblue;

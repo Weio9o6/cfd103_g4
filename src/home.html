@@ -164,7 +164,7 @@
                   loginCheck.onload = function () {
                       if (loginCheck.responseText != 1) {
                           alert('請先登入唷~');
-                          window.location.href = 'login.html';
+                          window.location.href = 'home.html'
                       }else{
                         console.log();
                       }
@@ -262,7 +262,7 @@
               this.getCourse();
             },
           template:`
-            <section class="hot">
+            <section class="hot" id = "hot">
               <div class="container">
                 <div class="title">
                   <img :src='title.icon' alt="">
@@ -378,7 +378,7 @@
                   loginCheck.onload = function () {
                       if (loginCheck.responseText != 1) {
                           alert('請先登入唷~');
-                          window.location.href = 'login.html';
+                          window.location.href = 'home.html';
                       }else{
                         console.log();
                       }

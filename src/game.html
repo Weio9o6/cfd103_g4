@@ -5,15 +5,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>game</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.js"></script>
     <link rel="stylesheet" href="css/style.css">
     <script src="js/game.js"></script>
 </head>
 <body>
     @@include('layout/header.html')
-    <div id="bg">
-      <img src="images/pointer.png" alt="pointer" id="pointer" onclick="pointer()">
-      <img src="images/turntable.png" alt="turntable" id="turntable">
+    <div class="game">
+      <h1>抽獎拿優惠</h1>
+      <h4>登入後按開始即可啟動轉盤抽選優惠折扣</h4>
+      <div id="m-bg">
+        <img src="images/turntable-bg.png" alt="背景">
+        <img src="images/pointer.png" alt="pointer" id="pointer" onclick="pointer()">
+        <img src="images/turntable.png" alt="turntable" id="turntable">
+      </div>
     </div>
+    
     @@include('layout/footer.html')
     
 </body>

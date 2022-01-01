@@ -1,23 +1,55 @@
-#bg {
-  width: 550px;
-  height: 600px;
-  margin: 0 auto;
-  background: url(../images/turntable-bg.png) no-repeat;
-  position: relative; 
-
-  #pointer{
-    position: absolute;
-    z-index: 10;
-    top: 190px;
-    left: 224px;
+.game{
+  max-width: $layoutwidth;
+  margin: 50px auto 0;
+  padding: 0 20px;
+  h1{
+    font-size: $size-1;
+    color: $darkgreen;
+    margin-bottom: 5px;
   }
-  #turntable{
-    position: absolute;
-    z-index: 5;
-    top: 30px;
-    left: 30px;
-    transition: all 4s;
+  h4{
+    font-size: $size-4;
+    color: $black;
+    margin-bottom: 15px;
+  }
+  #m-bg {
+    width: 80%;
+    height: 350px;
+    margin: 0 auto;
+    position: relative; 
+    img{width: 100%;}
+    @include m(){
+      height: 600px;
+      max-width: 550px;
+    }
+
+    #pointer{
+      width: 20%;
+      position: absolute;
+      z-index: 10;
+      top: 105px;
+      left: 118px;
+      @include m(){
+        top: 190px;
+        left: 220px;
+      }
+      
+    }
+    #turntable{
+      width: 89%;
+      position: absolute;
+      z-index: 5;
+      top: 17px;
+      left: 16px;
+      transition: all 4s;
+      @include m(){
+        top: 30px;
+        left: 30px;
+      }
+    }
   }
 }
+
+
 
 

@@ -20,127 +20,127 @@
 // }
 
 @mixin card() {
-  @content;
-  margin-top: 2rem;
-  border: 1px solid $darkblue;
-  display: flex;
-  align-items: center;
-  .header {
-    height: 45%;
-    img {
-      height: 100%;
-      width: 150px;
-    }
-  }
+	@content;
+	margin-top: 2rem;
+	border: 1px solid $darkblue;
+	display: flex;
+	align-items: center;
+	.header {
+		height: 45%;
+		img {
+			height: 100%;
+			width: 150px;
+		}
+	}
 
-  .content {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    padding: 0 8px;
-    h4 {
-      font-size: $m-size-3;
-      color: $darkgreen;
-    }
-    h5,
-    p {
-      display: none;
-    }
+	.content {
+		flex-grow: 1;
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+		padding: 0 8px;
+		h4 {
+			font-size: $size-4;
+			color: $darkgreen;
+		}
+		h5,
+		p {
+			display: none;
+		}
 
-    .bottom {
-      display: flex;
-      justify-content: flex-end;
-      .bottom-left {
-        .clock,
-        .people {
-          display: none;
-        }
-      }
+		.bottom {
+			display: flex;
+			justify-content: flex-end;
+			.bottom-left {
+				.clock,
+				.people {
+					display: none;
+				}
+			}
 
-      .bottom-right {
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding-top: 5px;
-        .collect {
-          order: 1;
-          img {
-            width: 24px;
-            vertical-align: middle;
-          }
-        }
-        .price {
-          font-size: $m-size-3;
-          color: $darkblue;
-        }
-      }
-    }
-  }
+			.bottom-right {
+				width: 100%;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				padding-top: 5px;
+				.collect {
+					order: 1;
+					img {
+						width: 24px;
+						vertical-align: middle;
+					}
+				}
+				.price {
+					font-size: $size-4;
+					color: $darkblue;
+				}
+			}
+		}
+	}
 
-  @include m() {
-    justify-content: center;
-    flex-direction: column;
-    // width: 275px;
-    // height: 400px;
-    .header {
-      img {
-        width: 100%;
-      }
-    }
-    .content {
-      padding: 8px 12px;
-      line-height: 1.5;
-      gap: 0px;
-      h4 {
-        flex-grow: 1;
-        font-size: $d-size-4;
-        color: $black;
-      }
-      h5 {
-        flex-grow: 1;
-        display: inherit;
-        font-size: $d-size-5;
-        color: $black;
-        padding-top: 5px;
-      }
-      p {
-        flex-grow: 1;
-        display: inherit;
-        font-size: $d-size-6;
-        color: $darkgray;
-      }
+	@include m() {
+		justify-content: center;
+		flex-direction: column;
+		// width: 275px;
+		// height: 400px;
+		.header {
+			img {
+				width: 100%;
+			}
+		}
+		.content {
+			padding: 8px 12px;
+			line-height: 1.5;
+			gap: 0px;
+			h4 {
+				flex-grow: 1;
+				font-size: $size-3;
+				color: $black;
+			}
+			h5 {
+				flex-grow: 1;
+				display: inherit;
+				font-size: $size-5;
+				color: $black;
+				padding-top: 5px;
+			}
+			p {
+				flex-grow: 1;
+				display: inherit;
+				font-size: $size-6;
+				color: $darkgray;
+			}
 
-      .bottom {
-        flex-grow: 1;
-        font-size: $d-size-6;
-        flex-direction: column;
-        flex-grow: 1;
-        span {
-          color: $black;
-        }
-        .bottom-left {
-          @include flex-ac;
-          justify-content: space-between;
-          .people,
-          .clock {
-            @include flex-ac;
-            gap: 8px;
-            img {
-              width: 24px;
-            }
-          }
-        }
+			.bottom {
+				flex-grow: 1;
+				font-size: $size-6;
+				flex-direction: column;
+				flex-grow: 1;
+				span {
+					color: $black;
+				}
+				.bottom-left {
+					@include flex-ac;
+					justify-content: space-between;
+					.people,
+					.clock {
+						@include flex-ac;
+						gap: 8px;
+						img {
+							width: 24px;
+						}
+					}
+				}
 
-        .price {
-          font-size: $d-size-4;
-        }
-        .collect {
-          text-align: right;
-          order: 0;
-        }
-      }
-    }
-  }
+				.price {
+					font-size: $size-4;
+				}
+				.collect {
+					text-align: right;
+					order: 0;
+				}
+			}
+		}
+	}
 }
