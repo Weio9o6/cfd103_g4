@@ -85,7 +85,7 @@
 							if (xhr.status == 200) {
 								//console.log("成功");
 								//console.log(xhr.responseText);
-								let res =JSON.parse(xhr.responseText);
+								let res = JSON.parse(xhr.responseText);
 								let tagRes = res.map((v) => {
 									return {
 										...v,
@@ -439,36 +439,36 @@
 			       </div>
 
 			        <div class="card-group">
-			               <a href="./lesson.html" v-for='(card,index) in cards'>
+			               <a href="./buylesson.html" v-for='(card,index) in cards'>
 			                   <div class="card">
 			                       <div class="header">
 			                       <img
-			                         :src='cards[index].cpic'
+			                         :src='card.cpic'
 			                         alt=""
 			                       />
 			                     </div>
 			                     <div class="content">
 			                       <div class="top">
-			                         <h4>{{cards[index].cname}}</h4>
-			                         <p>{{cards[index].subtitle}}</p>
+			                         <h4>{{card.cname}}</h4>
+			                         <p>{{card.subtitle}}</p>
 			                       </div>
-			                       <h5>{{cards[index].tname}}</h5>
+			                       <h5>{{card.tname}}</h5>
 			                       <div class="bottom">
 			                         <div class="bottom-left">
 			                         <div class="clock">
 			                           <img :src='pic.timeIcon' alt="" />
-			                           <span>{{cards[index].ctime}}min</span>
+			                           <span>{{card.ctime}}min</span>
 			                         </div>
 			                         <div class="people">
 			                           <img :src='pic.peopleIcon'alt="" />
-			                           <span>{{cards[index].attend}}</span>
+			                           <span>{{card.attend}}</span>
 			                         </div>
 			                       </div>
 			                       <div class="bottom-right">
 			                         <div class="collect">
-			                           <img :src='cards[index].collectIcon' :id='cards[index].cno' @click='switchFavorite($event, index)'/>
+			                           <img :src='card.collectIcon' :id='card.cno' @click='switchFavorite($event, index)'/>
 			                         </div>
-			                         <div class="price">NT$ {{cards[index].cpr}}</div>
+			                         <div class="price">NT$ {{card.cpr}}</div>
 			                       </div>
 			                       </div>
 			                     </div>
