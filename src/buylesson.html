@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="css/style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js"></script>
     <script src="./js/vue.js"></script>
-    <script src= "http://code.jquery.com/jquery-latest.js" ></script>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
 
 </head>
 
@@ -19,13 +19,10 @@
         <section class="course">
             <div class="course-wrap">
                 <div class="crumb">
-                    <!-- <a href="">JavaScript超級秘笈</a>
-                    <span v-if='TN? true: false'>&nbsp;>&nbsp;</span>
-                    <a href="">{{ TN }}</a> -->
                 </div>
                 <div class="course-content">
                     <div v-if='authorization' class="video" src=''>
-                        <iframe :src="videoURL"></iframe>
+                        <img v-bind:src="cpic">
                     </div>
                     <div v-else>
                         <img :src="previewImgURL" alt="">
@@ -34,15 +31,14 @@
                         <button class="accordion" id="touch">點我看更多</button>
                         <div class="panel">
                             <div class="chapter-title">
-                                <h3>HTML入門</h3>
+                                <h3>{{cname}}</h3>
+                                <div id='cname' style ="display: none;">{{cno}} </div>
                             </div>
                             <div class="chapter-content">
-                                <div v-for='(item,idx) in courses' :key='item.id'
-                                    @click='navigatorTo(item.url, item.allow, item.previewImgURL, item.cname, item.attend,item.ctime,item.cpr,item.subtitle,item.totaltime,item.cno)'
-                                    class="chapter-content-item">
-                                    <!-- <p>{{item.cname}}</p> -->
-                                    <p>{{item.subtitle}}</p>
-                                    <p>{{item.totaltime}}</p>
+                                <div class="chapter-content-item">
+                                    <p>{{cname}}</p>
+                                    <p>{{totaltime}}</p>
+                                   
                                 </div>
 
                             </div>
@@ -89,32 +85,31 @@
 
                 </div>
                 <div class="course-data-join">
-                    <button class="btn">立即參加</button>
+                    <button class="btn" id ="btn">立即參加</button>
                 </div>
             </div>
         </section>
     </div>
     <div class="tab">
         <button class="tablinks" onclick="openPage(event,'profile')">課程簡介</button>
-        <button class="tablinks" onclick="openPage(event,'message')">留言區</button>
     </div>
     <div id="profile" class="tabcontent">
         <section class="part-profile">
             <div class="container-course">
                 <div class="item">
                     <h3>您會學到</h3>
-                    <p>理解 HTML 的運作機制與基本概念</br>
-                        寫出優良穩定的 HTML 程式碼</br>
+                    <p>理解 JavaScript 的運作機制與基本概念</br>
+                        寫出優良穩定的 JavaScript 程式碼</br>
                         瞭解進階觀念，像是閉包、原型繼承、IIFEs</br>
-                        徹底地增進 HTML 的除錯能力</br>
-                        避免一般開發者會犯的 HTML 陷阱和錯誤</br>
-                        瞭解 HTML 受歡迎框架的原始碼</br>
-                        建立自己的 HTML 框架或資源庫</p>
+                        徹底地增進 JavaScript  的除錯能力</br>
+                        避免一般開發者會犯的 JavaScript 陷阱和錯誤</br>
+                        瞭解 JavaScript 受歡迎框架的原始碼</br>
+                        建立自己的 JavaScript 框架或資源庫</p>
                 </div>
                 <div class="item">
                     <h3>說明</h3>
                     <p>
-                        HTML 是現今開發者都必須熟悉的程式語言，這可以讓你得到工作、建立好的網站及應用。</br>
+                        JavaScript  是現今開發者都必須熟悉的程式語言，這可以讓你得到工作、建立好的網站及應用。</br>
                         注意：這們課包含了ECMAScript 6 (ES6)，也就是下一版本的HTML之資訊！</br>
                         在這門課中你能深入瞭解HTML，知道它的運作模式，來幫助你避免一些可能會犯的錯誤，大幅提升你除錯的能力。</br>
                         你可以懂得一些其他人（甚至是有經驗的開發者）都很困惑的東西，你將見識到這個程式語言的美麗與強大。</br>
@@ -123,11 +118,11 @@
                     </p></br>
                     <h3>此課程適合那些人</h3>
                     <p>
-                        瞭解基本的 HTML 技巧並想要增進的人</br>
+                        瞭解基本的JavaScript 技巧並想要增進的人</br>
                         有程式語言經驗的開發者</br>
-                        想要深入瞭解這個語言的 HTML 新手或老手</br>
+                        想要深入瞭解這個語言的 JavaScript  新手或老手</br>
                         認為物件原型、閉包與其他進階觀念很難懂的人</br>
-                        在 HTML 遇到許多莫名其妙的錯誤，而想要瞭解如何避免錯誤的人</br>
+                        在 JavaScript 遇到許多莫名其妙的錯誤，而想要瞭解如何避免錯誤的人</br>
                         想要建立自己的框架，或想從知名框架及資源庫的原始碼學習的人</br>
                     </p>
                 </div>
@@ -138,10 +133,10 @@
                         <img src="https://picsum.photos/50/50/?random=1">
                     </div>
                     <div class="teacher-txt">
-                        <h3>Amos</h3>
+                        <h3>董董</h3>
                         <li>向前衝網頁前端交流站發起人</li>
-                        <li>中華一番電信網頁前端講師</li>
-                        <li>台北帝國大學教授</li>
+                        <li>網頁前端講師</li>
+                        <li>資策會教授</li>
                         <li>二十年教學經驗資深講師</li>
                     </div>
                 </div>
@@ -200,54 +195,38 @@
 
         var videoItem = new Vue({
             el: '#course-watch',
-            data: {
-                authorization: true,
-                previewImgURL: '',
-                videoURL: '',
-                // courses: videoArray,
-                courses: [],
-                TN: '',
-                attend: ' - ',
-                ctime: ' - ',
-                cpr: ' - ',
-                subtitle: ' - ',
-                totaltime: ' - ',
+            data() {
+                return {
+                    authorization: true,
+                    previewImgURL: '',
+                    videoURL: '',
+                    // courses: videoArray,
+                    courses: [],
+                    TN: '',
+                    attend: ' - ',
+                    ctime: ' - ',
+                    cpr: ' - ',
+                    cname: ' - ',
+                    totaltime: ' - ',
+                    cpic: ' - ',
+                    cno:' - ',
+                }
             },
             methods: {
-                navigatorTo: function (URL, allow, imgURL, cname, attend, ctime, cpr, subtitle, totaltime, cno) {
-                    this.videoURL = URL;
-                    this.authorization = allow;
-                    this.previewImgURL = imgURL;
-                    this.TN = cname;
-                    this.attend = attend;
-                    this.ctime = ctime;
-                    this.cpr = cpr;
-                    this.subtitle = subtitle;
-                    this.totaltime = totaltime;
-                    this.cno = cno;
-                },
+             
                 getdata() {
                     axios
-                        .get('./php/getCourse.php')
+                        .get('./php/getOneCourse.php')
                         .then((res) => {
+                            
                             this.courses = res.data;
-                            console.log(this.courses);
-                            this.courses = res.data.map(v => {
-                                let _obj = {
-                                    cname: v.cname,
-                                    ctime: v.ctime,
-                                    id: v.cno,
-                                    url: v.classa,
-                                    allow: true,
-                                    previewImgURL: '',
-                                    attend: v.attend,
-                                    ctime: v.ctime,
-                                    cpr: v.cpr,
-                                    subtitle: v.subtitle,
-                                    totaltime: v.totaltime,
-                                }
-                                return _obj;
-                            })
+                            this.cname = res.data[0].cname;
+                            this.totaltime = res.data[0].totaltime;
+                            this.attend = res.data[0].attend;
+                            this.ctime = res.data[0].ctime;
+                            this.cpr = res.data[0].cpr;
+                            this.cpic = res.data[0].cpic;
+                            this.cno = res.data[0].cno;             
                         })
                         .catch((err) => {
                             console.error(err);
@@ -256,6 +235,8 @@
             },
             mounted() {
                 this.getdata();
+                
+                // this.attend =' 0';
             },
 
         })
@@ -309,7 +290,6 @@
 
                                     showMessage.innerHTML +=
                                         "<div class='msgContent'>"
-                                        + "<div class='stdpic'> <img src=" + (data[i]['pic']) + "></div>"
                                         + "<span class='stdName'>" + (data[i]['sname']) + "</span>"
                                         + "<span class='stdMessage'>" + (data[i]['mcontain']) + "</span>" + "</br>"
                                         + "<span class='stdTime'>" + (data[i]['mtime']) + "</span>"
@@ -397,6 +377,7 @@
         window.onload = function () {
             makeRequest('./php/messageImport_json2.php');
             addEventToButton();
+            addLocalStorage();
         }
 
         function makeRequest(url) {
@@ -424,7 +405,6 @@
                     for (var i = 0; i < data.length; i++) {
 
                         showMessage.innerHTML += "<div class='msgContent'>"
-                            + "<div class='stdpic'> <img src=" + (data[i]['pic']) + "></div>"
                             + "<span class='stdName'>" + (data[i]['sname']) + "</span>"
                             + "<span class='stdMessage'>" + (data[i]['mcontain']) + "</span>" + "</br>"
                             + "<span class='stdTime'>" + (data[i]['mtime']) + "</span>"
@@ -442,6 +422,18 @@
             }
         }
 
+    </script>
+    <script>
+        function addLocalStorage(){
+            
+            document.getElementById("btn").addEventListener("click", function(){
+                let storage = sessionStorage;
+                let course = document.getElementById("cname").innerHTML;
+
+                storage["courses"] = course;
+            });
+        }
+        
     </script>
     @@include('./layout/footer.html')
 </body>
