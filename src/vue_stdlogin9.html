@@ -11,12 +11,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.js"></script>
     <script src="./js/vue.js"></script>
 </head>
-<style>
-    .for_calendar .reserved{
-    color: #fff;
-    background-color: #f3bbbb;
-}
-</style>
 <body>
     @@include('./layout/header.html')
     <div id="stdlogin">
@@ -26,7 +20,7 @@
             </label>
         </div>
        <keep-alive>
-         <component :is="content" @sendclass="takeclass" :giveclass="cards"></component>
+         <component :is="content" @sendclass="takeclass" :giveclass="cards" :stdno="stdno"></component>
  
     <!--    <basic v-show="content =='basic'" @sendclass="takeclass" :giveclass="cards"></basic>
             <reserve v-show="content =='reserve'" @sendclass="takeclass" :giveclass="cards"></reserve>
@@ -210,7 +204,12 @@
             `,
         });
         Vue.component('reserve', {
-            props:["giveclass"],
+            props:["giveclass","stdno"],
+            // watch:{
+            //     lesson(newLesson){
+
+            //     }
+            // },
             data() {
                 return {
                     // lessons: ['課程', 'JavaScript', 'Vue', 'HTML5'],
@@ -269,7 +268,7 @@
                 },
                 doReserve(date){
                     console.log(this.list[date]);
-                    if(this.list[date].isCheck == 0){
+                    if(this.list[date].month == this.calendar.month && this.list[date].isCheck == 0){
                         this.$set(this.list[date],'isCheck', 1)
                         this.$set(this.list[date],'isMem', 1)
                         this.plusReserve(`${this.list[date].year}-${this.list[date].month+1}-${this.list[date].date}`)
@@ -284,16 +283,15 @@
                     
                 },
                 plusReserve(date){
-                    let sure = confirm("確認 預約?");
-                    if(sure){
-                        axios.get(`./php/plusReserves.php?date=${date}&cno=${1}`).then(res => {
-                        
-                        })
-                    }
+                    alert("已完成預約");
+                    // if(confirm("確認 預約?"))
+                    axios.get(`./php/plusReserves.php?date=${date}&cno=${1}`).then(res => {
                     
+                    })
                 },
                 minusReserve(date){
-                    window.confirm("確認 取消預約?")
+                    alert("已取消預約");
+                    // confirm("確認 取消預約?");
                     axios.get(`./php/minusReserves.php?date=${date}&cno=${1}`).then(res => {
                        
                     })
@@ -309,8 +307,8 @@
                     for (let i = 0; i<= this.calendarMonth.length ; i++) {
                         this.allreserve.forEach(item => {
                             // console.log(item.stdno);
-                        if (item.stdno == 1 && new Date(item.rsdate).getDate() == this.calendarMonth[i].date) this.list[i].isMem = 1;
-                        if (new Date(item.rsdate).getDate() == this.calendarMonth[i].date) this.list[i].isCheck = 1;
+                        if (item.stdno == this.stdno && new Date(item.rsdate).getDate() == this.calendarMonth[i].date) this.list[i].isMem = 1;
+                        if (new Date(item.rsdate).getDate() == this.calendarMonth[i].date && new Date(item.rsdate).getMonth() == this.calendarMonth[i].month && new Date(item.rsdate).getFullYear() == this.calendarMonth[i].year) this.list[i].isCheck = 1;
                         })
                     }
                 },
@@ -379,7 +377,7 @@
                         </div>
                         <div class="step_rules">
                             <div class="step">2</div>
-                            確認師資與課程無誤點選「預約」
+                            點選日期進行「預約/取消預約」
                         </div>
                         <div class="condition">
                             <select name="lesson" id="">
@@ -394,11 +392,11 @@
                 <div class="for_calendar">
                     <h1>{{calendar.year}} <span>年</span> {{calendar.month+1}} <span>月</span></h1>
                     <div>
-                        <button class="btn-calendar" @click="adjustYear(-1)">上一年</button>
-                        <button class="btn-calendar" @click="adjustMonth(-1)">上個月</button>
-                        <button class="btn-calendar" @click="setToday">今天</button>
-                        <button class="btn-calendar" @click="adjustMonth(1)">下個月</button>
-                        <button class="btn-calendar" @click="adjustYear(1)">下一年</button>
+                        <button class="btn-calendar" @click="adjustYear(-1); getAllreserve()">上一年</button>
+                        <button class="btn-calendar" @click="adjustMonth(-1); getAllreserve();">上個月</button>
+                        <button class="btn-calendar" @click="setToday(); getAllreserve();">今天</button>
+                        <button class="btn-calendar" @click="adjustMonth(1); getAllreserve();">下個月</button>
+                        <button class="btn-calendar" @click="adjustYear(1); getAllreserve()">下一年</button>
                     </div>
                     <div class="calendar">
                         <div class="weekDay">
@@ -641,6 +639,7 @@
         new Vue({
             el: '#stdlogin',
             data: {
+                stdno:'',
                 cards:[],
                 content: 'basic',
                 labels: [
@@ -674,11 +673,15 @@
                     if (logincheck.responseText != 1) {
                         alert('您尚未登入');
                         window.location.href = 'home.html';
-                    }       
+                    }                         
                 };
                 logincheck.send(null);
                 document.getElementsByTagName("label")[0].className = "tabs__label change";
                 this.getClass();
+                axios.get('./php/getLogin.php').then(res =>{
+                    console.log(res.data);
+                    this.stdno = res.data;
+                })
             },
             methods: {
                 getClass() {
